@@ -1,0 +1,48 @@
+{
+  "GET_ALL_CAKES": {
+    "url": "http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes",
+    "method": "GET",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "GET_A_CAKE": {
+    "url": "http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes",
+    "method": "GET",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "POST_A_CAKE": {
+    "url": "http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes",
+    "method": "post",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "data": [
+      "name",
+      "comment",
+      "imageUrl",
+      "yumFactor"
+    ]
+  },
+  "UPDATE_A_CAKE": {
+    "url": "http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes",
+    "method": "PUT",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "data": [
+      "id",
+      "name",
+      "comment",
+      "imageUrl",
+      "yumFactor"
+    ]
+  },
+  "DELETE_A_CAKE": {
+    "url": "http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes/<cakeId>",
+    "method": "DELETE",
+    "headers": {}
+  }
+}

@@ -1,0 +1,23 @@
+// @for $i from 1 through 1000 {
+//   .Cake {
+//     &:nth-of-type(#{$i}) {
+//       transition-delay: #{$i / 10}s !important;
+//     }
+//   }
+// }
+
+.Bar {
+  
+  &.--animate {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  @media (min-width: 425px) {}
+
+  @media (min-width: 768px) {}
+
+  @media (min-width: 1024px) {}
+
+  @media (min-width: 1440px) {}
+}
