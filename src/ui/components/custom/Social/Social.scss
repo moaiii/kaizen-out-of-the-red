@@ -1,6 +1,8 @@
-.CountryDetail {
-  // mobile first < 425px
-  // height: 500px;
+.Social {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateX(-100%) translateY(-50%);
 
   &.--animate {}
 

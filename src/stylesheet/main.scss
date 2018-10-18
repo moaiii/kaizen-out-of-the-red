@@ -1,3 +1,13 @@
+$blue1: #101754;
+$blue2: #21418E;
+$blue3: #3566B2;
+$blue4: #7EA6D7;
+$blue5: #DFF1FD;
+$red: #DB614B;
+$white: #FFFFFF;
+$green: #61B83E;
+$grey: #BABAB9;
+
 * {
   margin: 0;
   padding: 0;
@@ -35,3 +45,8 @@ body {
 @import "../ui/components/custom/Bar/Bar.scss";
 @import "../ui/views/CountryList/CountryList.scss";
 @import "../ui/views/CountryDetail/CountryDetail.scss";
+@import "../ui/components/custom/Header/Header.scss";
+@import "../ui/components/custom/Currency/Currency.scss";
+@import "../ui/components/custom/Navigation/Navigation.scss";
+@import "../ui/components/custom/Social/Social.scss";
+@import "../ui/components/common/CountryItem/CountryItem.scss";

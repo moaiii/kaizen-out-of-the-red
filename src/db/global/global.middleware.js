@@ -1,20 +1,30 @@
 // @flow
 import * as actions from './global.action';
 import {networkRequest} from '../../lib/network';
+import { setCurrencyRate } from './global.action';
+import store from '../store';
 
 export default {
-  // '[GLOBAL] GET_ALL_CAKES__SUBMIT': async (store: Object, next: Function, action: Action<string>) => { // $FlowFixMe
+  '[GLOBAL] SET_CURRENCY': async (store: Object, next: Function, action: Action<string>) => { // $FlowFixMe
     
-  //   let _endpoint: Endpoint 
-  //     = require('../../lib/api/endpoints')['GET_ALL_CAKES'];
+    let rate;
+    let symbol;
 
-  //   try {
-  //     let res = await networkRequest( _endpoint );
-  //     store.dispatch(actions.getAllCakes.resolved( res.data ));
+    if( action.payload === 'euro' ) {
+      rate = 0.87;
+      symbol = '€';
+    };
+    
+    if( action.payload === 'pound' ) {
+      rate = 0.77;
+      symbol = '£';
+    };
+    
+    if( action.payload === 'dollar' ) {
+      rate = 1;
+      symbol = '$';
+    };
 
-  //   } catch(error) {
-  //     console.error(`[ERROR] get all cakes middleware`, error);
-  //     store.dispatch(actions.getAllCakes.rejected());
-  //   }
-  // }
+    store.dispatch( setCurrencyRate( {rate, symbol} ));
+  }
 }

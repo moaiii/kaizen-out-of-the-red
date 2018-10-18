@@ -1,10 +1,10 @@
 import {connect} from "react-redux";
-import store from "../../../db/store";
-import CountryList from "./CountryList.jsx";
+import store from "../../../../db/store";
+import Header from "./Header.jsx";
 
 function mapStoreToProps( store ) {
   return {
-    data: store.GlobalReducer.data
+    // cakes: store.GlobalReducer.cakes
   }
 }
  
@@ -14,4 +14,4 @@ function mapDispatchToProps( dispatch ) {
   }
 }
  
-export default connect( mapStoreToProps, mapDispatchToProps )( CountryList );
+export default connect( mapStoreToProps, mapDispatchToProps )( Header );

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.4 27.4">
+  <title>art-artist</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <rect width="27.4" height="27.4" rx="13.7" ry="13.7" style="fill: #dbf1fe"/>
+        <g>
+          <path d="M10.06,17.45c-.11.22-.22.43-.27.57A4,4,0,0,1,7.91,20.4c-.37.14-1.67.69-1.67.69s.38-1.45.57-1.9c.53-1.28,1-1.58,2.44-2.1A1.41,1.41,0,0,0,9.52,17" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.5573770048681514px"/>
+          <path d="M21,7,10.61,17.27a.66.66,0,0,1-.92-.95h0L20.46,6.43A.42.42,0,0,1,21,7Z" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.5573770048681514px"/>
+          <line x1="11.44" y1="14.81" x2="12.24" y2="15.69" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.5573770048681514px"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

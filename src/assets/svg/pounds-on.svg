@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.56 31.56">
+  <title>pounds-on</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <circle cx="15.78" cy="15.78" r="15.78" style="fill: #ec5741"/>
+        <g>
+          <path d="M11.41,24s.22-10.94.22-13.33a3.47,3.47,0,0,1,1.42-3,5.49,5.49,0,0,1,3.3-.91c2.56,0,4.16,1,4.82,3.1l-.73.36a3.64,3.64,0,0,0-3.91-2.7c-2.68,0-4,1.06-4,3.18,0,2.42-.23,13.26-.23,13.26Z" style="fill: #fff"/>
+          <rect x="10.3" y="15.13" width="10.53" height="0.81" style="fill: #fff"/>
+          <rect x="10.3" y="17.08" width="10.53" height="0.81" style="fill: #fff"/>
+          <rect x="10.3" y="23.9" width="10.53" height="0.81" style="fill: #fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

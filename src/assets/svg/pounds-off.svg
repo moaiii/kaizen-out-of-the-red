@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.06 32.06">
+  <title>pounds-off</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <circle cx="16.03" cy="16.03" r="15.78" style="fill: none;stroke: #1d2d4f;stroke-miterlimit: 10;stroke-width: 0.4950333395091829px"/>
+        <g>
+          <path d="M11.65,24.26s.23-10.94.23-13.33a3.49,3.49,0,0,1,1.41-3A5.52,5.52,0,0,1,16.6,7c2.56,0,4.16,1,4.82,3.1l-.73.35a3.65,3.65,0,0,0-3.91-2.69c-2.68,0-4,1-4,3.17,0,2.43-.22,13.27-.22,13.27Z" style="fill: #1d2d4f"/>
+          <rect x="10.54" y="15.37" width="10.53" height="0.81" style="fill: #1d2d4f"/>
+          <rect x="10.54" y="17.33" width="10.53" height="0.81" style="fill: #1d2d4f"/>
+          <rect x="10.54" y="24.15" width="10.53" height="0.81" style="fill: #1d2d4f"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

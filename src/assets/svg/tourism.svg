@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.75 52.75">
+  <title>tourism</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <rect width="52.75" height="52.75" rx="26.37" ry="26.37" style="fill: #73a6dc"/>
+        <g>
+          <rect x="16" y="13.16" width="20.74" height="27.77" rx="2.41" ry="2.41" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+          <path d="M19.92,40.95h1.57a0,0,0,0,1,0,0v1.87a.79.79,0,0,1-.79.79h0a.79.79,0,0,1-.79-.79V40.95a0,0,0,0,1,0,0Z" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+          <path d="M31.31,40.95h1.57a0,0,0,0,1,0,0v1.87a.79.79,0,0,1-.79.79h0a.79.79,0,0,1-.79-.79V40.95A0,0,0,0,1,31.31,40.95Z" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+          <rect x="16" y="25.38" width="20.74" height="4.25" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+          <rect x="18.61" y="32.16" width="15.53" height="6.38" rx="2.44" ry="2.44" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+          <path d="M19.74,13.16V11.38A2.23,2.23,0,0,1,22,9.15h8.86a2.23,2.23,0,0,1,2.23,2.23v1.78" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+          <path d="M16,18.69a24.41,24.41,0,0,0,10.4,2.08,24.44,24.44,0,0,0,10.35-2.06" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+          <rect x="20.72" y="18.69" width="0.79" height="3.3" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+          <rect x="31.32" y="18.69" width="0.79" height="3.3" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 1.016152906417311px"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

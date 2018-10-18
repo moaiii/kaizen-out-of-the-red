@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.75 52.75">
+  <title>nat-wealth</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <rect width="52.75" height="52.75" rx="26.37" ry="26.37" style="fill: #121762"/>
+        <g>
+          <rect x="11.97" y="12.45" width="27.89" height="24.74" rx="2.14" ry="2.14" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.335440726371176px"/>
+          <rect x="15.99" y="15.44" width="20.47" height="18.05" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.375344824208988px"/>
+          <rect x="14.37" y="26.5" width="3.25" height="5.14" rx="0.86" ry="0.86" style="stroke: #f2f2f2;stroke-width: 0px"/>
+          <rect x="14.37" y="18.1" width="3.25" height="5.14" rx="0.86" ry="0.86" style="stroke: #f2f2f2;stroke-width: 0px"/>
+          <rect x="15.38" y="37.19" width="6.3" height="2.48" style="stroke: #f2f2f2;stroke-width: 0px"/>
+          <rect x="30.79" y="37.19" width="6.3" height="2.48" style="stroke: #f2f2f2;stroke-width: 0px"/>
+          <circle cx="26.48" cy="24.46" r="2.27" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+          <g>
+            <line x1="26.48" y1="19.1" x2="26.48" y2="21.86" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+            <line x1="26.48" y1="27.18" x2="26.48" y2="29.94" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+          </g>
+          <g>
+            <line x1="30.32" y1="20.69" x2="28.37" y2="22.64" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+            <line x1="24.6" y1="26.4" x2="22.65" y2="28.35" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+          </g>
+          <g>
+            <line x1="31.9" y1="24.52" x2="29.15" y2="24.52" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+            <line x1="23.82" y1="24.52" x2="21.07" y2="24.52" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+          </g>
+          <g>
+            <line x1="30.32" y1="28.35" x2="28.37" y2="26.4" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+            <line x1="24.6" y1="22.64" x2="22.65" y2="20.69" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 1.2555950273450733px"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

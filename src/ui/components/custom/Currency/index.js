@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import store from "../../../db/store";
-import { setCurrency } from '../../../global/global.actions';
+import store from "../../../../db/store";
+import { setCurrency } from '../../../../db/global/global.action';
 import Currency from "./Currency.jsx";
 
 /**

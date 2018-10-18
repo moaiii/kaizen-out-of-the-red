@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.1 27.1">
+  <title>show-hide</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <circle cx="13.55" cy="13.55" r="13.55" style="fill: #121762"/>
+        <path d="M23.59,13.55a13,13,0,0,1-10,5.05,13,13,0,0,1-10-5.05,13,13,0,0,1,10-5.06A13,13,0,0,1,23.59,13.55Z" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 0.7464303095871205px"/>
+        <circle cx="13.55" cy="13.55" r="3.81" style="fill: none;stroke: #f2f2f2;stroke-miterlimit: 10;stroke-width: 0.7464303095871205px"/>
+      </g>
+    </g>
+  </g>
+</svg>

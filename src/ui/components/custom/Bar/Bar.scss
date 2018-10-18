@@ -7,6 +7,32 @@
 // }
 
 .Bar {
+  height: 50%;
+  max-height: 25px;
+
+  &.--total-debt {
+    background-color: $red;
+  }
+
+  &.--national-wealth {
+    background-color: $blue1;
+  }
+
+  &.--business {
+    background-color: $blue2;
+  }
+
+  &.--resource {
+    background-color: $blue3;
+  }
+
+  &.--tourism {
+    background-color: $blue4;
+  }
+
+  &.--sport {
+    background-color: $blue5;
+  }
   
   &.--animate {
     opacity: 1;

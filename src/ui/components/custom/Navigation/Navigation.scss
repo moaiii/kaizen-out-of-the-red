@@ -1,0 +1,71 @@
+.Navigation {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+
+  .banner {
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue1;
+
+    p {
+      color: white;
+      text-align: center;
+      max-width: 700px;
+      padding: 1rem;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: flex-start;
+    background-color: $grey;
+
+    .controls {
+      display: flex;
+      flex-direction: space-between;
+      width: 70%;
+
+      .control {
+        display: flex;
+        align-items: center;
+        width: 25%;
+
+        &.--national-wealth {
+          cursor: pointer;
+        }
+
+        .control__icon {
+          width: 25%;
+        }
+
+        p {
+          width: 50%;
+          color: white;
+        }
+
+        .icon-stack {
+          width: 25%;
+          display: flex;
+          flex-direction: column;
+
+          .svg {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  &.--animate {}
+
+  @media (min-width: 425px) {}
+
+  @media (min-width: 768px) {}
+
+  @media (min-width: 1024px) {}
+
+  @media (min-width: 1440px) {}
+}

@@ -1,12 +1,13 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
+import ReactSVG from 'react-svg';
 
 // COMPONENTS
-// ........
+import Social from '../Social';
 
 // ASSETS
-// ........
+import Logo from '../../../../assets/svg/Logo.svg';
 
 // UTILITIES
 // ........
@@ -19,7 +20,7 @@ type State = {
 };
 
 // COMPONENT
-export default class Social extends React.Component<Props, State> {
+export default class Header extends React.Component<Props, State> {
   constructor() {
     super();
 
@@ -60,16 +61,12 @@ export default class Social extends React.Component<Props, State> {
 
     // FINAL RENDERED JSX
     return (
-      <div className={`Social ${ animateClass }`}>
-        <p>custom > Social</p>
+      <div className={`Header ${ animateClass }`}>
+        <div className="title">
+          <ReactSVG src={Logo}/>
+        </div>
+        <Social />
       </div>
     );
   }
 }
-
-// LISTEN TO REDUX
-// const storeToProps = ( store: Object ): Object => {
-//   return {}
-// }
-
-// export default connect( storeToProps )( Social );

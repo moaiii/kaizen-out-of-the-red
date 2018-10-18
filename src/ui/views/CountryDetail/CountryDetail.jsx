@@ -1,6 +1,15 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
+import Bar from '../../components/custom/Bar';
+import ReactSVG from 'react-svg';
+import NationalWealthLogo from '../../../assets/svg/nat-wealth.svg';
+import BusinessLogo from '../../../assets/svg/business.svg';
+import ResourceLogo from '../../../assets/svg/resource.svg';
+import TourismLogo from '../../../assets/svg/tourism.svg';
+import SportCultureLogo from '../../../assets/svg/sportculture.svg';
+import InfoLogo from '../../../assets/svg/info.svg';
+import WatchingLogo from '../../../assets/svg/watching.svg';
 
 type Props = {};
 
@@ -15,7 +24,7 @@ export default class CountryDetail extends React.Component<Props, State> {
 
     this.state = {
       nameFromUrlParams: "",
-      data: {}
+      countryData: {}
     };
   }
 
@@ -23,7 +32,7 @@ export default class CountryDetail extends React.Component<Props, State> {
 
   componentDidMount(): void {
     this.setState({
-      nameFromUrlParams: new URL(window.location.href).hash.split('name=')[1]
+      nameFromUrlParams: decodeURI(new URL(window.location.href).hash.split('name=')[1])
     }, () => {
       this._getCountryDataFromStore();
     })
@@ -33,20 +42,20 @@ export default class CountryDetail extends React.Component<Props, State> {
   }
 
   shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return true;
+    return nextProps.data;
   };
 
   _getCountryDataFromStore = () => {
     let { nameFromUrlParams } = this.state;
 
-    let _country = this.props.country.value
-      .filter( country => country.name === nameFromUrlParams)[0]
+    let _country = this.props.data
+      .filter( country => country.Country === nameFromUrlParams)[0]
 
     if( !_country ) {
       this._navigateBack();
 
     } else {
-      this.setState({ data: _country });
+      this.setState({ countryData: _country });
     }
   }
 
@@ -60,66 +69,75 @@ export default class CountryDetail extends React.Component<Props, State> {
 
     // const { deleteStatus } = this.props;
 
-    // const { data } = this.state;
+    const { countryData } = this.state;
+    const { data } = this.props;
 
-    // // DYNAMIC STYLES 
+    let _debtArray = data.map( data => data["National Debt"]);
+    let _debtMax = Math.max(..._debtArray);
 
-    // let _deleteStyle = {
-    //   display: deleteStatus.complete && !deleteStatus.pending ? 'none' : ''
-    // }
-
-    // // FINAL RENDERED JSX
-
-    // let _nav: React.Element<'div'>
-    //   = <div>
-    //       <button 
-    //         onClick={() => this._navigateBack()}>
-    //         <h4>Back</h4>
-    //       </button>
-    //       <button 
-    //         style={_deleteStyle}
-    //         onClick={() => this._deleteThisCake()}>
-    //         Delete this cake
-    //       </button>
-    //     </div>
-
-    // let _cakeDetails: React.Element<'div'>
-    //   = !deleteStatus.pending && !deleteStatus.complete
-    //     ? <div className={`CakeDetail__cake`}>
-    //         <h1>{ data.name }</h1>
-    //         <p>{ data.comment }</p>
-    //       </div> : null;
-
-    // let _deletingMessage: React.Element<'div'>
-    //   = deleteStatus.pending && !deleteStatus.complete
-    //     ? <div>
-    //       <p>Deleting the {data.name} cake....</p>
-    //     </div> : null;
-
-    // let _deletedMessage: React.Element<'div'>
-    //   = deleteStatus.complete && !deleteStatus.pending
-    //     ? <div>
-    //       <p>{data.name} cake deleted! </p>
-    //     </div> : null;
-
-    // let _deleteError: React.Element<'div'>
-    //   = deleteStatus.error
-    //     ? <div>
-    //         <p>Oops something went wrong while deleting the {data.name} cake :(</p>
-    //       </div> : null;
-        
-    // let _allContent: React.Element<'div'>
-    //   = <div>
-    //     {_cakeDetails}
-    //     {_deletingMessage}
-    //     {_deletedMessage}
-    //     {_deleteError}
-    //   </div>
+    // let _nationalDebt = parseInt(Humanize.compactInteger(countryData["National Debt"], 1)) * currencyRate;
+    let totalDebtWidth = countryData["National Debt"] / _debtMax;
+    let nationalWealthWidth = countryData["National Net Wealth"] / _debtMax;
+    let businessWidth = countryData["BUSINESS AND FINANCE TOTAL"] / _debtMax;
+    let resourceWidth = countryData["RESOURCE TOTAL"] / _debtMax;
+    let tourismWidth = countryData["Tourism Receipts"] / _debtMax;
+    let sportCultureWidth = countryData["SPORT & CULTURE TOTAL"] / _debtMax;
 
     return (
       <div className={`CountryDetail`}>
-
+        <div className="banner">
+            <p>
+              How {countryData.Country} could clear their national debt
+            </p>
+          </div>
+        <div className="data-vis">
+          <div className="national-wealth">
+            <div className="control --national-wealth">
+              <ReactSVG className={`control__icon`} src={NationalWealthLogo} />
+              <p>National Wealth</p>
+            </div>
+            <Bar width={nationalWealthWidth} classMod={'--national-wealth'}/>  
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+
+// <div className="control --national-wealth">
+//   <ReactSVG className={`control__icon`} src={NationalWealthLogo} />
+//   <p>National Wealth</p>
+// </div>
+// <div className="control" 
+//   /** onClick={() => this._handleControlSelect('business')}*/>
+//   <ReactSVG className={`control__icon`} src={BusinessLogo} />
+//   <p>Business</p>
+//   <div className="icon-stack">
+//     <ReactSVG src={InfoLogo} />
+//   </div>
+// </div>
+// <div className="control" 
+//   /** onClick={() => this._handleControlSelect('resouce')}*/>
+//   <ReactSVG className={`control__icon`} src={ResourceLogo} />
+//   <p>Resource</p>
+//   <div className="icon-stack">
+//     <ReactSVG src={InfoLogo} />
+//   </div>
+// </div>
+// <div className="control" 
+//   /** onClick={() => this._handleControlSelect('tourism')}*/>
+//   <ReactSVG className={`control__icon`} src={TourismLogo} />
+//   <p>Tourism</p>
+//   <div className="icon-stack">
+//     <ReactSVG src={InfoLogo} />
+//   </div>
+// </div>
+// <div className="control" 
+//   /** onClick={() => this._handleControlSelect('sport & culture')}*/>
+//   <ReactSVG className={`control__icon`} src={SportCultureLogo} />
+//   <p>Sport & Culture</p>
+//   <div className="icon-stack">
+//     <ReactSVG src={InfoLogo} />
+//   </div>
+// </div>

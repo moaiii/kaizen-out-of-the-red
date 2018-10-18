@@ -1,56 +1,38 @@
-// @flow
-import type {Cake} from '../../lib/types/cake';
-import type {Action} from '../../lib/redux';
-
-type State = {
-  +cakes: {
-    +value: Array<Cake>,
-    +pending: boolean,
-    +complete: boolean,
-    +error: boolean
-  }
-};
 
 let initialState = {
-  cakes: {
-    value: [],
-    pending: false,
-    complete: false,
-    error: false
-  }
+  currencySelection: '',
+  currencyRate: null,
+  currencySymbol: null,
+  data: {},
+  countrySelected: null,
+  isNationalWealthSelected: false
 };
 
-export default (state: State = initialState, action: Action): State => {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case "[GLOBAL] GET_ALL_CAKES__SUBMIT": {
+    case "[GLOBAL] SET_CURRENCY": {
       return { 
         ...state, 
-        cakes: Object.assign({}, state.cakes, {
-          pending: true,
-          complete: false,
-          error: false
-        })
+        currencySelection: action.payload
       };
     }
-    case "[GLOBAL] GET_ALL_CAKES__RESOLVED": {
+    case "[GLOBAL] SET_CURRENCY_RATE": {
       return { 
         ...state, 
-        cakes: Object.assign({}, state.cakes, {
-          value: action.payload,
-          pending: false,
-          complete: true,
-          error: false
-        })
+        currencyRate: action.payload.rate,
+        currencySymbol: action.payload.symbol,
       };
     }
-    case "[GLOBAL] GET_ALL_CAKES__REJECTED": {
+    case "[GLOBAL] SET_DATA": {
       return { 
         ...state, 
-        cakes: Object.assign({}, state.cakes, {
-          pending: false,
-          complete: false,
-          error: true
-        })
+        data: action.payload
+      };
+    }
+    case "[GLOBAL] SET_NATIONAL_NET_WEALTH_SELECTION": {
+      return { 
+        ...state, 
+        isNationalWealthSelected: action.payload
       };
     }
 

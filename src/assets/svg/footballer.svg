@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 28.42 28.05">
+  <defs>
+    <clipPath id="clip-path">
+      <circle cx="13.64" cy="14.34" r="9.59" style="fill: none"/>
+    </clipPath>
+  </defs>
+  <title>footballer</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <rect y="0.64" width="27.4" height="27.4" rx="13.7" ry="13.7" style="fill: #dbf1fe"/>
+        <g>
+          <circle cx="13.64" cy="14.34" r="9.59" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.6020427510487402px"/>
+          <g style="clip-path: url(#clip-path)">
+            <g>
+              <polygon points="5.94 4.96 3.19 8.01 5.24 11.56 9.25 10.71 9.69 6.63 5.94 4.96" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.720205062639856px"/>
+              <polygon points="6.66 16.42 3.9 19.47 5.96 23.03 9.97 22.18 10.41 18.09 6.66 16.42" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.720205062639856px"/>
+              <polygon points="16.91 19.8 15.35 23.3 18.2 25.88 21.53 23.95 20.73 20.2 16.91 19.8" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.720205062639856px"/>
+              <polygon points="15.31 10.06 12.01 12.46 13.27 16.34 17.36 16.34 18.62 12.46 15.31 10.06" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.720205062639856px"/>
+              <polygon points="17.73 0.44 14.78 3.3 16.59 6.99 20.66 6.41 21.36 2.36 17.73 0.44" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.720205062639856px"/>
+              <polygon points="23.68 12.78 21.56 16.3 24.25 19.4 28.03 17.8 27.68 13.71 23.68 12.78" style="fill: none;stroke: #000;stroke-miterlimit: 10;stroke-width: 0.720205062639856px"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
