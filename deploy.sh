@@ -4,4 +4,4 @@ aws s3 ls
 #build and deploy the app
 npm run build
 
-aws s3 sync build/ s3://moaiii-waracle-cakes-app
+aws s3 sync build/ s3://kaizen-out-the-red

@@ -3,16 +3,37 @@
   padding: 0;
   box-sizing: border-box; }
 
+p {
+  font-size: 1rem; }
+
 button:hover, a:hover {
   cursor: pointer; }
 
 body {
-  filter: saturate(1.1); }
+  filter: saturate(1.15); }
+
+@font-face {
+  font-family: 'maven-100';
+  src: url("../assets/fonts/MavenProLight-100.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'maven-200';
+  src: url("../assets/fonts/MavenProLight-200.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'maven-300';
+  src: url("../assets/fonts/MavenProLight-300.otf") format("opentype"); }
+
+* {
+  font-family: 'maven-200', serif; }
 
 .Bar {
   height: 50%;
-  max-height: 25px; }
-  .Bar.--total-debt {
+  max-height: 25px;
+  cursor: pointer;
+  min-width: 1%;
+  margin-right: 0px; }
+  .Bar.--national-debt {
     background-color: #DB614B; }
   .Bar.--national-wealth {
     background-color: #101754; }
@@ -28,9 +49,155 @@ body {
     opacity: 1;
     transition: opacity 0.25s ease; }
 
-.CountryDetail .data-vis {
+.stack .Bar {
+  height: 100% !important; }
+
+.Tooltip {
+  position: relative;
+  height: 100%;
   width: 100%;
-  height: 750px; }
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .Tooltip .inner {
+    z-index: 3;
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1); }
+    .Tooltip .inner .header {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #101754;
+      padding: 2rem;
+      color: white; }
+    .Tooltip .inner .table {
+      margin: 1rem 0; }
+    .Tooltip .inner .country {
+      margin: 1rem 0;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .Tooltip .inner .country span {
+        margin-right: 1rem; }
+    .Tooltip .inner .footer {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0.5rem; }
+      .Tooltip .inner .footer button {
+        background-color: #101754;
+        padding: 0.5rem; }
+        .Tooltip .inner .footer button p, .Tooltip .inner .footer button h4, .Tooltip .inner .footer button h3, .Tooltip .inner .footer button h2 {
+          color: white; }
+
+.data-line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around; }
+  .data-line p {
+    text-align: right;
+    width: 45%; }
+  .data-line p.value {
+    text-align: left;
+    width: 45%; }
+  .data-line .angle {
+    width: 10%;
+    text-align: center; }
+
+.Modal {
+  transform: translateY(1000%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9; }
+  .Modal.--isActive {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: translateY(0);
+    transform: translateY(0); }
+
+.clickable {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; }
+
+.CountryList {
+  height: calc(100vh - 100px);
+  overflow: hidden; }
+  .CountryList .list {
+    height: 80%;
+    overflow-y: scroll; }
+
+.CountryDetail p {
+  font-size: 18px; }
+  @media (max-width: 768px) {
+    .CountryDetail p {
+      font-size: 1rem; } }
+
+.CountryDetail .data-vis {
+  max-width: 768px;
+  margin: 0 auto;
+  width: 100%;
+  height: auto; }
+  .CountryDetail .data-vis .Bar {
+    height: 15px; }
+  .CountryDetail .data-vis .row {
+    padding: 1rem; }
+    .CountryDetail .data-vis .row .label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-right: 1rem; }
+
+.CountryDetail .banner {
+  height: auto;
+  padding: 2rem;
+  background-color: #101754; }
+  .CountryDetail .banner p {
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    line-height: 1.4;
+    text-align: center;
+    color: white; }
+
+.CountryDetail .footer {
+  display: flex;
+  justify-content: center; }
+  .CountryDetail .footer button {
+    background-color: #101754;
+    padding: 1rem; }
+    .CountryDetail .footer button p, .CountryDetail .footer button h4, .CountryDetail .footer button h3, .CountryDetail .footer button h2, .CountryDetail .footer button h1 {
+      color: white; }
+
+.bar-group {
+  display: flex; }
+  .bar-group .Bar {
+    min-width: 1% !important;
+    margin-right: 2px; }
+
+.sub-labels {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; }
+
+.label__icon {
+  margin-right: 0.5rem; }
+  .label__icon svg {
+    height: 20px; }
 
 .Header {
   height: 100px;
@@ -42,28 +209,35 @@ body {
   .Header .title {
     height: 100%;
     max-width: 700px;
-    width: 700px; }
-    .Header .title div {
-      height: 100%;
-      display: flex;
-      align-items: center; }
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .Header .title .logo-svg svg {
+      width: 500px; }
 
 .Currency {
   width: 20%;
   display: flex;
-  justify-content: flex-start;
-  align-items: center; }
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column; }
   .Currency p {
-    color: white; }
+    text-align: center;
+    color: #101754;
+    font-size: 20px;
+    margin-bottom: 0.5rem; }
   .Currency .buttons {
     display: flex;
     justify-content: space-between; }
   .Currency .button {
+    opacity: 0.5;
+    margin: 0 0.25rem;
     cursor: pointer;
     border: 1px solid #3566B2;
     border-radius: 50%;
-    width: 50px;
-    height: 50px; }
+    width: 30px;
+    height: 30px; }
     .Currency .button div {
       height: 100%;
       width: 100%;
@@ -73,7 +247,8 @@ body {
     .Currency .button.--euro.--isSelected svg g g g * {
       stroke: white !important; }
     .Currency .button.--isSelected {
-      background-color: #DB614B; }
+      background-color: #3566B2;
+      opacity: 1; }
       .Currency .button.--isSelected svg g * {
         fill: white !important; }
       .Currency .button.--isSelected svg g g * {
@@ -86,7 +261,8 @@ body {
 .Navigation {
   display: flex;
   flex-direction: column;
-  height: auto; }
+  height: auto;
+  background-color: #BABAB9; }
   .Navigation .banner {
     height: 75%;
     display: flex;
@@ -99,9 +275,13 @@ body {
       max-width: 700px;
       padding: 1rem; }
   .Navigation .bottom {
+    height: 100px;
     display: flex;
     justify-content: flex-start;
-    background-color: #BABAB9; }
+    background-color: #BABAB9;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; }
     .Navigation .bottom .controls {
       display: flex;
       flex-direction: space-between;
@@ -114,55 +294,135 @@ body {
           cursor: pointer; }
         .Navigation .bottom .controls .control .control__icon {
           width: 25%; }
+          .Navigation .bottom .controls .control .control__icon svg {
+            width: 40px;
+            margin-right: 0.5rem; }
         .Navigation .bottom .controls .control p {
           width: 50%;
-          color: white; }
+          color: #101754;
+          font-family: 'maven-200', serif;
+          font-size: 18px; }
         .Navigation .bottom .controls .control .icon-stack {
           width: 25%;
           display: flex;
           flex-direction: column; }
-          .Navigation .bottom .controls .control .icon-stack .svg {
-            width: 100%; }
+          .Navigation .bottom .controls .control .icon-stack svg {
+            width: 25px; }
 
-.Social {
+.debt-card {
+  max-width: 100px;
+  width: 10%; }
+  .debt-card .top {
+    display: flex;
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #DB614B; }
+    .debt-card .top p {
+      color: white; }
+  .debt-card .paid-off {
+    display: flex;
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #92c34b; }
+    .debt-card .paid-off p {
+      color: white; }
+
+.watch-logo {
+  opacity: 0.5; }
+  .watch-logo.--isActive {
+    opacity: 1; }
+
+.Social__icons {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row-reverse; }
+
+.Social__logo {
+  width: 100%; }
+  .Social__logo img {
+    width: 100%;
+    height: 100%; }
+
+.Social__container {
   position: absolute;
+  width: 200px;
+  margin: 0 auto;
   right: 0;
-  top: 50%;
-  transform: translateX(-100%) translateY(-50%); }
+  display: flex;
+  flex-direction: column-reverse; }
+
+.social__link {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .social__link svg {
+    fill: white; }
+
+.brought-to-you {
+  color: #BABAB9;
+  font-size: 12px;
+  text-align: center; }
+
+.c-t-m {
+  text-align: center;
+  color: #BABAB9;
+  font-family: 'maven-300', serif; }
 
 .CountryItem {
   padding: 1rem;
   height: 75px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #3566B2; }
+  border-bottom: 1px solid #3566B2;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0.5rem auto; }
+  .CountryItem .group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%; }
   .CountryItem .lhs {
+    align-items: center;
     cursor: pointer;
     display: flex;
     width: 20%;
     justify-content: flex-start; }
+    .CountryItem .lhs span {
+      margin-right: 2rem;
+      transform: scale(2) translateX(20%); }
 
 .stacked-bar-chart {
-  width: 500px;
+  width: 80%;
   height: 50px; }
   .stacked-bar-chart .stack {
     display: flex;
     height: 50%; }
 
-.debt-card .top {
-  display: flex;
-  padding: 0.3rem;
-  justify-content: center;
-  align-items: center;
-  background-color: #DB614B; }
-  .debt-card .top p {
-    color: white; }
-
-.debt-card .bottom {
-  display: flex;
-  padding: 0.3rem;
-  justify-content: center;
-  align-items: center;
-  background-color: #61B83E; }
-  .debt-card .bottom p {
-    color: white; }
+.debt-card {
+  max-width: 100px;
+  width: 10%; }
+  .debt-card .top {
+    display: flex;
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #DB614B; }
+    .debt-card .top p {
+      color: white; }
+  .debt-card .bottom {
+    display: flex;
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #92c34b; }
+    .debt-card .bottom p {
+      color: white; }

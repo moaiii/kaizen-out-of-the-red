@@ -1,16 +1,11 @@
-// @for $i from 1 through 1000 {
-//   .Cake {
-//     &:nth-of-type(#{$i}) {
-//       transition-delay: #{$i / 10}s !important;
-//     }
-//   }
-// }
-
 .Bar {
   height: 50%;
   max-height: 25px;
+  cursor: pointer;
+  min-width: 1%;
+  margin-right: 0px;
 
-  &.--total-debt {
+  &.--national-debt {
     background-color: $red;
   }
 
@@ -46,4 +41,10 @@
   @media (min-width: 1024px) {}
 
   @media (min-width: 1440px) {}
+}
+
+.stack {
+  .Bar {
+    height: 100% !important;
+  }
 }

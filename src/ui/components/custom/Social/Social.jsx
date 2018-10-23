@@ -1,75 +1,117 @@
 // @flow
-// NODE MODULES
-import * as React from "react";
+// node_modules
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
-// COMPONENTS
-// ........
+// sub-components
+// import {FaFacebook, FaTwitter, FaInfo} from 'react-icons/lib/fa';
 
-// ASSETS
-// ........
-
-// UTILITIES
-// ........
-
-// TYPES
 type Props = {};
 
 type State = {
-  animateClass: string
+  animate: string
 };
 
-// COMPONENT
-export default class Social extends React.Component<Props, State> {
+export default class Social extends Component<Props, State> {
   constructor() {
     super();
 
     this.state = {
-      animateClass: ""
+      animate: ''
     };
   }
 
-  // CLASS FUNCTIONS
-  componentDidMount(): void {
+  componentDidMount() {
     setTimeout(() => {
-      this.setState({
-        animateClass: "--animate"
+      this.setState({animate: '--animate'}, () => {
       })
     }, 50);
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return true;
-  };
+  handleSocialClick = (e: SyntheticEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    let network = e.currentTarget.getAttribute('data-network'); 
+    let description = "The best UK city to be a landlord" 
+    let href;
 
-  componentDidUpdate(prevProps: Props, prevState: State): void {}
+    switch (network) {
+      case 'facebook':
+        href = 'https://www.facebook.com/sharer/sharer.php?u=' + 
+        // $FlowFixMe - cant detect process.env
+        `${process.env.PUBLIC_URL}`;
+        break;
+      
+      case 'linkedin':
+        href = 'https://www.linkedin.com/shareArticle?mini=true&url=' +
+        // $FlowFixMe - cant detect process.env
+        `${process.env.PUBLIC_URL}` +
+        '&title=' + description +
+        '&summary=%20&source=';
+        break;
+      
+      case 'twitter':
+        href = 'https://twitter.com/intent/tweet?text=' +
+        description +
+        // $FlowFixMe - cant detect process.env
+        '&url=' + `${process.env.PUBLIC_URL}`;
+        break;
+      default: 
+        alert('Oops social sharing isnt working at present');
+    }
 
-  render(): React.Element<"div"> {
-    // DEBUG
-    if( process.env.REACT_APP_RENDER_DEBUG === "true" ) {
-      console.log("rendering", this) };
+    window.open(
+      href,
+      '',
+      'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=253,width=600'
+    );
+  }
 
-    // VARIABLES
+  handleInfoClick = (e: SyntheticEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    // store.dispatch(actions.showModal(true));
+  }
+
+  handleHomeClick = () => {
+    window.open(process.env.PUBLIC_URL);
+  }
+
+  render() {
     //const {} = this.props;
-    const { animateClass } = this.state;
+    const { animate } = this.state;
 
-    // DYNAMIC STYLES AND CLASSES
-    // ...
-
-    // PRIVATE COMPONENTS
-    // ...
-
-    // FINAL RENDERED JSX
     return (
-      <div className={`Social ${ animateClass }`}>
-        <p>custom > Social</p>
+      <div className={`Social__container ${animate}`}>
+        <div className="Social__icons">
+          <div className="social__link --info"
+            onClick={e => this.handleInfoClick(e)}>
+            <a href="">
+              {/* <FaInfo /> */}
+            </a>
+          </div>
+          <div className="social__link --twitter"
+            onClick={e => this.handleSocialClick(e)}
+            data-network="twitter" >
+            <a href="">
+              {/* <FaTwitter /> */}
+            </a>
+          </div>
+          <div className="social__link --facebook"
+            onClick={e => this.handleSocialClick(e)}
+            data-network="facebook" >
+            <a href="">
+              {/* <FaFacebook /> */}
+            </a>
+          </div>
+        </div>
+        <div className={`Social__logo`} onClick={this.handleHomeClick}>
+          <p className={`brought-to-you`}>
+            Brought to you by 
+          </p>
+          <p className={`c-t-m`}>
+            Compare the market
+          </p>
+        </div>
       </div>
     );
   }
 }
-
-// LISTEN TO REDUX
-// const storeToProps = ( store: Object ): Object => {
-//   return {}
-// }
-
-// export default connect( storeToProps )( Social );

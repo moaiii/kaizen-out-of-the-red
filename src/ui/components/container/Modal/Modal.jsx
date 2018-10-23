@@ -1,16 +1,6 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
-import ReactSVG from 'react-svg';
-
-// COMPONENTS
-import Social from '../Social';
-
-// ASSETS
-import Logo from '../../../../assets/svg/Logo.svg';
-
-// UTILITIES
-// ........
 
 // TYPES
 type Props = {};
@@ -20,7 +10,7 @@ type State = {
 };
 
 // COMPONENT
-export default class Header extends React.Component<Props, State> {
+export default class Modal extends React.Component<Props, State> {
   constructor() {
     super();
 
@@ -45,17 +35,14 @@ export default class Header extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Props, prevState: State): void {}
 
   render(): React.Element<"div"> {
-    // VARIABLES
-    //const {} = this.props;
-    const { animateClass } = this.state;
 
-    // FINAL RENDERED JSX
+    let { modalIsActive } = this.props;
+
+    let activeClassMod = modalIsActive ? '--isActive' : '';
+
     return (
-      <div className={`Header ${ animateClass }`}>
-        <div className="title">
-          <ReactSVG src={Logo} className={'logo-svg'}/>
-        </div>
-        <Social />
+      <div className={`Modal ${activeClassMod}`}>
+        { this.props.modalComponent }
       </div>
     );
   }

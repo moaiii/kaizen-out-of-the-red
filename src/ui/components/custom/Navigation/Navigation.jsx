@@ -65,6 +65,8 @@ export default class Navigation extends React.Component<Props, State> {
     // PRIVATE COMPONENTS
     // ...
 
+    let _viewMod = isNationalWealthSelected ? '--isActive' : '';
+
     // FINAL RENDERED JSX
     return (
       <div className={`Navigation ${ animateClass }`}>
@@ -81,11 +83,7 @@ export default class Navigation extends React.Component<Props, State> {
               <ReactSVG className={`control__icon`} src={NationalWealthLogo} />
               <p>National Wealth</p>
               <div className="icon-stack">
-                {
-                  isNationalWealthSelected
-                    ? <ReactSVG src={WatchingLogo} />
-                    : null
-                }
+                <ReactSVG src={WatchingLogo} className={`watch-logo ${_viewMod}`}/>
                 <ReactSVG src={InfoLogo} />
               </div>
             </div>
@@ -119,6 +117,16 @@ export default class Navigation extends React.Component<Props, State> {
               <p>Sport & Culture</p>
               <div className="icon-stack">
                 <ReactSVG src={InfoLogo} />
+              </div>
+            </div>
+          </div>
+          <div className="debt-card">
+            <div className="inner">
+              <div className="top">
+                <p>National debt</p>
+              </div>
+              <div className="paid-off">
+                <p>How much could be cleared</p>
               </div>
             </div>
           </div>

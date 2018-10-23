@@ -5,11 +5,31 @@ let initialState = {
   currencySymbol: null,
   data: {},
   countrySelected: null,
-  isNationalWealthSelected: false
+  isNationalWealthSelected: true,
+  modalIsActive: false,
+  barSelected: {
+    countryName: '',
+    dataLabel: ''
+  }
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "[GLOBAL] SET_MODAL_IS_ACTIVE": {
+      return { 
+        ...state, 
+        modalIsActive: action.payload
+      };
+    }
+    case "[GLOBAL] SET_BAR_SELECTION": {
+      return { 
+        ...state, 
+        barSelected: {
+          countryName: action.payload.countryName,
+          dataLabel: action.payload.attr
+        }
+      };
+    }
     case "[GLOBAL] SET_CURRENCY": {
       return { 
         ...state, 

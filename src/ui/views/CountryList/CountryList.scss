@@ -1,5 +1,11 @@
 .CountryList {
+  height: calc(100vh - 100px);
+  overflow: hidden;
 
+  .list {
+    height: 80%;
+    overflow-y: scroll;
+  }
   // &.--animate {}
 
   @media (min-width: 425px) {}

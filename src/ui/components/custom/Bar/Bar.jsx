@@ -35,6 +35,7 @@ export default class Bar extends React.Component<Props, State> {
 
     return (
       <div className={ `Bar ${ animateClass } ${ classMod }` } 
+        onClick={() => this.props.onClick( this.props.attr )}
         style={ style } />
     );
   }

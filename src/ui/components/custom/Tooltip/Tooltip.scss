@@ -1,0 +1,82 @@
+.Tooltip {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .inner {
+    z-index: 3;
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.1);
+
+    .header {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $blue1;
+      padding: 2rem;
+
+      color: white;
+    }
+
+    .table {
+      margin: 1rem 0;
+    }
+    
+    .country {
+      margin: 1rem 0;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        margin-right: 1rem;
+      }
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0.5rem;
+
+      button {
+        background-color: $blue1;
+        padding: 0.5rem;
+
+        p, h4, h3, h2 {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.data-line {
+  display: flex;
+  align-items: center;
+  width: 100%;  
+  justify-content: space-around;
+
+  p {
+    text-align: right;
+    width: 45%;
+  }
+  
+  p.value {
+    text-align: left;
+    width: 45%;
+  }
+  
+  .angle {
+    width: 10%;
+    text-align: center;
+  }
+}

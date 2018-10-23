@@ -11,3 +11,9 @@ export const setData
 
 export const setNationalWealthSelection
   = actionCreator("[GLOBAL] SET_NATIONAL_NET_WEALTH_SELECTION");
+
+export const setModalIsActive
+  = actionCreator("[GLOBAL] SET_MODAL_IS_ACTIVE");
+
+export const setBarClicked
+  = actionCreator("[GLOBAL] SET_BAR_SELECTION");

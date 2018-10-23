@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: auto;
+  background-color: $grey;
 
   .banner {
     height: 75%;
@@ -19,9 +20,13 @@
   }
 
   .bottom {
+    height: 100px;
     display: flex;
     justify-content: flex-start;
     background-color: $grey;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 
     .controls {
       display: flex;
@@ -39,11 +44,18 @@
 
         .control__icon {
           width: 25%;
+
+          svg {
+            width: 40px;
+            margin-right: 0.5rem;
+          }
         }
 
         p {
           width: 50%;
-          color: white;
+          color: $blue1;
+          @include maven200;
+          font-size: 18px;
         }
 
         .icon-stack {
@@ -51,8 +63,8 @@
           display: flex;
           flex-direction: column;
 
-          .svg {
-            width: 100%;
+          svg {
+            width: 25px;
           }
         }
       }
@@ -68,4 +80,39 @@
   @media (min-width: 1024px) {}
 
   @media (min-width: 1440px) {}
+}
+
+.debt-card {
+  max-width: 100px;
+  width: 10%;
+
+  .top {
+    display: flex;
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    background-color: $red;
+    p {
+      color: white;
+    }
+  }
+  
+  .paid-off {
+    display: flex;
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    background-color: $green;
+    p {
+      color: white;
+    }
+  }
+}
+
+.watch-logo {
+  opacity: 0.5;
+
+  &.--isActive {
+    opacity: 1;
+  }
 }

@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import store from "../../../../db/store";
+import {setBarClicked} from '../../../../db/global/global.action';
 import CountryItem from "./CountryItem.jsx";
 
 function mapStoreToProps( store ) {
@@ -12,8 +13,7 @@ function mapStoreToProps( store ) {
  
 function mapDispatchToProps( dispatch ) {
   return {
-    // setCountryItem: ( CountryItem ) => 
-      // dispatch(setCountryItem( CountryItem )),
+    setBarClicked: ( attr ) => dispatch(setBarClicked( attr )),
   }
 }
 

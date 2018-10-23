@@ -4,13 +4,11 @@ import Social from "./Social.jsx";
 
 function mapStoreToProps( store ) {
   return {
-    // cakes: store.GlobalReducer.cakes
   }
 }
  
 function mapDispatchToProps( dispatch ) {
   return {
-    // getAllCakes: ( ) => dispatch(getAllCakes.submit())
   }
 }
  

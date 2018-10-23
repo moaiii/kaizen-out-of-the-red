@@ -1,3 +1,5 @@
+$mobilebreak: 768px;
+
 $blue1: #101754;
 $blue2: #21418E;
 $blue3: #3566B2;
@@ -5,13 +7,17 @@ $blue4: #7EA6D7;
 $blue5: #DFF1FD;
 $red: #DB614B;
 $white: #FFFFFF;
-$green: #61B83E;
+$green:  #92c34b;
 $grey: #BABAB9;
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+p {
+  font-size: 1rem;
 }
 
 button, a {
@@ -21,7 +27,34 @@ button, a {
 }
 
 body {
-  filter: saturate(1.1);
+  filter: saturate(1.15);
+}
+
+@font-face {
+  font-family: 'maven-100';
+  src: url("../assets/fonts/MavenProLight-100.otf") format("opentype");
+}
+
+@mixin maven100() {
+  font-family: 'maven-100', serif;
+}
+
+@font-face {
+  font-family: 'maven-200';
+  src: url("../assets/fonts/MavenProLight-200.otf") format("opentype");
+}
+
+@mixin maven200() {
+  font-family: 'maven-200', serif;
+}
+
+@font-face {
+  font-family: 'maven-300';
+  src: url("../assets/fonts/MavenProLight-300.otf") format("opentype");
+}
+
+@mixin maven300() {
+  font-family: 'maven-300', serif;
 }
 
 @mixin laptop-large {
@@ -42,7 +75,14 @@ body {
   }
 }
 
+* {
+  @include maven200;
+}
+
+
 @import "../ui/components/custom/Bar/Bar.scss";
+@import "../ui/components/custom/Tooltip/Tooltip.scss";
+@import "../ui/components/container/Modal/Modal.scss";
 @import "../ui/views/CountryList/CountryList.scss";
 @import "../ui/views/CountryDetail/CountryDetail.scss";
 @import "../ui/components/custom/Header/Header.scss";
