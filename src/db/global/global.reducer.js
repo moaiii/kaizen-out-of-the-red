@@ -11,11 +11,18 @@ let initialState = {
     countryName: '',
     dataLabel: ''
   },
-  isMobileNavOpen: false
+  isMobileNavOpen: false,
+  walkthroughStep: 0
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "[GLOBAL] SET_WALKTHROUGH_STEP": {
+      return { 
+        ...state, 
+        walkthroughStep: state.walkthroughStep + 1
+      };
+    }
     case "[GLOBAL] SET_MOBILE_NAV_IS_OPEN": {
       return { 
         ...state, 

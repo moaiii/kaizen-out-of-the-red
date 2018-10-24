@@ -5,7 +5,8 @@ import Navigation from "./Navigation.jsx";
 
 function mapStoreToProps( store ) {
   return {
-    isNationalWealthSelected: store.GlobalReducer.isNationalWealthSelected
+    isNationalWealthSelected: store.GlobalReducer.isNationalWealthSelected,
+    walkthroughStep: store.GlobalReducer.walkthroughStep
   }
 }
  

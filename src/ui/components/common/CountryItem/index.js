@@ -7,7 +7,8 @@ function mapStoreToProps( store ) {
   return {
     currencySymbol: store.GlobalReducer.currencySymbol,
     currencyRate: store.GlobalReducer.currencyRate,
-    isNationalWealthSelected: store.GlobalReducer.isNationalWealthSelected
+    isNationalWealthSelected: store.GlobalReducer.isNationalWealthSelected,
+    walkthroughStep: store.GlobalReducer.walkthroughStep
   }
 }
  

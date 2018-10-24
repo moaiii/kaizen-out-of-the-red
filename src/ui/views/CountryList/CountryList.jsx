@@ -11,6 +11,7 @@ import Navigation from '../../components/custom/Navigation';
 import CountryItem from '../../components/common/CountryItem';
 import Modal from '../../components/container/Modal';
 import Tooltip from '../../components/custom/Tooltip';
+import Walkthrough from '../../global/Walkthrough';
 
 export default class CountryList extends React.Component {
   constructor() {
@@ -26,6 +27,7 @@ export default class CountryList extends React.Component {
   componentDidMount() {
     trackPage();
     this._getMaxValue();
+    this.props.setWalkthroughStep();
   }
 
   _getMaxValue = () => {
@@ -88,6 +90,7 @@ export default class CountryList extends React.Component {
     return (
       <div className={`CountryList`}>
         { _modal }
+        <Walkthrough />
         <Navigation />
         <div className="list">
           {_countryItems}

@@ -56,7 +56,7 @@ export default class Navigation extends React.Component<Props, State> {
       console.log("rendering", this) };
 
     // VARIABLES
-    const { isNationalWealthSelected } = this.props;
+    const { isNationalWealthSelected, walkthroughStep } = this.props;
     const { animateClass } = this.state;
 
     // DYNAMIC STYLES AND CLASSES
@@ -65,70 +65,93 @@ export default class Navigation extends React.Component<Props, State> {
     // PRIVATE COMPONENTS
     // ...
 
+    let styleBanner = { 
+      opacity: walkthroughStep < 5 ? '0.1' : 1,
+      // backgroundColor: walkthroughStep < 5 ? 'white' : '#101754' 
+    }
+    let styleBottom = { opacity: walkthroughStep < 5 && walkthroughStep !== 1 & walkthroughStep !== 4 ? '0.1' : 1 }
+    // let iconBottom = { transform: walkthroughStep < 5 && walkthroughStep !== 1 ? 'scale(1)' : 'scale(2)' }
+
+    let xClass = { 
+      opacity: (walkthroughStep === 4 || walkthroughStep === 1 || walkthroughStep === 5)  ? '1' : '0.1' 
+    }
+    let yClass = { 
+      opacity: walkthroughStep === 4 ? '0.1' : '1' 
+    }
+
+    let debtBoxStyle = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
+
     let _viewMod = isNationalWealthSelected ? '--isActive' : '';
 
     // FINAL RENDERED JSX
     return (
       <div className={`Navigation ${ animateClass }`}>
-        <div className="banner">
+        <div className="banner" style={styleBanner}>
           <p>
             Most countries are in trillions of debt to other nations in what seems like a never ending cycle of IOU's. If these countries needed to actually pay up, what assets could they sell to do so?
           </p>
         </div>
-        <div className="bottom">
-          <div className="bttm-lhs">
-            <Currency />
-            <div className="controls">
-              <div className="control --national-wealth" 
-                onClick={() => this._setNationalWealthSelection()}>
-                <ReactSVG className={`control__icon`} src={NationalWealthLogo} />
-                <p>National Wealth</p>
-                <div className="icon-stack">
-                  <ReactSVG src={WatchingLogo} className={`watch-logo ${_viewMod}`}/>
-                  <ReactSVG src={InfoLogo} />
+        <div className="bottom" style={styleBottom}>
+          <div className="inner">
+            <div className="bttm-lhs">
+              <Currency />
+              <div className="controls">
+                <div className="control --national-wealth" 
+                  style={xClass}
+                  onClick={() => this._setNationalWealthSelection()}>
+                  <ReactSVG className={`control__icon`} src={NationalWealthLogo} />
+                  <p>National Wealth</p>
+                  <div className="icon-stack">
+                    <ReactSVG src={WatchingLogo} className={`watch-logo ${_viewMod}`}/>
+                    <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
+                  </div>
                 </div>
-              </div>
-              <div className="control" 
-                /** onClick={() => this._handleControlSelect('business')}*/>
-                <ReactSVG className={`control__icon`} src={BusinessLogo} />
-                <p>Business</p>
-                <div className="icon-stack">
-                  <ReactSVG src={InfoLogo} />
+                <div className="control" 
+                  style={yClass}
+                  /** onClick={() => this._handleControlSelect('business')}*/>
+                  <ReactSVG className={`control__icon`} src={BusinessLogo} />
+                  <p>Business</p>
+                  <div className="icon-stack">
+                    <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
+                  </div>
                 </div>
-              </div>
-              <div className="control" 
-                /** onClick={() => this._handleControlSelect('resouce')}*/>
-                <ReactSVG className={`control__icon`} src={ResourceLogo} />
-                <p>Resource</p>
-                <div className="icon-stack">
-                  <ReactSVG src={InfoLogo} />
+                <div className="control" 
+                  style={yClass}
+                  /** onClick={() => this._handleControlSelect('resouce')}*/>
+                  <ReactSVG className={`control__icon`} src={ResourceLogo} />
+                  <p>Resource</p>
+                  <div className="icon-stack">
+                    <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
+                  </div>
                 </div>
-              </div>
-              <div className="control" 
-                /** onClick={() => this._handleControlSelect('tourism')}*/>
-                <ReactSVG className={`control__icon`} src={TourismLogo} />
-                <p>Tourism</p>
-                <div className="icon-stack">
-                  <ReactSVG src={InfoLogo} />
+                <div className="control" 
+                style={yClass}
+                  /** onClick={() => this._handleControlSelect('tourism')}*/>
+                  <ReactSVG className={`control__icon`} src={TourismLogo} />
+                  <p>Tourism</p>
+                  <div className="icon-stack">
+                    <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
+                  </div>
                 </div>
-              </div>
-              <div className="control" 
-                /** onClick={() => this._handleControlSelect('sport & culture')}*/>
-                <ReactSVG className={`control__icon`} src={SportCultureLogo} />
-                <p>Sport & Culture</p>
-                <div className="icon-stack">
-                  <ReactSVG src={InfoLogo} />
+                <div className="control" 
+                style={yClass}
+                  /** onClick={() => this._handleControlSelect('sport & culture')}*/>
+                  <ReactSVG className={`control__icon`} src={SportCultureLogo} />
+                  <p>Sport & Culture</p>
+                  <div className="icon-stack">
+                    <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="debt-card">
-            <div className="inner">
-              <div className="top">
-                <p>National debt</p>
-              </div>
-              <div className="paid-off">
-                <p>How much could be cleared</p>
+            <div className="debt-card" style={debtBoxStyle}>
+              <div className="twotone">
+                <div className="top">
+                  <p>National debt</p>
+                </div>
+                <div className="paid-off">
+                  <p>How much could be cleared</p>
+                </div>
               </div>
             </div>
           </div>

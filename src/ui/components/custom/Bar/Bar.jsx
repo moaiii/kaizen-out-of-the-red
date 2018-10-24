@@ -27,16 +27,16 @@ export default class Bar extends React.Component<Props, State> {
 
   render(): React.Element<"div"> {
     let { animateClass, flag } = this.state;
-    let { width, classMod } = this.props;
+    let { width, classMod, style } = this.props;
 
-    let style = {
+    let _style = Object.assign({}, style, {
       width: `${width * 100}%`
-    };
+    });
 
     return (
       <div className={ `Bar ${ animateClass } ${ classMod }` } 
         onClick={() => this.props.onClick( this.props.attr )}
-        style={ style } />
+        style={ _style } />
     );
   }
 }

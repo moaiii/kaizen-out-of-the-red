@@ -20,3 +20,6 @@ export const setBarClicked
 
 export const setMobileNavIsOpen
   = actionCreator("[GLOBAL] SET_MOBILE_NAV_IS_OPEN");
+
+export const setWalkthroughStep
+  = actionCreator("[GLOBAL] SET_WALKTHROUGH_STEP");

@@ -6,6 +6,7 @@ import Header from "./Header.jsx";
 function mapStoreToProps( store ) {
   return {
     isMobileNavOpen: store.GlobalReducer.isMobileNavOpen,
+    walkthroughStep: store.GlobalReducer.walkthroughStep,
   }
 }
  

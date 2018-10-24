@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import store from "../../../db/store";
-import {setModalIsActive} from '../../../db/global/global.action';
+import {setModalIsActive, setWalkthroughStep} from '../../../db/global/global.action';
 import CountryList from "./CountryList.jsx";
 
 function mapStoreToProps( store ) {
@@ -12,11 +12,14 @@ function mapStoreToProps( store ) {
       .filter( dp => dp.Country === store.GlobalReducer.barSelected.countryName)[0]
   }
 }
- 
+
 function mapDispatchToProps( dispatch ) {
   return {
     setModalIsActive: ( modalIsActive ) => 
       dispatch(setModalIsActive( modalIsActive )),
+
+    setWalkthroughStep: ( ) => 
+      dispatch(setWalkthroughStep( ))
   }
 }
  

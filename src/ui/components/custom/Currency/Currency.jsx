@@ -52,7 +52,7 @@ export default class Currency extends React.Component<Props, State> {
     // VARIABLES
     //const {} = this.props;
     const { animateClass, selection } = this.state;
-    const { currencySelection, classMod } = this.props;
+    const { currencySelection, classMod, walkthroughStep } = this.props;
 
     // DYNAMIC STYLES AND CLASSES
     let isPoundSelected = currencySelection === 'pound' 
@@ -65,12 +65,13 @@ export default class Currency extends React.Component<Props, State> {
       ? '--isSelected' : '';
       
 
-    // PRIVATE COMPONENTS
-    // ...
+    let styleCurrency = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
+
 
     // FINAL RENDERED JSX
     return (
-      <div className={`Currency ${ animateClass } ${ classMod }`}>
+      <div className={`Currency ${ animateClass } ${ classMod }`}
+        style={styleCurrency}>
         <p>Currency displayed</p>
         <div className="buttons">
           <div className={`button ${isPoundSelected}`} 

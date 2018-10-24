@@ -49,7 +49,7 @@ export default class CountryItem extends React.Component<Props, State> {
     const { 
       data, debtMax, currencySymbol, 
       currencyRate, isNationalWealthSelected,
-      onSelect } = this.props;
+      onSelect, walkthroughStep } = this.props;
 
     let _debtVal = data["National Debt"] * currencyRate;
     let _nationalDebt = Humanize.compactInteger(_debtVal, 1);
@@ -65,12 +65,23 @@ export default class CountryItem extends React.Component<Props, State> {
         ? ((data["National Net Wealth"] + data["Business Net Wealth"] + data["Resource Net Wealth"] + data["Tourism Receipts"] + data["Sport & Culture Net Wealth"]) / data["National Debt"] * 100) 
         : ((data["Business Net Wealth"] + data["Resource Net Wealth"] + data["Tourism Receipts"] + data["Sport & Culture Net Wealth"]) / data["National Debt"] * 100);
 
+
+    let _redBarMod = walkthroughStep !== 2 && walkthroughStep < 5 ? '0.1' : '1';
+    let _blueBarMod = walkthroughStep !== 3 && walkthroughStep < 5 ? '0.1' : '1';
+    let _walkthroughStyle = {
+      'opacity': walkthroughStep < 5 ? '0.1' : '1'
+    };
+
+    let _hideBorder = {
+      'border-bottom': walkthroughStep < 5 ? 'none' : '1px solid #3566B2'
+    };
+
     // FINAL RENDERED JSX
     return (
-      <div className={`CountryItem ${ animateClass }`}>
+      <div className={`CountryItem ${ animateClass }`} style={_hideBorder}>
         <div className="group">
           <div className="lhs" onClick={() => onSelect(data.Country)}>
-            <div className="countryandflag">
+            <div className="countryandflag" style={_walkthroughStyle}>
               <ReactCountryFlag code={data.code} svg/>
               <h3>{data.Country}</h3>
             </div>
@@ -88,18 +99,18 @@ export default class CountryItem extends React.Component<Props, State> {
           <div className="stacked-bar-chart">
             <div className="stack">
               {isNationalWealthSelected 
-                ? <Bar attr={'National Net Wealth'} width={nationalWealthWidth} classMod={'--national-wealth'} onClick={this.onBarClick}/>  
+                ? <Bar style={{'opacity':_blueBarMod}} attr={'National Net Wealth'} width={nationalWealthWidth} classMod={'--national-wealth'} onClick={this.onBarClick}/>  
                 : null 
               }
-              <Bar attr={'Business Net Wealth'} width={businessWidth} classMod={'--business'} onClick={this.onBarClick}/>  
-              <Bar attr={'Resource Net Wealth'} width={resourceWidth} classMod={'--resource'} onClick={this.onBarClick}/>  
-              <Bar attr={'Tourism Receipts'} width={tourismWidth} classMod={'--tourism'} onClick={this.onBarClick}/>  
-              <Bar attr={'Sport & Culture Net Wealth'} width={sportCultureWidth} classMod={'--sport'} onClick={this.onBarClick}/>  
+              <Bar style={{'opacity':_blueBarMod}} attr={'Business Net Wealth'} width={businessWidth} classMod={'--business'} onClick={this.onBarClick}/>  
+              <Bar style={{'opacity':_blueBarMod}} attr={'Resource Net Wealth'} width={resourceWidth} classMod={'--resource'} onClick={this.onBarClick}/>  
+              <Bar style={{'opacity':_blueBarMod}} attr={'Tourism Receipts'} width={tourismWidth} classMod={'--tourism'} onClick={this.onBarClick}/>  
+              <Bar style={{'opacity':_blueBarMod}} attr={'Sport & Culture Net Wealth'} width={sportCultureWidth} classMod={'--sport'} onClick={this.onBarClick}/>  
             </div>
-            <Bar attr={'National Debt'} width={totalDebtWidth} classMod={'--national-debt'} onClick={this.onBarClick}/>
+            <Bar style={{'opacity':_redBarMod}} attr={'National Debt'} width={totalDebtWidth} classMod={'--national-debt'} onClick={this.onBarClick}/>
           </div>
         </div>
-        <div className="debt-card">
+        <div className="debt-card" style={_walkthroughStyle}>
           <div className="inner">
             <div className="top">
               <p>{currencySymbol} {_nationalDebt} </p>

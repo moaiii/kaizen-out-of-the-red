@@ -47,12 +47,14 @@ export default class Header extends React.Component<Props, State> {
 
   render(): React.Element<"div"> {
     // VARIABLES
-    //const {} = this.props;
+    const { walkthroughStep } = this.props;
     const { animateClass } = this.state;
+
+    let style = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
 
     // FINAL RENDERED JSX
     return (
-      <div className={`Header ${ animateClass }`}>
+      <div className={`Header ${ animateClass }`} style={style}>
         <div className="title">
           <ReactSVG src={Logo} className={'logo-svg'}/>
         </div>
