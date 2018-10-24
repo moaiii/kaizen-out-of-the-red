@@ -1,7 +1,7 @@
 // @flow
 import * as actions from './global.action';
 import {networkRequest} from '../../lib/network';
-import { setCurrencyRate } from './global.action';
+import { setCurrencyRate, setMobileNavIsOpen } from './global.action';
 import store from '../store';
 
 export default {
@@ -26,5 +26,6 @@ export default {
     };
 
     store.dispatch( setCurrencyRate( {rate, symbol} ));
+    store.dispatch( setMobileNavIsOpen( false ));
   }
 }

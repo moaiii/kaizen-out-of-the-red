@@ -8,11 +8,22 @@
   max-width: 1200px;
   margin: 0.5rem auto;
 
+  @media(max-width: $mobilebreak) {
+    height: 125px;
+  }
+
   .group {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 90%;
+
+    @media(max-width: $mobilebreak) {
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 
   &.--animate {}
@@ -23,6 +34,11 @@
     display: flex;
     width: 20%;
     justify-content: flex-start;
+
+    @media(max-width: $mobilebreak) {
+      width: 100%;
+      justify-content: space-between;
+    }
 
     span {
       margin-right: 2rem;
@@ -43,6 +59,10 @@
   width: 80%;
   height: 50px;
 
+  @media(max-width: $mobilebreak) {
+    width: 100%;
+  }
+
   .stack {
     display: flex;
     height: 50%;
@@ -52,6 +72,21 @@
 .debt-card {
   max-width: 100px;
   width: 10%;
+
+  @media(max-width: $mobilebreak) {
+    display: none;
+  }
+
+  &.--mobile {
+    @media(max-width: $mobilebreak) {
+      display: block;
+      max-width: 200px;
+      width: auto;
+      .inner {
+        display: flex;
+      }
+    }
+  }
 
   .top {
     display: flex;
@@ -74,4 +109,8 @@
       color: white;
     }
   }
+}
+
+.countryandflag {
+  display: flex;
 }

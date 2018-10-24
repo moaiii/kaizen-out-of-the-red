@@ -94,7 +94,7 @@ export default class CountryDetail extends React.Component<Props, State> {
     let foreignWidth = countryData["Resource Net Wealth"] / maxBarValue;
     let tourismWidth = countryData["Tourism Receipts"] / maxBarValue;
     let footballWidth = countryData["Sport ($)"] / maxBarValue;
-    let artWidth = (countryData["Sport ($)"] - countryData["SPORT & CULTURE TOTAL"]) / maxBarValue;
+    let artWidth = (countryData["Sport ($)"] - countryData["Sport & Culture Net Wealth"]) / maxBarValue;
 
     return (
       <div className={`CountryDetail`}>

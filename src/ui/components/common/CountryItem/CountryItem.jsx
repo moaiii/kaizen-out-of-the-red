@@ -58,15 +58,27 @@ export default class CountryItem extends React.Component<Props, State> {
     let businessWidth = data["Business Net Wealth"] / debtMax;
     let resourceWidth = data["Resource Net Wealth"] / debtMax;
     let tourismWidth = data["Tourism Receipts"] / debtMax;
-    let sportCultureWidth = data["SPORT & CULTURE TOTAL"] / debtMax;
+    let sportCultureWidth = data["Sport & Culture Net Wealth"] / debtMax;
 
     // FINAL RENDERED JSX
     return (
       <div className={`CountryItem ${ animateClass }`}>
         <div className="group">
           <div className="lhs" onClick={() => onSelect(data.Country)}>
-            <ReactCountryFlag code={data.code} svg/>
-            <h3>{data.Country}</h3>
+            <div className="countryandflag">
+              <ReactCountryFlag code={data.code} svg/>
+              <h3>{data.Country}</h3>
+            </div>
+            <div className="debt-card --mobile">
+              <div className="inner">
+                <div className="top">
+                  <p>{currencySymbol} {_nationalDebt} </p>
+                </div>
+                <div className="bottom">
+                  <p>{data["% of debt (with national wealth)"]}</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="stacked-bar-chart">
             <div className="stack">
@@ -77,7 +89,7 @@ export default class CountryItem extends React.Component<Props, State> {
               <Bar attr={'Business Net Wealth'} width={businessWidth} classMod={'--business'} onClick={this.onBarClick}/>  
               <Bar attr={'Resource Net Wealth'} width={resourceWidth} classMod={'--resource'} onClick={this.onBarClick}/>  
               <Bar attr={'Tourism Receipts'} width={tourismWidth} classMod={'--tourism'} onClick={this.onBarClick}/>  
-              <Bar attr={'SPORT & CULTURE TOTAL'} width={sportCultureWidth} classMod={'--sport'} onClick={this.onBarClick}/>  
+              <Bar attr={'Sport & Culture Net Wealth'} width={sportCultureWidth} classMod={'--sport'} onClick={this.onBarClick}/>  
             </div>
             <Bar attr={'National Debt'} width={totalDebtWidth} classMod={'--national-debt'} onClick={this.onBarClick}/>
           </div>

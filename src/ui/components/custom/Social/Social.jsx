@@ -76,11 +76,11 @@ export default class Social extends Component<Props, State> {
   }
 
   render() {
-    //const {} = this.props;
+    const { classMod } = this.props;
     const { animate } = this.state;
 
     return (
-      <div className={`Social__container ${animate}`}>
+      <div className={`Social__container ${animate} ${classMod}`}>
         <div className="Social__icons">
           <div className="social__link --info"
             onClick={e => this.handleInfoClick(e)}>

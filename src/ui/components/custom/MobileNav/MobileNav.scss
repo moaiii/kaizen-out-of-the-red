@@ -1,0 +1,43 @@
+.MobileNav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  background-color: $blue4;
+  transform: translateX(-105%);
+  transition: transform 0.25s ease;
+  border-right: 3px solid $blue1;
+  padding: 1rem;
+  
+  &.--isOpen {
+    transform: translateX(0%);
+    transition: transform 0.25s ease;
+  }
+
+  .blurb {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    font-size: 1rem;
+  }
+}
+
+.close-container {
+  width: 100%;
+  position: relative;
+  height: 30px;
+}
+
+.mobile-nav-menu-close {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  path {
+
+  }
+}

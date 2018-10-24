@@ -6,6 +6,28 @@
   justify-content: center;
   align-items: center;
 
+  .mobile-nav-control {
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    path {
+      fill: white;
+    }
+    display: none;
+    @media(max-width: $mobilebreak) {
+      display: block;
+
+    }
+  }
+
+  @media(max-width: $mobilebreak) {
+    flex-direction: column;
+  }
+
   .title {
     height: 100%;
     max-width: 700px;
@@ -14,10 +36,18 @@
     justify-content: center;
     align-items: center;
 
+    @media(max-width: $mobilebreak) {
+      height: auto;
+    }
+
     .logo-svg {
       svg {
         width: 500px;
         // max-width: 500px;
+
+        @media(max-width: $mobilebreak) {
+          width: 100%;
+        }
       }
     }
     

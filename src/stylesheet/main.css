@@ -5,12 +5,20 @@
 
 p {
   font-size: 1rem; }
+  @media (max-width: 768px) {
+    p {
+      font-size: 0.8rem; } }
 
 button:hover, a:hover {
   cursor: pointer; }
 
 body {
   filter: saturate(1.15); }
+
+@media (max-width: 768px) {
+  .Router__container {
+    height: 100vh;
+    overflow: hidden; } }
 
 @font-face {
   font-family: 'maven-100';
@@ -67,6 +75,9 @@ body {
     background: white;
     border-radius: 5px;
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1); }
+    @media (max-width: 768px) {
+      .Tooltip .inner {
+        width: auto; } }
     .Tooltip .inner .header {
       height: 30px;
       display: flex;
@@ -88,7 +99,8 @@ body {
     .Tooltip .inner .footer {
       display: flex;
       justify-content: space-evenly;
-      padding: 0.5rem; }
+      padding: 0.5rem;
+      margin-bottom: 1rem; }
       .Tooltip .inner .footer button {
         background-color: #101754;
         padding: 0.5rem; }
@@ -147,6 +159,11 @@ body {
     .CountryDetail p {
       font-size: 1rem; } }
 
+@media (max-width: 768px) {
+  .CountryDetail {
+    overflow-y: scroll;
+    height: 80%; } }
+
 .CountryDetail .data-vis {
   max-width: 768px;
   margin: 0 auto;
@@ -166,6 +183,11 @@ body {
   height: auto;
   padding: 2rem;
   background-color: #101754; }
+  @media (max-width: 768px) {
+    .CountryDetail .banner {
+      padding: 1rem; }
+      .CountryDetail .banner p {
+        font-size: 12px; } }
   .CountryDetail .banner p {
     width: 100%;
     max-width: 768px;
@@ -206,6 +228,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
+  .Header .mobile-nav-control {
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none; }
+    .Header .mobile-nav-control path {
+      fill: white; }
+    @media (max-width: 768px) {
+      .Header .mobile-nav-control {
+        display: block; } }
+  @media (max-width: 768px) {
+    .Header {
+      flex-direction: column; } }
   .Header .title {
     height: 100%;
     max-width: 700px;
@@ -213,8 +251,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; }
+    @media (max-width: 768px) {
+      .Header .title {
+        height: auto; } }
     .Header .title .logo-svg svg {
       width: 500px; }
+      @media (max-width: 768px) {
+        .Header .title .logo-svg svg {
+          width: 100%; } }
 
 .Currency {
   width: 20%;
@@ -222,6 +266,14 @@ body {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column; }
+  @media (max-width: 768px) {
+    .Currency {
+      display: none; }
+      .Currency.--mobile-nav {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-top: 2rem; } }
   .Currency p {
     text-align: center;
     color: #101754;
@@ -269,6 +321,9 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #101754; }
+    @media (max-width: 768px) {
+      .Navigation .banner {
+        display: none; } }
     .Navigation .banner p {
       color: white;
       text-align: center;
@@ -282,32 +337,51 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%; }
+    @media (max-width: 768px) {
+      .Navigation .bottom {
+        height: 85px; } }
     .Navigation .bottom .controls {
       display: flex;
       flex-direction: space-between;
       width: 70%; }
+      @media (max-width: 768px) {
+        .Navigation .bottom .controls {
+          width: 100%;
+          flex-wrap: wrap;
+          justify-content: center; } }
       .Navigation .bottom .controls .control {
         display: flex;
         align-items: center;
         width: 25%; }
+        @media (max-width: 768px) {
+          .Navigation .bottom .controls .control {
+            width: 30%;
+            justify-content: space-between; } }
         .Navigation .bottom .controls .control.--national-wealth {
           cursor: pointer; }
-        .Navigation .bottom .controls .control .control__icon {
-          width: 25%; }
-          .Navigation .bottom .controls .control .control__icon svg {
-            width: 40px;
-            margin-right: 0.5rem; }
+        .Navigation .bottom .controls .control .control__icon svg {
+          width: 40px;
+          margin-right: 0.5rem; }
+          @media (max-width: 768px) {
+            .Navigation .bottom .controls .control .control__icon svg {
+              width: 25px;
+              margin-right: 0.25rem; } }
         .Navigation .bottom .controls .control p {
           width: 50%;
           color: #101754;
-          font-family: 'maven-200', serif;
-          font-size: 18px; }
+          font-family: 'maven-200', serif; }
+          @media (max-width: 768px) {
+            .Navigation .bottom .controls .control p {
+              font-size: 12px; } }
         .Navigation .bottom .controls .control .icon-stack {
           width: 25%;
           display: flex;
           flex-direction: column; }
           .Navigation .bottom .controls .control .icon-stack svg {
             width: 25px; }
+            @media (max-width: 768px) {
+              .Navigation .bottom .controls .control .icon-stack svg {
+                width: 13px; } }
 
 .debt-card {
   max-width: 100px;
@@ -334,12 +408,48 @@ body {
   .watch-logo.--isActive {
     opacity: 1; }
 
+.MobileNav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  background-color: #7EA6D7;
+  transform: translateX(-105%);
+  transition: transform 0.25s ease;
+  border-right: 3px solid #101754;
+  padding: 1rem; }
+  .MobileNav.--isOpen {
+    transform: translateX(0%);
+    transition: transform 0.25s ease; }
+  .MobileNav .blurb {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    font-size: 1rem; }
+
+.close-container {
+  width: 100%;
+  position: relative;
+  height: 30px; }
+
+.mobile-nav-menu-close {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
 .Social__icons {
   width: 70%;
   margin: 0 auto;
   display: flex;
   justify-content: space-evenly;
   flex-direction: row-reverse; }
+  @media (max-width: 768px) {
+    .Social__icons {
+      margin-top: 1rem; } }
 
 .Social__logo {
   width: 100%; }
@@ -354,6 +464,15 @@ body {
   right: 0;
   display: flex;
   flex-direction: column-reverse; }
+  @media (max-width: 768px) {
+    .Social__container {
+      display: none; }
+      .Social__container.--mobile-nav {
+        display: flex;
+        position: relative;
+        width: 100%; }
+        .Social__container.--mobile-nav .c-t-m {
+          font-size: 1.5rem; } }
 
 .social__link {
   width: 30px;
@@ -385,17 +504,30 @@ body {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0.5rem auto; }
+  @media (max-width: 768px) {
+    .CountryItem {
+      height: 125px; } }
   .CountryItem .group {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 90%; }
+    @media (max-width: 768px) {
+      .CountryItem .group {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        justify-content: space-between; } }
   .CountryItem .lhs {
     align-items: center;
     cursor: pointer;
     display: flex;
     width: 20%;
     justify-content: flex-start; }
+    @media (max-width: 768px) {
+      .CountryItem .lhs {
+        width: 100%;
+        justify-content: space-between; } }
     .CountryItem .lhs span {
       margin-right: 2rem;
       transform: scale(2) translateX(20%); }
@@ -403,6 +535,9 @@ body {
 .stacked-bar-chart {
   width: 80%;
   height: 50px; }
+  @media (max-width: 768px) {
+    .stacked-bar-chart {
+      width: 100%; } }
   .stacked-bar-chart .stack {
     display: flex;
     height: 50%; }
@@ -410,6 +545,16 @@ body {
 .debt-card {
   max-width: 100px;
   width: 10%; }
+  @media (max-width: 768px) {
+    .debt-card {
+      display: none; } }
+  @media (max-width: 768px) {
+    .debt-card.--mobile {
+      display: block;
+      max-width: 200px;
+      width: auto; }
+      .debt-card.--mobile .inner {
+        display: flex; } }
   .debt-card .top {
     display: flex;
     padding: 0.3rem;
@@ -426,3 +571,6 @@ body {
     background-color: #92c34b; }
     .debt-card .bottom p {
       color: white; }
+
+.countryandflag {
+  display: flex; }

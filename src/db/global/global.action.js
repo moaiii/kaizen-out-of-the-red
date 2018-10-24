@@ -17,3 +17,6 @@ export const setModalIsActive
 
 export const setBarClicked
   = actionCreator("[GLOBAL] SET_BAR_SELECTION");
+
+export const setMobileNavIsOpen
+  = actionCreator("[GLOBAL] SET_MOBILE_NAV_IS_OPEN");

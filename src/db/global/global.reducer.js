@@ -10,11 +10,18 @@ let initialState = {
   barSelected: {
     countryName: '',
     dataLabel: ''
-  }
+  },
+  isMobileNavOpen: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "[GLOBAL] SET_MOBILE_NAV_IS_OPEN": {
+      return { 
+        ...state, 
+        isMobileNavOpen: action.payload
+      };
+    }
     case "[GLOBAL] SET_MODAL_IS_ACTIVE": {
       return { 
         ...state, 

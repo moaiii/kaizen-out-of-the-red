@@ -5,6 +5,7 @@ import ReactSVG from 'react-svg';
 
 // COMPONENTS
 import Social from '../Social';
+import { MdMenu } from 'react-icons/md';
 
 // ASSETS
 import Logo from '../../../../assets/svg/Logo.svg';
@@ -55,7 +56,8 @@ export default class Header extends React.Component<Props, State> {
         <div className="title">
           <ReactSVG src={Logo} className={'logo-svg'}/>
         </div>
-        <Social />
+        <MdMenu className={`mobile-nav-control`} onClick={() => this.props.setMobileNavIsOpen(true)}/>
+        <Social classMod={`--header`}/>
       </div>
     );
   }

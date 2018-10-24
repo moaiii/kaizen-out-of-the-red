@@ -56,7 +56,7 @@ export default class Tooltip extends React.Component<Props, State> {
       : 0;
 
     const perc = country && dataSelection
-      ? Math.ceil((country[dataSelection]) / totalDebt)
+      ? Math.ceil((country[dataSelection]) / totalDebt * 100)
       : 0;
 
     const leftOver = country && dataSelection
@@ -107,7 +107,6 @@ export default class Tooltip extends React.Component<Props, State> {
               <h2>View Country ></h2>  
             </button>        
           </div>
-        
         </div>
       </div>
     );

@@ -5,6 +5,17 @@
   align-items: flex-start;
   flex-direction: column;
 
+  @media(max-width: $mobilebreak) {
+    display: none;
+
+    &.--mobile-nav {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      margin-top: 2rem;
+    }
+  }
+
   p {
     text-align: center;
     color: $blue1;

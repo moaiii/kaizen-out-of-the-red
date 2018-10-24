@@ -7,6 +7,11 @@
     }
   }
 
+  @media(max-width: $mobilebreak) {
+    overflow-y: scroll;
+    height: 80%;
+  }
+
   .data-vis {
     max-width: $mobilebreak;
     margin: 0 auto;
@@ -33,6 +38,14 @@
     height: auto;
     padding: 2rem;
     background-color: $blue1;
+    
+    @media(max-width: $mobilebreak) {
+      padding: 1rem;
+
+      p {
+        font-size: 12px;
+      }
+    }
 
     p {
       width: 100%;

@@ -11,6 +11,10 @@
     align-items: center;
     background-color: $blue1;
 
+    @media(max-width: $mobilebreak) {
+      display: none;
+    }
+
     p {
       color: white;
       text-align: center;
@@ -28,26 +32,46 @@
     margin: 0 auto;
     width: 100%;
 
+    @media(max-width: $mobilebreak) {
+      height: 85px;
+    }
+
     .controls {
       display: flex;
       flex-direction: space-between;
       width: 70%;
-
+      
+      @media(max-width: $mobilebreak) {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
       .control {
         display: flex;
         align-items: center;
         width: 25%;
+        
+        @media(max-width: $mobilebreak) {
+          width: 30%;
+          justify-content: space-between;
+        }
 
         &.--national-wealth {
           cursor: pointer;
         }
 
         .control__icon {
-          width: 25%;
+          // width: 25%;
 
           svg {
             width: 40px;
             margin-right: 0.5rem;
+            
+            @media(max-width: $mobilebreak) {
+              width: 25px;
+              margin-right: 0.25rem;
+            }
           }
         }
 
@@ -55,7 +79,10 @@
           width: 50%;
           color: $blue1;
           @include maven200;
-          font-size: 18px;
+
+          @media(max-width: $mobilebreak) {
+            font-size: 12px;
+          }
         }
 
         .icon-stack {
@@ -65,6 +92,10 @@
 
           svg {
             width: 25px;
+
+            @media(max-width: $mobilebreak) {
+              width: 13px;
+            }
           }
         }
       }

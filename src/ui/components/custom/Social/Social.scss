@@ -4,6 +4,10 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: row-reverse;
+
+  @media(max-width: $mobilebreak) {
+    margin-top: 1rem;
+  }
 }
 
 .Social__logo {
@@ -23,8 +27,18 @@
   display: flex;
   flex-direction: column-reverse;
 
-  @media (min-width: 768px) {
-    // transform: translateY(-5px);  
+  @media(max-width: $mobilebreak) {
+    display: none;
+
+    &.--mobile-nav {
+      display: flex;
+      position: relative;
+      width: 100%;
+
+      .c-t-m {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 

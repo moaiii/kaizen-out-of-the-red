@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import store from "../../../../db/store";
 import {setMobileNavIsOpen} from '../../../../db/global/global.action';
-import Header from "./Header.jsx";
+import MobileNav from "./MobileNav.jsx";
 
 function mapStoreToProps( store ) {
   return {
@@ -15,5 +15,5 @@ function mapDispatchToProps( dispatch ) {
       dispatch(setMobileNavIsOpen( isMobileNavOpen )),
   }
 }
- 
-export default connect( mapStoreToProps, mapDispatchToProps )( Header );
+
+export default connect( mapStoreToProps, mapDispatchToProps )( MobileNav );
