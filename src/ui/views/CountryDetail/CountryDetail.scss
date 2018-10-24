@@ -94,3 +94,40 @@
     height: 20px;
   }
 }
+
+.details__tooltip {
+  z-index: 3;
+  width: 50%;
+  max-width: 600px;
+  padding: 2rem;
+  height: auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.1);
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer {
+    margin-top: 1rem;
+  }
+
+  p.a {
+    text-align: right;
+    width: 45%;
+  }
+  
+  p.b {
+
+    text-align: left;
+    width: 45%;
+  }
+  
+  p.angle {
+    width: 10%;
+    text-align: center;
+  }
+}

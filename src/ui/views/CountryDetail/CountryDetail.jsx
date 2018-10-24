@@ -2,8 +2,8 @@
 // NODE MODULES
 import * as React from "react";
 import Bar from '../../components/custom/Bar';
+import Humanize from 'humanize-plus';
 import ReactSVG from 'react-svg';
-
 import NationalWealthLogo from '../../../assets/svg/nat-wealth.svg';
 import NationalDebtLogo from '../../../assets/svg/nat-debt.svg';
 import BusinessLogo from '../../../assets/svg/business.svg';
@@ -18,6 +18,9 @@ import SportCultureLogo from '../../../assets/svg/sportculture.svg';
 import InfoLogo from '../../../assets/svg/info.svg';
 import WatchingLogo from '../../../assets/svg/watching.svg';
 
+import Modal from '../../components/container/Modal';
+import Tooltip from '../../components/custom/Tooltip';
+
 type Props = {};
 
 type State = {
@@ -31,7 +34,8 @@ export default class CountryDetail extends React.Component<Props, State> {
 
     this.state = {
       nameFromUrlParams: "",
-      countryData: {}
+      countryData: {},
+      dataProps: []
     };
   }
 
@@ -74,13 +78,64 @@ export default class CountryDetail extends React.Component<Props, State> {
     this.props.history.push( `/` );
   }
 
+  onBarClick = (type) => {
+    let dataProps = {};
+    const {countryData} = this.state;
+
+    if( type === 'weath') {
+      dataProps.push(countryData['National Net Wealth']);
+    }
+    else if( type === 'debt') {
+      
+    }
+    else if( type === 'bank') {
+      dataProps['LEADING BANK'] = countryData['LEADING BANK'];
+      dataProps['Total Assets'] = countryData['Total Assets'];
+      
+    }
+    else if( type === 'company') {
+      dataProps['LEADING COMPANY'] = countryData['LEADING COMPANY'];
+      dataProps['CATEGORY'] = countryData['CATEGORY'];
+      dataProps['VALUE'] = countryData['VALUE'];
+      
+    }
+    else if( type === 'gold') {
+      dataProps['GOLD Tonnes'] = countryData['GOLD Tonnes'];
+      
+    }
+    else if( type === 'fx') {
+      dataProps['FX Reserves Value'] = countryData['FX Reserves Value'];
+      
+    }
+    else if( type === 'football') {
+      dataProps['Sports People'] = countryData['Sports People'];
+      dataProps['Sport ($)'] = countryData['Sport ($)'];
+      
+    }
+    else if( type === 'art') {
+      dataProps['MOST VALUABLE ARTWORK'] = countryData['MOST VALUABLE ARTWORK'];
+      dataProps['Artist'] = countryData['Artist'];
+      
+    }
+    else if( type === 'tourism') {
+      dataProps['NOTABLE BUILDINGS'] = countryData['NOTABLE BUILDINGS'];
+      dataProps['Location'] = countryData['Location'];
+      dataProps['Tourism Receipts'] = countryData['Tourism Receipts'];
+      
+    }
+
+    this.setState({ dataProps: Object.entries(dataProps) }, () => {
+      this.props.setModalIsActive(true)
+    });
+  }
+
   render(): React.Element<"div"> {
 
     // // VARIABLES
 
     // const { deleteStatus } = this.props;
 
-    const { countryData } = this.state;
+    const { countryData, modalIsActive, setModalIsActive, dataProps } = this.state;
     const { data } = this.props;
 
     let maxBarValue = Math.max(...[countryData['National Debt'], countryData['National Net Wealth'], countryData['Business Net Wealth'], countryData['Tourism Receipts']]); 
@@ -96,8 +151,39 @@ export default class CountryDetail extends React.Component<Props, State> {
     let footballWidth = countryData["Sport ($)"] / maxBarValue;
     let artWidth = (countryData["Sport ($)"] - countryData["Sport & Culture Net Wealth"]) / maxBarValue;
 
+    let _tooltip 
+      = <div className="details__tooltip">
+          {
+            dataProps.map( x => {
+
+              let $ 
+                = typeof x[1] === 'number'
+                  ? `${this.props.currencySymbol} ${Humanize.compactInteger(Math.ceil((x[1] * this.props.currencyRate)), 1)}`
+                  : x[1];
+
+              return(
+                <p className={'item'}>
+                  <p className={`a`}>{x[0]}</p>
+                  <p className={`angle`}> > </p>
+                  <p className={`b`}>{$}</p>
+                </p>
+              )
+            })
+          }
+          <div className="footer">
+            <button onClick={() => this.props.setModalIsActive(false)}>
+              <h2>Close X</h2>  
+            </button>        
+          </div>
+        </div>
+
+    let _modal = 
+      <Modal 
+        modalComponent={ _tooltip } />;
+
     return (
       <div className={`CountryDetail`}>
+        {_modal}
         <div className="banner">
             <p>{ countryData.blurb }</p>
           </div>
@@ -108,7 +194,7 @@ export default class CountryDetail extends React.Component<Props, State> {
               <p>National Debt</p>
             </div>
             <div className="bar-group">
-              <Bar width={nationalDebtWidth} classMod={'--national-debt'}/>  
+              <Bar attr={`debt`} onClick={() => null} width={nationalDebtWidth} classMod={'--national-debt'}/>  
             </div>
           </div>
 
@@ -118,7 +204,7 @@ export default class CountryDetail extends React.Component<Props, State> {
               <ReactSVG className={`label__icon`} src={NationalWealthLogo} />
               <p>National Wealth</p>
             </div>
-            <Bar width={nationalWealthWidth} classMod={'--national-wealth'} />
+            <Bar attr={`wealth`} onClick={() => this.onBarClick('wealth')} width={nationalWealthWidth} classMod={'--national-wealth'} />
           </div>
 
           <div className="row">
@@ -137,8 +223,8 @@ export default class CountryDetail extends React.Component<Props, State> {
               </div>
             </div>
             <div className="bar-group">
-              <Bar width={bankWidth} classMod={'--business'} />
-              <Bar width={companyWidth} classMod={'--business'} />
+              <Bar attr={`bank`} onClick={() => this.onBarClick('bank')} width={bankWidth} classMod={'--business'} />
+              <Bar attr={`company`} onClick={() => this.onBarClick('company')} width={companyWidth} classMod={'--business'} />
             </div>
           </div>
           
@@ -158,8 +244,8 @@ export default class CountryDetail extends React.Component<Props, State> {
               </div>
             </div>
             <div className="bar-group">
-              <Bar width={goldWidth} classMod={'--resource'} />
-              <Bar width={foreignWidth} classMod={'--resource'} />
+              <Bar attr={`gold`} onClick={() => this.onBarClick('gold')} width={goldWidth} classMod={'--resource'} />
+              <Bar attr={`fx`} onClick={() => this.onBarClick('fx')} width={foreignWidth} classMod={'--resource'} />
             </div>
           </div>
           
@@ -169,7 +255,7 @@ export default class CountryDetail extends React.Component<Props, State> {
               <p>Tourism</p>
             </div>
             <div className="bar-group">
-              <Bar width={tourismWidth} classMod={'--tourism'} />
+              <Bar attr={`tourism`} onClick={() => this.onBarClick('tourism')} width={tourismWidth} classMod={'--tourism'} />
             </div>
           </div>
 
@@ -189,8 +275,8 @@ export default class CountryDetail extends React.Component<Props, State> {
               </div>
             </div>
             <div className="bar-group">
-              <Bar width={footballWidth} classMod={'--sport'} />
-              <Bar width={artWidth} classMod={'--sport'} />
+              <Bar attr={`football`} onClick={() => this.onBarClick('football')} width={footballWidth} classMod={'--sport'} />
+              <Bar attr={`art`} onClick={() => this.onBarClick('art')} width={artWidth} classMod={'--sport'} />
             </div>
           </div>
         </div>

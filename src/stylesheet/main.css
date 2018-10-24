@@ -221,6 +221,31 @@ body {
   .label__icon svg {
     height: 20px; }
 
+.details__tooltip {
+  z-index: 3;
+  width: 50%;
+  max-width: 600px;
+  padding: 2rem;
+  height: auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1); }
+  .details__tooltip .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem; }
+  .details__tooltip .footer {
+    margin-top: 1rem; }
+  .details__tooltip p.a {
+    text-align: right;
+    width: 45%; }
+  .details__tooltip p.b {
+    text-align: left;
+    width: 45%; }
+  .details__tooltip p.angle {
+    width: 10%;
+    text-align: center; }
+
 .Header {
   height: 100px;
   background-color: #21418E;
@@ -265,7 +290,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  flex-direction: column; }
+  flex-direction: column;
+  padding: 0.5rem; }
   @media (max-width: 768px) {
     .Currency {
       display: none; }
@@ -308,7 +334,7 @@ body {
       .Currency .button.--isSelected svg g g g * {
         fill: white !important; }
     .Currency .button svg {
-      width: 25%; }
+      width: 35%; }
 
 .Navigation {
   display: flex;
@@ -332,11 +358,16 @@ body {
   .Navigation .bottom {
     height: 100px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    padding: 0 1rem;
     background-color: #BABAB9;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%; }
+    .Navigation .bottom .bttm-lhs {
+      display: flex;
+      width: 90%;
+      overflow: hidden; }
     @media (max-width: 768px) {
       .Navigation .bottom {
         height: 85px; } }
@@ -360,7 +391,7 @@ body {
         .Navigation .bottom .controls .control.--national-wealth {
           cursor: pointer; }
         .Navigation .bottom .controls .control .control__icon svg {
-          width: 40px;
+          width: 30px;
           margin-right: 0.5rem; }
           @media (max-width: 768px) {
             .Navigation .bottom .controls .control .control__icon svg {
@@ -378,7 +409,7 @@ body {
           display: flex;
           flex-direction: column; }
           .Navigation .bottom .controls .control .icon-stack svg {
-            width: 25px; }
+            width: 18px; }
             @media (max-width: 768px) {
               .Navigation .bottom .controls .control .icon-stack svg {
                 width: 13px; } }
@@ -475,15 +506,19 @@ body {
           font-size: 1.5rem; } }
 
 .social__link {
+  margin-top: 2px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: grey;
   display: flex;
   justify-content: center;
   align-items: center; }
   .social__link svg {
+    width: 15px;
+    height: 15px;
     fill: white; }
+  .social__link.--info {
+    transform: scale(1.2) translate(2px); }
 
 .brought-to-you {
   color: #BABAB9;
@@ -548,13 +583,15 @@ body {
   @media (max-width: 768px) {
     .debt-card {
       display: none; } }
-  @media (max-width: 768px) {
-    .debt-card.--mobile {
-      display: block;
-      max-width: 200px;
-      width: auto; }
-      .debt-card.--mobile .inner {
-        display: flex; } }
+  .debt-card.--mobile {
+    display: none; }
+    @media (max-width: 768px) {
+      .debt-card.--mobile {
+        display: block;
+        max-width: 200px;
+        width: auto; }
+        .debt-card.--mobile .inner {
+          display: flex; } }
   .debt-card .top {
     display: flex;
     padding: 0.3rem;

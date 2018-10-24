@@ -76,47 +76,49 @@ export default class Navigation extends React.Component<Props, State> {
           </p>
         </div>
         <div className="bottom">
-          <Currency />
-          <div className="controls">
-            <div className="control --national-wealth" 
-              onClick={() => this._setNationalWealthSelection()}>
-              <ReactSVG className={`control__icon`} src={NationalWealthLogo} />
-              <p>National Wealth</p>
-              <div className="icon-stack">
-                <ReactSVG src={WatchingLogo} className={`watch-logo ${_viewMod}`}/>
-                <ReactSVG src={InfoLogo} />
+          <div className="bttm-lhs">
+            <Currency />
+            <div className="controls">
+              <div className="control --national-wealth" 
+                onClick={() => this._setNationalWealthSelection()}>
+                <ReactSVG className={`control__icon`} src={NationalWealthLogo} />
+                <p>National Wealth</p>
+                <div className="icon-stack">
+                  <ReactSVG src={WatchingLogo} className={`watch-logo ${_viewMod}`}/>
+                  <ReactSVG src={InfoLogo} />
+                </div>
               </div>
-            </div>
-            <div className="control" 
-              /** onClick={() => this._handleControlSelect('business')}*/>
-              <ReactSVG className={`control__icon`} src={BusinessLogo} />
-              <p>Business</p>
-              <div className="icon-stack">
-                <ReactSVG src={InfoLogo} />
+              <div className="control" 
+                /** onClick={() => this._handleControlSelect('business')}*/>
+                <ReactSVG className={`control__icon`} src={BusinessLogo} />
+                <p>Business</p>
+                <div className="icon-stack">
+                  <ReactSVG src={InfoLogo} />
+                </div>
               </div>
-            </div>
-            <div className="control" 
-              /** onClick={() => this._handleControlSelect('resouce')}*/>
-              <ReactSVG className={`control__icon`} src={ResourceLogo} />
-              <p>Resource</p>
-              <div className="icon-stack">
-                <ReactSVG src={InfoLogo} />
+              <div className="control" 
+                /** onClick={() => this._handleControlSelect('resouce')}*/>
+                <ReactSVG className={`control__icon`} src={ResourceLogo} />
+                <p>Resource</p>
+                <div className="icon-stack">
+                  <ReactSVG src={InfoLogo} />
+                </div>
               </div>
-            </div>
-            <div className="control" 
-              /** onClick={() => this._handleControlSelect('tourism')}*/>
-              <ReactSVG className={`control__icon`} src={TourismLogo} />
-              <p>Tourism</p>
-              <div className="icon-stack">
-                <ReactSVG src={InfoLogo} />
+              <div className="control" 
+                /** onClick={() => this._handleControlSelect('tourism')}*/>
+                <ReactSVG className={`control__icon`} src={TourismLogo} />
+                <p>Tourism</p>
+                <div className="icon-stack">
+                  <ReactSVG src={InfoLogo} />
+                </div>
               </div>
-            </div>
-            <div className="control" 
-              /** onClick={() => this._handleControlSelect('sport & culture')}*/>
-              <ReactSVG className={`control__icon`} src={SportCultureLogo} />
-              <p>Sport & Culture</p>
-              <div className="icon-stack">
-                <ReactSVG src={InfoLogo} />
+              <div className="control" 
+                /** onClick={() => this._handleControlSelect('sport & culture')}*/>
+                <ReactSVG className={`control__icon`} src={SportCultureLogo} />
+                <p>Sport & Culture</p>
+                <div className="icon-stack">
+                  <ReactSVG src={InfoLogo} />
+                </div>
               </div>
             </div>
           </div>

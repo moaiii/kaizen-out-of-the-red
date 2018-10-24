@@ -43,16 +43,22 @@
 }
 
 .social__link {
+  margin-top: 2px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: grey;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
   svg {
+    width: 15px;
+    height: 15px;
     fill: white;
+  }
+
+  &.--info {
+    transform: scale(1.2) translate(2px);
   }
 }
 

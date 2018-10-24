@@ -60,6 +60,11 @@ export default class CountryItem extends React.Component<Props, State> {
     let tourismWidth = data["Tourism Receipts"] / debtMax;
     let sportCultureWidth = data["Sport & Culture Net Wealth"] / debtMax;
 
+    const percPaidOff 
+      = isNationalWealthSelected
+        ? ((data["National Net Wealth"] + data["Business Net Wealth"] + data["Resource Net Wealth"] + data["Tourism Receipts"] + data["Sport & Culture Net Wealth"]) / data["National Debt"] * 100) 
+        : ((data["Business Net Wealth"] + data["Resource Net Wealth"] + data["Tourism Receipts"] + data["Sport & Culture Net Wealth"]) / data["National Debt"] * 100);
+
     // FINAL RENDERED JSX
     return (
       <div className={`CountryItem ${ animateClass }`}>
@@ -100,7 +105,7 @@ export default class CountryItem extends React.Component<Props, State> {
               <p>{currencySymbol} {_nationalDebt} </p>
             </div>
             <div className="bottom">
-              <p>{data["% of debt (with national wealth)"]}</p>
+              <p>{Math.ceil(percPaidOff)} %</p>
             </div>
           </div>
         </div>
