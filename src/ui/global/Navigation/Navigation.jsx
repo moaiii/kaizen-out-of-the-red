@@ -77,7 +77,7 @@ export default class Navigation extends React.Component<Props, State> {
     // let iconBottom = { transform: walkthroughStep < 5 && walkthroughStep !== 1 ? 'scale(1)' : 'scale(2)' }
 
     let xClass = { 
-      opacity: (walkthroughStep === 4 || walkthroughStep === 1 || walkthroughStep === 5)  ? '1' : '0.1' 
+      opacity: (walkthroughStep === 4 || walkthroughStep === 1 || walkthroughStep === 5 || walkthroughStep === 6)  ? '1' : '0.1' 
     }
     let yClass = { 
       opacity: walkthroughStep === 4 ? '0.1' : '1' 

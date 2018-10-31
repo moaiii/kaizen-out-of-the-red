@@ -70,7 +70,7 @@ body {
   .Tooltip .inner {
     z-index: 3;
     width: 50%;
-    max-width: 500px;
+    max-width: 600px;
     height: auto;
     background: white;
     border-radius: 5px;
@@ -671,7 +671,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  max-width: 500px;
+  max-width: 600px;
   width: 90%; }
   .InfoModal .InfoModal__heading {
     width: 100%;
@@ -688,7 +688,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  max-width: 500px;
+  max-width: 600px;
   width: 90%; }
   .WalkthroughModal p {
     margin-bottom: 1rem;

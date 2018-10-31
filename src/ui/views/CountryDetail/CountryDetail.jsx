@@ -73,6 +73,7 @@ export default class CountryDetail extends React.Component<Props, State> {
   }
 
   _navigateBack = () => {
+    this.props.overideWalkthroughStep(5);
     this.props.history.goBack();
   }
 
