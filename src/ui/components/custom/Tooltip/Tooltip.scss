@@ -9,7 +9,7 @@
   .inner {
     z-index: 3;
     width: 50%;
-    max-width: 400px;
+    max-width: 500px;
     height: auto;
     background: white;
     border-radius: 5px;
@@ -22,12 +22,17 @@
     .header {
       height: 30px;
       display: flex;
+      text-align: center;
       align-items: center;
       justify-content: center;
       background-color: $blue1;
       padding: 2rem;
-
       color: white;
+
+      h2 {
+        max-width: 75%;
+        padding: 1rem;
+      }
     }
 
     .table {
@@ -54,7 +59,7 @@
 
       button {
         background-color: $blue1;
-        padding: 0.5rem;
+        padding: 1rem;
 
         p, h4, h3, h2 {
           color: white;

@@ -5,11 +5,8 @@ const middlewares = {
 };
 
 export default (store, next, action) => {
-  next(action);
-
   let middleware = middlewares[action.type];
-
-  if (middleware) {
-    middleware(store, next, action);
-  }
+  if (middleware) middleware(store, next, action);
+  
+  next(action);
 }

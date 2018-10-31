@@ -55,15 +55,15 @@ export default class CountryItem extends React.Component<Props, State> {
     let _nationalDebt = Humanize.compactInteger(_debtVal, 1);
     let totalDebtWidth = data["National Debt"] / debtMax;
     let nationalWealthWidth = data["National Net Wealth"] / debtMax;
-    let businessWidth = data["Business Net Wealth"] / debtMax;
-    let resourceWidth = data["Resource Net Wealth"] / debtMax;
+    let businessWidth = data['Business (Top Bank and Company)'] / debtMax;
+    let resourceWidth = data["Resource (Gold and FX Reserves)"] / debtMax;
     let tourismWidth = data["Tourism Receipts"] / debtMax;
-    let sportCultureWidth = data["Sport & Culture Net Wealth"] / debtMax;
+    let sportCultureWidth = data["Sport & Culture (Top Footballer and Piece of Art)"] / debtMax;
 
     const percPaidOff 
       = isNationalWealthSelected
-        ? ((data["National Net Wealth"] + data["Business Net Wealth"] + data["Resource Net Wealth"] + data["Tourism Receipts"] + data["Sport & Culture Net Wealth"]) / data["National Debt"] * 100) 
-        : ((data["Business Net Wealth"] + data["Resource Net Wealth"] + data["Tourism Receipts"] + data["Sport & Culture Net Wealth"]) / data["National Debt"] * 100);
+        ? ((data["National Net Wealth"] + data['Business (Top Bank and Company)'] + data["Resource (Gold and FX Reserves)"] + data["Tourism Receipts"] + data["Sport & Culture (Top Footballer and Piece of Art)"]) / data["National Debt"] * 100) 
+        : ((data['Business (Top Bank and Company)'] + data["Resource (Gold and FX Reserves)"] + data["Tourism Receipts"] + data["Sport & Culture (Top Footballer and Piece of Art)"]) / data["National Debt"] * 100);
 
 
     let _redBarMod = walkthroughStep !== 2 && walkthroughStep < 5 ? '0.1' : '1';
@@ -73,7 +73,7 @@ export default class CountryItem extends React.Component<Props, State> {
     };
 
     let _hideBorder = {
-      'border-bottom': walkthroughStep < 5 ? 'none' : '1px solid #3566B2'
+      'borderBottom': walkthroughStep < 5 ? 'none' : '1px solid #3566B2'
     };
 
     // FINAL RENDERED JSX
@@ -97,17 +97,17 @@ export default class CountryItem extends React.Component<Props, State> {
             </div>
           </div>
           <div className="stacked-bar-chart">
+            <Bar style={{'opacity':_redBarMod}} attr={'National Debt'} width={totalDebtWidth} classMod={'--national-debt'} onClick={() => null}/>
             <div className="stack">
               {isNationalWealthSelected 
                 ? <Bar style={{'opacity':_blueBarMod}} attr={'National Net Wealth'} width={nationalWealthWidth} classMod={'--national-wealth'} onClick={this.onBarClick}/>  
                 : null 
               }
-              <Bar style={{'opacity':_blueBarMod}} attr={'Business Net Wealth'} width={businessWidth} classMod={'--business'} onClick={this.onBarClick}/>  
-              <Bar style={{'opacity':_blueBarMod}} attr={'Resource Net Wealth'} width={resourceWidth} classMod={'--resource'} onClick={this.onBarClick}/>  
+              <Bar style={{'opacity':_blueBarMod}} attr={'Business (Top Bank and Company)'} width={businessWidth} classMod={'--business'} onClick={this.onBarClick}/>  
+              <Bar style={{'opacity':_blueBarMod}} attr={'Resource (Gold and FX Reserves)'} width={resourceWidth} classMod={'--resource'} onClick={this.onBarClick}/>  
               <Bar style={{'opacity':_blueBarMod}} attr={'Tourism Receipts'} width={tourismWidth} classMod={'--tourism'} onClick={this.onBarClick}/>  
-              <Bar style={{'opacity':_blueBarMod}} attr={'Sport & Culture Net Wealth'} width={sportCultureWidth} classMod={'--sport'} onClick={this.onBarClick}/>  
+              <Bar style={{'opacity':_blueBarMod}} attr={'Sport & Culture (Top Footballer and Piece of Art)'} width={sportCultureWidth} classMod={'--sport'} onClick={this.onBarClick}/>  
             </div>
-            <Bar style={{'opacity':_redBarMod}} attr={'National Debt'} width={totalDebtWidth} classMod={'--national-debt'} onClick={this.onBarClick}/>
           </div>
         </div>
         <div className="debt-card" style={_walkthroughStyle}>

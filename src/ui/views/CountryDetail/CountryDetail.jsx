@@ -20,6 +20,7 @@ import WatchingLogo from '../../../assets/svg/watching.svg';
 
 import Modal from '../../components/container/Modal';
 import Tooltip from '../../components/custom/Tooltip';
+import WalkthroughModal from "../../components/common/WalkthroughModal";
 
 type Props = {};
 
@@ -46,6 +47,7 @@ export default class CountryDetail extends React.Component<Props, State> {
       nameFromUrlParams: decodeURI(new URL(window.location.href).hash.split('name=')[1])
     }, () => {
       this._getCountryDataFromStore();
+      this.props.overideWalkthroughStep(5);
     })
   }
 
@@ -82,11 +84,11 @@ export default class CountryDetail extends React.Component<Props, State> {
     let dataProps = {};
     const {countryData} = this.state;
 
-    if( type === 'weath') {
-      dataProps.push(countryData['National Net Wealth']);
+    if( type === 'wealth') {
+      dataProps['National Net Wealth'] = countryData['National Net Wealth'];
     }
     else if( type === 'debt') {
-      
+      dataProps['National Debt'] = countryData['National Debt'];
     }
     else if( type === 'bank') {
       dataProps['LEADING BANK'] = countryData['LEADING BANK'];
@@ -136,9 +138,13 @@ export default class CountryDetail extends React.Component<Props, State> {
     // const { deleteStatus } = this.props;
 
     const { countryData, modalIsActive, setModalIsActive, dataProps } = this.state;
-    const { data } = this.props;
+    const { data, walkthroughInfoIsOpen } = this.props;
 
-    let maxBarValue = Math.max(...[countryData['National Debt'], countryData['National Net Wealth'], countryData['Business Net Wealth'], countryData['Tourism Receipts']]); 
+    let maxBarValue = Math.max(...[countryData['National Debt'], 
+      countryData['National Net Wealth'], 
+      countryData['Business (Top Bank and Company)'], 
+      countryData['Resource (Gold and FX Reserves)'], 
+      countryData['Tourism Receipts']]); 
 
     // let _nationalDebt = parseInt(Humanize.compactInteger(countryData["National Debt"], 1)) * currencyRate;
     let nationalDebtWidth = countryData["National Debt"] / maxBarValue;
@@ -177,9 +183,9 @@ export default class CountryDetail extends React.Component<Props, State> {
           </div>
         </div>
 
-    let _modal = 
-      <Modal 
-        modalComponent={ _tooltip } />;
+    let $ = this.props.walkthroughInfoIsOpen ? <WalkthroughModal /> : _tooltip;
+
+    let _modal = <Modal modalComponent={ $ } />;
 
     return (
       <div className={`CountryDetail`}>
@@ -194,7 +200,7 @@ export default class CountryDetail extends React.Component<Props, State> {
               <p>National Debt</p>
             </div>
             <div className="bar-group">
-              <Bar attr={`debt`} onClick={() => null} width={nationalDebtWidth} classMod={'--national-debt'}/>  
+              <Bar attr={`debt`} onClick={() => this.onBarClick('debt')} width={nationalDebtWidth} classMod={'--national-debt'}/>  
             </div>
           </div>
 

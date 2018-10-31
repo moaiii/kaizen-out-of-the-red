@@ -23,3 +23,12 @@ export const setMobileNavIsOpen
 
 export const setWalkthroughStep
   = actionCreator("[GLOBAL] SET_WALKTHROUGH_STEP");
+
+export const setInfoModal
+  = actionCreator("[GLOBAL] SET_INFO_MODAL");
+
+export const overideWalkthroughStep
+  = actionCreator("[GLOBAL] OV_WALKTHROUGH_STEP");
+
+export const openWalkThroughInfo
+  = actionCreator("[GLOBAL] OPEN_WALKTHROUGH_INFO");

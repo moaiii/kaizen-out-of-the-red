@@ -1,0 +1,23 @@
+.InfoModal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+
+  .InfoModal__heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    align-items: center;
+
+    h2 {
+      text-transform: capitalize;
+    }
+
+    h3 {
+      cursor: pointer;
+    }
+  }
+}

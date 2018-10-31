@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import store from "../../../../db/store";
-import { setNationalWealthSelection } from '../../../../db/global/global.action';
+import store from "../../../db/store";
+import { setNationalWealthSelection, setInfoModal } from '../../../db/global/global.action';
 import Navigation from "./Navigation.jsx";
 
 function mapStoreToProps( store ) {
@@ -12,8 +12,8 @@ function mapStoreToProps( store ) {
  
 function mapDispatchToProps( dispatch ) {
   return {
-    setNationalWealthSelection: 
-      (isNationalWealthSelected) => dispatch(setNationalWealthSelection(isNationalWealthSelected))
+    setNationalWealthSelection: (isNationalWealthSelected) => dispatch(setNationalWealthSelection(isNationalWealthSelected)),
+    setInfoModal: ( type ) => dispatch(setInfoModal(type))
   }
 }
  

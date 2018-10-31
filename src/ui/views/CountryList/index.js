@@ -6,6 +6,8 @@ import CountryList from "./CountryList.jsx";
 function mapStoreToProps( store ) {
   return {
     data: store.GlobalReducer.data,
+    walkthroughInfoIsOpen: store.GlobalReducer.walkthroughInfoIsOpen,
+    infoModal: store.GlobalReducer.infoModal,
     modalIsActive: store.GlobalReducer.modalIsActive,
     dataSelection: store.GlobalReducer.barSelected.dataLabel,
     countryDataSelected: store.GlobalReducer.data

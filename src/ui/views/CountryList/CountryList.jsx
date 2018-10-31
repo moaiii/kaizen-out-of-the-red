@@ -7,11 +7,13 @@ import {trackPage} from '../../../lib/utils/google-analytics'
 
 import Bar from '../../components/custom/Bar';
 import Header from '../../components/custom/Header';
-import Navigation from '../../components/custom/Navigation';
+import Navigation from '../../global/Navigation';
 import CountryItem from '../../components/common/CountryItem';
 import Modal from '../../components/container/Modal';
 import Tooltip from '../../components/custom/Tooltip';
+import InfoModal from '../../components/common/InfoModal';
 import Walkthrough from '../../global/Walkthrough';
+import WalkthroughModal from "../../components/common/WalkthroughModal";
 
 export default class CountryList extends React.Component {
   constructor() {
@@ -68,10 +70,15 @@ export default class CountryList extends React.Component {
   render(): React.Element<"div"> {
     // VARIABLES
     const { maxValue } = this.state;
-    const { data, modalIsActive, countryDataSelected, dataSelection } = this.props;
+    const { data, modalIsActive, countryDataSelected, dataSelection, infoModal, walkthroughInfoIsOpen } = this.props;
 
     let _tooltip = <Tooltip handleCountrySelect={this._handleCountrySelect} country={countryDataSelected} dataSelection={dataSelection}/>;
-    let _modal = <Modal modalComponent={ _tooltip } />;
+    let _info = infoModal.isOpen ? <InfoModal /> : null;
+    let _walkthrough = walkthroughInfoIsOpen ? <WalkthroughModal /> : null;
+    let $ = _info || _walkthrough || _tooltip;
+    let _modal = <Modal modalComponent={ $ } />;
+
+
     let _debtArray = data.map( data => data["National Debt"]);
     let _debtMax = Math.max(..._debtArray);
 

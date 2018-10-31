@@ -7,6 +7,7 @@ import ReactSVG from 'react-svg';
 import facebookIcon from '../../../../assets/svg/facebook.svg';
 import twitterIcon from '../../../../assets/svg/twitter.svg';
 import embedIcon from '../../../../assets/svg/embed.svg';
+import InfoLogo from '../../../../assets/svg/info.svg';
 
 type Props = {};
 
@@ -28,6 +29,11 @@ export default class Social extends Component<Props, State> {
       this.setState({animate: '--animate'}, () => {
       })
     }, 50);
+  }
+
+  handleInfoModalOpen = (e) => {
+    e.preventDefault();
+    this.props.openWalkThroughInfo(true);
   }
 
   handleSocialClick = (e: SyntheticEvent<HTMLButtonElement>) => {
@@ -81,6 +87,16 @@ export default class Social extends Component<Props, State> {
     return (
       <div className={`Social__container ${animate} ${classMod}`}>
         <div className="Social__icons">
+          
+          
+          <div className="social__link --info"
+            onClick={(e) => this.handleInfoModalOpen(e)}>
+            <a href="">
+              <ReactSVG src={InfoLogo} />
+            </a>
+          </div>
+
+
           <div className="social__link --info"
             onClick={e => this.handleInfoClick(e)}>
             <a href="">
@@ -107,7 +123,7 @@ export default class Social extends Component<Props, State> {
             Brought to you by 
           </p>
           <p className={`c-t-m`}>
-            Compare the market
+            Compare the Market
           </p>
         </div>
       </div>

@@ -12,11 +12,35 @@ let initialState = {
     dataLabel: ''
   },
   isMobileNavOpen: false,
-  walkthroughStep: 0
+  walkthroughStep: 0,
+  infoModal: {
+    modalType: '',
+    modalText: '',
+    isOpen: false
+  },
+  walkthroughInfoIsOpen: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "[GLOBAL] OPEN_WALKTHROUGH_INFO": {
+      return { 
+        ...state, 
+        walkthroughInfoIsOpen: action.payload
+      };
+    }
+    case "[GLOBAL] OV_WALKTHROUGH_STEP": {
+      return { 
+        ...state, 
+        walkthroughStep: 5
+      };
+    }
+    case "[GLOBAL] SET_INFO_MODAL": {
+      return { 
+        ...state, 
+        infoModal: action.payload
+      };
+    }
     case "[GLOBAL] SET_WALKTHROUGH_STEP": {
       return { 
         ...state, 

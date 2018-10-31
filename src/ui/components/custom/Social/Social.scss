@@ -59,6 +59,16 @@
 
   &.--info {
     transform: scale(1.2) translate(2px);
+
+    path {
+      fill: #ec5741 !important;
+      stroke-width: 2px;
+    }
+
+    circle {
+      stroke: #ec5741 !important;
+      stroke-width: 2px;
+    }
   }
 }
 

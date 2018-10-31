@@ -22,11 +22,33 @@
     <link rel="canonical" href="">
     <link type="image/x-icon" rel="shortcut icon" href="" />
     <title>Compare The Market | Out of the red</title>
+    
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
+    <!-- Google Analytics --> 
+    <script>
+      window.ga=window.ga||function()
+      {(ga.q=ga.q||[]).push(arguments)}
+      ;ga.l=+new Date;
+      var opts = { attributePrefix: 'data-insights-' };
+      ga('create', 'UA-3358165-29', 'auto', { 'legacyCookieDomain': 'comparethemarket.com', 'useAmpClientId': true });
+      ga('set', 'appName', 'CarInsurance');
+      ga('set', 'appId', 'motor.car.marketing-content');
+      ga('set', 'appVersion', '0.0.0');
+      ga('set', 'anonymizeIp', true);
+      ga('require', 'eventTracker', opts);
+      // blocks IE8 to 11 plus safari from opening links in a new window...
+      if (navigator.sendBeacon) {
+      ga('require', 'outboundLinkTracker', opts);
+      }
+      ga('send', 'pageview');
+      </script>
+      <script async="" src='https://www.google-analytics.com/analytics.js'></script>
+      <script async="" src="https://cdn.comparethemarket.com/tagging/google-analytics-autotrack.min.js" type="text/javascript"></script> 
+      <!-- End Google Analytics -->
   </body>
 </html>
