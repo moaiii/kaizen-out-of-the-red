@@ -105,7 +105,7 @@ export default class Navigation extends React.Component<Props, State> {
                   <ReactSVG className={`control__icon`} src={NationalWealthLogo} />
                   <p>National Wealth</p>
                   <div className="icon-stack">
-                    <ReactSVG onClick={() => this._setNationalWealthSelection()} src={WatchingLogo} className={`watch- onClick={() => this._bringUpInfoModal('national wealth')}logo ${_viewMod}`}/>
+                    <ReactSVG onClick={() => this._setNationalWealthSelection()} src={WatchingLogo} className={`watch-logo ${_viewMod}`}/>
                     <ReactSVG onClick={() => this._bringUpInfoModal('national wealth')} /*style={iconBottom}*/ src={InfoLogo} />
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export default class Navigation extends React.Component<Props, State> {
                 </div>
               </div>
             </div>
-            <div className="debt-card" style={debtBoxStyle}>
+            <div className="debt-card --nav" style={debtBoxStyle}>
               <div className="twotone">
                 <div className="top">
                   <p>National debt</p>

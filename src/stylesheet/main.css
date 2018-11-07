@@ -145,6 +145,10 @@ body {
     border: 1px solid #BABAB9;
     padding: 1rem;
     border-radius: 10px; }
+    @media (max-width: 768px) {
+      .Walkthrough h1 {
+        font-size: 1rem;
+        max-width: 80%; } }
   .Walkthrough.--isActive {
     background-color: transparent;
     transform: translateY(0);
@@ -300,7 +304,8 @@ body {
         display: block; } }
   @media (max-width: 768px) {
     .Header {
-      flex-direction: column; } }
+      flex-direction: column;
+      height: 80px; } }
   .Header .title {
     height: 100%;
     max-width: 700px;
@@ -310,7 +315,8 @@ body {
     align-items: center; }
     @media (max-width: 768px) {
       .Header .title {
-        height: auto; } }
+        height: auto;
+        transform: translateY(10px); } }
     .Header .title .logo-svg svg {
       width: 500px; }
       @media (max-width: 768px) {
@@ -370,6 +376,9 @@ body {
     .Currency .button svg {
       width: 35%; }
 
+* {
+  outline: none; }
+
 .Navigation {
   display: flex;
   flex-direction: column;
@@ -386,6 +395,12 @@ body {
     margin: 0 auto;
     width: 100%;
     flex-direction: row; }
+    @media (max-width: 768px) {
+      .Navigation .inner {
+        padding: 0 0.5rem;
+        flex-direction: column;
+        height: auto;
+        padding: 0; } }
   .Navigation .banner {
     height: 75%;
     display: flex;
@@ -405,14 +420,19 @@ body {
     display: flex;
     justify-content: space-between;
     background-color: #BABAB9;
-    width: 100%; }
+    width: 100%;
+    z-index: 7; }
     .Navigation .bottom .bttm-lhs {
       display: flex;
       width: 90%;
       overflow: hidden; }
+      @media (max-width: 768px) {
+        .Navigation .bottom .bttm-lhs {
+          width: 100%;
+          padding: 1rem 0.5rem; } }
     @media (max-width: 768px) {
       .Navigation .bottom {
-        height: 85px; } }
+        height: auto; } }
     .Navigation .bottom .controls {
       display: flex;
       flex-direction: space-between;
@@ -428,7 +448,7 @@ body {
         width: 25%; }
         @media (max-width: 768px) {
           .Navigation .bottom .controls .control {
-            width: 30%;
+            width: 33%;
             justify-content: space-between; } }
         .Navigation .bottom .controls .control.--national-wealth {
           cursor: pointer; }
@@ -476,11 +496,33 @@ body {
     background-color: #92c34b; }
     .debt-card .paid-off p {
       color: white; }
+  .debt-card.--nav {
+    display: block;
+    max-width: 100%;
+    width: 100%; }
 
-.watch-logo {
-  opacity: 0.5; }
-  .watch-logo.--isActive {
-    opacity: 1; }
+.watch-logo svg {
+  overflow: visible; }
+
+.watch-logo > div > svg > g > g > g circle:nth-of-type(1) {
+  fill: transparent !important;
+  stroke: #121762 !important; }
+
+.watch-logo > div > svg > g > g > g path {
+  stroke: #121762 !important; }
+
+.watch-logo > div > svg > g > g > g circle:nth-of-type(2) {
+  stroke: #121762 !important; }
+
+.watch-logo.--isActive > div > svg > g > g > g circle:nth-of-type(1) {
+  fill: #121762 !important;
+  stroke: transparent !important; }
+
+.watch-logo.--isActive > div > svg > g > g > g path {
+  stroke: white !important; }
+
+.watch-logo.--isActive > div > svg > g > g > g circle:nth-of-type(2) {
+  stroke: white !important; }
 
 .twotone {
   height: 100%;
@@ -508,6 +550,9 @@ body {
     margin-top: 2rem;
     padding: 2rem;
     font-size: 1rem; }
+    @media (max-width: 768px) {
+      .MobileNav .blurb {
+        font-weight: 500; } }
 
 .close-container {
   width: 100%;
@@ -578,9 +623,11 @@ body {
 .brought-to-you {
   color: #BABAB9;
   font-size: 12px;
-  text-align: center; }
+  text-align: center;
+  font-weight: bolder; }
 
 .c-t-m {
+  font-weight: bolder;
   text-align: center;
   color: #BABAB9;
   font-family: 'maven-300', serif; }

@@ -17,6 +17,7 @@
     path {
       fill: white;
     }
+
     display: none;
     @media(max-width: $mobilebreak) {
       display: block;
@@ -26,6 +27,7 @@
 
   @media(max-width: $mobilebreak) {
     flex-direction: column;
+    height: 80px;
   }
 
   .title {
@@ -38,6 +40,7 @@
 
     @media(max-width: $mobilebreak) {
       height: auto;
+      transform: translateY(10px);
     }
 
     .logo-svg {

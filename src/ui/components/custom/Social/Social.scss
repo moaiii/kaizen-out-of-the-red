@@ -76,10 +76,12 @@
   color: $grey;
   font-size: 12px;
   text-align: center;
+  font-weight: bolder;
   // @include roboto;
 }
 
 .c-t-m {
+  font-weight: bolder;
   text-align: center;
   color: $grey;
   @include maven300;

@@ -1,3 +1,7 @@
+* {
+  outline: none;
+}
+
 .Navigation {
   display: flex;
   flex-direction: column;
@@ -16,6 +20,13 @@
     margin: 0 auto;
     width: 100%;
     flex-direction: row;
+
+    @media(max-width: $mobilebreak) {
+      padding: 0 0.5rem;
+      flex-direction: column;
+      height: auto;
+      padding: 0;
+    }
   }
 
   .banner {
@@ -44,15 +55,21 @@
     // padding: 0 1rem;
     background-color: $grey;
     width: 100%;
+    z-index: 7;
 
     .bttm-lhs {
       display: flex;
       width: 90%;
       overflow: hidden;
+
+      @media(max-width: $mobilebreak) {
+        width: 100%;
+        padding: 1rem 0.5rem;
+      }
     }
 
     @media(max-width: $mobilebreak) {
-      height: 85px;
+      height: auto;
     }
 
     .controls {
@@ -72,7 +89,7 @@
         width: 25%;
         
         @media(max-width: $mobilebreak) {
-          width: 30%;
+          width: 33%;
           justify-content: space-between;
         }
 
@@ -156,13 +173,55 @@
       color: white;
     }
   }
+
+  &.--nav {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+
+  }
 }
 
 .watch-logo {
-  opacity: 0.5;
+  // opacity: 0.5;
 
+  svg {
+    overflow: visible;
+
+  }
+
+  > div > svg > g > g > g {
+    circle:nth-of-type(1) {
+      fill: transparent !important;
+      stroke: #121762 !important;
+    }
+
+    path {
+      stroke: #121762 !important;
+    }
+
+    circle:nth-of-type(2) {
+      stroke: #121762 !important;
+    }
+  }
+  
   &.--isActive {
-    opacity: 1;
+    > div > svg > g > g > g {
+      circle:nth-of-type(1) {
+        fill: #121762 !important;
+        stroke: transparent !important;
+      }
+  
+      path {
+        stroke: white !important;
+      }
+
+      circle:nth-of-type(2) {
+        stroke: white !important;
+      }
+    }
+    // opacity: 1;
+
   }
 }
 
