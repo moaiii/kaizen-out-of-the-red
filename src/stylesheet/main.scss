@@ -18,10 +18,11 @@ $grey: #BABAB9;
 
 p {
   font-size: 1rem;
+  font-weight: 600;
 
-  @media(max-width: $mobilebreak) {
-    font-size: 0.8rem;
-  }
+  // @media(max-width: $mobilebreak) {
+  //   font-size: 0.8rem;
+  // }
 }
 
 button, a {

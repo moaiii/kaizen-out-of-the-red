@@ -4,10 +4,8 @@
   box-sizing: border-box; }
 
 p {
-  font-size: 1rem; }
-  @media (max-width: 768px) {
-    p {
-      font-size: 0.8rem; } }
+  font-size: 1rem;
+  font-weight: 600; }
 
 button:hover, a:hover {
   cursor: pointer; }
@@ -290,6 +288,7 @@ body {
   justify-content: center;
   align-items: center; }
   .Header .mobile-nav-control {
+    cursor: pointer;
     width: 30px;
     height: 30px;
     display: block;
@@ -441,6 +440,9 @@ body {
         .Navigation .bottom .controls {
           width: 100%;
           flex-wrap: wrap;
+          justify-content: flex-start; } }
+      @media (max-width: 465px) {
+        .Navigation .bottom .controls {
           justify-content: center; } }
       .Navigation .bottom .controls .control {
         display: flex;
@@ -465,7 +467,7 @@ body {
           font-family: 'maven-200', serif; }
           @media (max-width: 768px) {
             .Navigation .bottom .controls .control p {
-              font-size: 12px; } }
+              font-size: 1rem; } }
         .Navigation .bottom .controls .control .icon-stack {
           cursor: pointer;
           width: 25%;
@@ -486,6 +488,9 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #DB614B; }
+    @media (max-width: 768px) {
+      .debt-card .top {
+        padding: 0.5rem; } }
     .debt-card .top p {
       color: white; }
   .debt-card .paid-off {
@@ -496,10 +501,11 @@ body {
     background-color: #92c34b; }
     .debt-card .paid-off p {
       color: white; }
-  .debt-card.--nav {
-    display: block;
-    max-width: 100%;
-    width: 100%; }
+  @media (max-width: 768px) {
+    .debt-card.--nav {
+      display: block;
+      max-width: 100%;
+      width: 100%; } }
 
 .watch-logo svg {
   overflow: visible; }
@@ -560,6 +566,7 @@ body {
   height: 30px; }
 
 .mobile-nav-menu-close {
+  cursor: pointer;
   height: 30px;
   width: 30px;
   position: absolute;
