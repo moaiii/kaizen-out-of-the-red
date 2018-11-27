@@ -1,31 +1,39 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
-import Bar from '../../components/custom/Bar';
-import Humanize from 'humanize-plus';
-import ReactSVG from 'react-svg';
-import NationalWealthLogo from '../../../assets/svg/nat-wealth.svg';
-import NationalDebtLogo from '../../../assets/svg/nat-debt.svg';
-import BusinessLogo from '../../../assets/svg/business.svg';
+
+import ArtLogo from '../../../assets/svg/art.svg';
 import BankLogo from '../../../assets/svg/leading-bank.svg';
+import Bar from '../../components/custom/Bar';
+import BusinessLogo from '../../../assets/svg/business.svg';
 import CompanyLogo from '../../../assets/svg/top-company.svg';
 import FCRLogo from '../../../assets/svg/foreign-currency-reserves.svg';
 import FootballLogo from '../../../assets/svg/football.svg';
-import ArtLogo from '../../../assets/svg/art.svg';
-import ResourceLogo from '../../../assets/svg/resource.svg';
-import TourismLogo from '../../../assets/svg/tourism.svg';
-import SportCultureLogo from '../../../assets/svg/sportculture.svg';
+import Humanize from 'humanize-plus';
 import InfoLogo from '../../../assets/svg/info.svg';
+import Modal from '../../components/container/Modal';
+import NationalDebtLogo from '../../../assets/svg/nat-debt.svg';
+import NationalWealthLogo from '../../../assets/svg/nat-wealth.svg';
+import ReactSVG from 'react-svg';
+import ResourceLogo from '../../../assets/svg/resource.svg';
+import SportCultureLogo from '../../../assets/svg/sportculture.svg';
+import Tooltip from '../../components/custom/Tooltip';
+import TourismLogo from '../../../assets/svg/tourism.svg';
+import WalkthroughModal from "../../components/common/WalkthroughModal";
 import WatchingLogo from '../../../assets/svg/watching.svg';
 
-import Modal from '../../components/container/Modal';
-import Tooltip from '../../components/custom/Tooltip';
-import WalkthroughModal from "../../components/common/WalkthroughModal";
-
-type Props = {};
+type Props = {
+  walkthroughInfoIsOpen: boolean,
+  data: Object,
+  modalIsActive: boolean,
+  currencyRate: number,
+  currencySymbol: string,
+};
 
 type State = {
-
+  nameFromUrlParams: string,
+  countryData: Object,
+  dataProps: Array<Object>
 };
 
 // COMPONENT
@@ -162,11 +170,9 @@ export default class CountryDetail extends React.Component<Props, State> {
       = <div className="details__tooltip">
           {
             dataProps.map( x => {
-
-              let $ 
-                = typeof x[1] === 'number'
-                  ? `${this.props.currencySymbol} ${Humanize.compactInteger(Math.ceil((x[1] * this.props.currencyRate)), 1)}`
-                  : x[1];
+              let $ = typeof x[1] === 'number'
+                ? `${this.props.currencySymbol} ${Humanize.compactInteger(Math.ceil((x[1] * this.props.currencyRate)), 1)}`
+                : x[1];
 
               return(
                 <p className={'item'}>
@@ -184,7 +190,9 @@ export default class CountryDetail extends React.Component<Props, State> {
           </div>
         </div>
 
-    let $ = this.props.walkthroughInfoIsOpen ? <WalkthroughModal /> : _tooltip;
+    let $ = this.props.walkthroughInfoIsOpen 
+      ? <WalkthroughModal /> 
+      : _tooltip;
 
     let _modal = <Modal modalComponent={ $ } />;
 
@@ -192,6 +200,7 @@ export default class CountryDetail extends React.Component<Props, State> {
       <div className={`CountryDetail`}>
         {_modal}
         <div className="banner">
+            <h2>{ countryData.Country }</h2>
             <p>{ countryData.blurb }</p>
           </div>
         <div className="data-vis">
