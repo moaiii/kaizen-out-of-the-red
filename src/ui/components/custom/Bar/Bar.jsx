@@ -1,11 +1,5 @@
 // @flow 
-// NODE MODULES
-
 import * as React from "react";
-import ReactSVG from 'react-svg';
-import Tooltip from './sub-components/tooltip';
-import Segment from './sub-components/segment';
-
 
 // COMPONENT
 export default class Bar extends React.Component<Props, State> {
@@ -26,7 +20,7 @@ export default class Bar extends React.Component<Props, State> {
   }
 
   render(): React.Element<"div"> {
-    let { animateClass, flag } = this.state;
+    let { animateClass } = this.state;
     let { width, classMod, style } = this.props;
 
     let _style = Object.assign({}, style, {

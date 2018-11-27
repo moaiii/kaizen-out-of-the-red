@@ -1,9 +1,5 @@
 // @flow 
-// NODE MODULES
-
 import * as React from "react";
-import ReactSVG from 'react-svg';
-
 
 // COMPONENT
 export default class InfoModal extends React.Component<Props, State> {
@@ -25,7 +21,7 @@ export default class InfoModal extends React.Component<Props, State> {
 
   render(): React.Element<"div"> {
     let { animateClass } = this.state;
-    let { infoModal, setModalIsActive } = this.props;
+    let { infoModal } = this.props;
 
     return (
       <div className={ `InfoModal ${ animateClass }` }>

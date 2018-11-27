@@ -1,19 +1,15 @@
 // NODE MODULES
 
 import * as React from "react";
-import {trackPage} from '../../../lib/utils/google-analytics'
 
-// IMPORT COMPONENTS
-
-import Bar from '../../components/custom/Bar';
-import Header from '../../components/custom/Header';
-import Navigation from '../../global/Navigation';
 import CountryItem from '../../components/common/CountryItem';
-import Modal from '../../components/container/Modal';
-import Tooltip from '../../components/custom/Tooltip';
 import InfoModal from '../../components/common/InfoModal';
+import Modal from '../../components/container/Modal';
+import Navigation from '../../global/Navigation';
+import Tooltip from '../../components/custom/Tooltip';
 import Walkthrough from '../../global/Walkthrough';
 import WalkthroughModal from "../../components/common/WalkthroughModal";
+import {trackPage} from '../../../lib/utils/google-analytics'
 
 export default class CountryList extends React.Component {
   constructor() {
@@ -49,7 +45,7 @@ export default class CountryList extends React.Component {
       }
     }
 
-    this.setState({ maxValue }, () => console.log(this.state.maxValue));
+    this.setState({ maxValue });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -62,7 +58,7 @@ export default class CountryList extends React.Component {
     this.props.history.push( `/country?name=${ encodeURI(name) }` );
   }
 
-  _handleBarSlection = () => {
+  _handleSlection = () => {
     // open modal 
     this.props.setModalIsActive(true);
   }
@@ -70,7 +66,8 @@ export default class CountryList extends React.Component {
   render(): React.Element<"div"> {
     // VARIABLES
     const { maxValue } = this.state;
-    const { data, modalIsActive, countryDataSelected, dataSelection, infoModal, walkthroughInfoIsOpen } = this.props;
+    const { data, countryDataSelected, dataSelection, 
+      infoModal, walkthroughInfoIsOpen } = this.props;
 
     let _tooltip = <Tooltip handleCountrySelect={this._handleCountrySelect} country={countryDataSelected} dataSelection={dataSelection}/>;
     let _info = infoModal.isOpen ? <InfoModal /> : null;
@@ -78,15 +75,11 @@ export default class CountryList extends React.Component {
     let $ = _info || _walkthrough || _tooltip;
     let _modal = <Modal modalComponent={ $ } />;
 
-
-    let _debtArray = data.map( data => data["National Debt"]);
-    let _debtMax = Math.max(..._debtArray);
-
     let _countryItems 
       = data.map( (countryData, i) => {
         return (
           <CountryItem
-            onBarSelected={this._handleBarSlection}
+            onSelected={this._handleSlection}
             onSelect={this._handleCountrySelect}
             key={`${i}-country-list-item`}
             data={countryData} 

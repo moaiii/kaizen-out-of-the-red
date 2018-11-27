@@ -1,10 +1,9 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
-import ReactSVG from 'react-svg';
 
-import { MdClose } from 'react-icons/md';
 import Currency from '../Currency';
+import { MdClose } from 'react-icons/md';
 import Social from '../Social';
 
 // TYPES

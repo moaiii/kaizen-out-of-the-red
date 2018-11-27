@@ -1,11 +1,11 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
-import ReactSVG from 'react-svg';
 
-import PoundLogo from '../../../../assets/svg/pound.svg';
 import DollarLogo from '../../../../assets/svg/dollar.svg';
 import EuroLogo from '../../../../assets/svg/euro.svg';
+import PoundLogo from '../../../../assets/svg/pound.svg';
+import ReactSVG from 'react-svg';
 
 // TYPES
 type Props = {};
@@ -21,7 +21,6 @@ export default class Currency extends React.Component<Props, State> {
 
     this.state = {
       animateClass: "",
-      selection: "pound"
     };
   }
 
@@ -45,13 +44,9 @@ export default class Currency extends React.Component<Props, State> {
   }
 
   render(): React.Element<"div"> {
-    // DEBUG
-    if( process.env.REACT_APP_RENDER_DEBUG === "true" ) {
-      console.log("rendering", this) };
-
     // VARIABLES
     //const {} = this.props;
-    const { animateClass, selection } = this.state;
+    const { animateClass } = this.state;
     const { currencySelection, classMod, walkthroughStep } = this.props;
 
     // DYNAMIC STYLES AND CLASSES

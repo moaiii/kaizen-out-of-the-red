@@ -1,9 +1,9 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
-import ReactSVG from 'react-svg';
-import ReactCountryFlag from "react-country-flag";
+
 import Humanize from 'humanize-plus';
+import ReactCountryFlag from "react-country-flag";
 
 // TYPES
 type Props = {};

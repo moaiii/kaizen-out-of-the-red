@@ -1,7 +1,6 @@
 // @flow 
 // NODE MODULES
 import * as React from "react";
-import ReactSVG from 'react-svg';
 
 // COMPONENT
 export default class WalkthroughModal extends React.Component<Props, State> {
@@ -23,7 +22,7 @@ export default class WalkthroughModal extends React.Component<Props, State> {
 
   render(): React.Element<"div"> {
     let { animateClass } = this.state;
-    let { walkthroughInfoIsOpen, setModalIsActive } = this.props;
+    // let { } = this.props;
 
     return (
       <div className={ `WalkthroughModal ${ animateClass }` }>

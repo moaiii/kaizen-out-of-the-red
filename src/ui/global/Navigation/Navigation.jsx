@@ -1,20 +1,18 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
-import ReactSVG from 'react-svg';
 
+import BusinessLogo from '../../../assets/svg/business.svg';
 // COMPONENTS
 import Currency from '../../components/custom/Currency';
-
+import InfoLogo from '../../../assets/svg/info.svg';
 // ASSETS
 import NationalWealthLogo from '../../../assets/svg/nat-wealth.svg';
-import BusinessLogo from '../../../assets/svg/business.svg';
+import ReactSVG from 'react-svg';
 import ResourceLogo from '../../../assets/svg/resource.svg';
-import TourismLogo from '../../../assets/svg/tourism.svg';
 import SportCultureLogo from '../../../assets/svg/sportculture.svg';
-import InfoLogo from '../../../assets/svg/info.svg';
+import TourismLogo from '../../../assets/svg/tourism.svg';
 import WatchingLogo from '../../../assets/svg/watching.svg';
-
 
 type State = {
   animateClass: string,
@@ -55,9 +53,6 @@ export default class Navigation extends React.Component<Props, State> {
   }
 
   render(): React.Element<"div"> {
-    // DEBUG
-    if( process.env.REACT_APP_RENDER_DEBUG === "true" ) {
-      console.log("rendering", this) };
 
     // VARIABLES
     const { isNationalWealthSelected, walkthroughStep } = this.props;

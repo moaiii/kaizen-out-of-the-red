@@ -1,8 +1,5 @@
 // @flow
-import * as actions from './global.action';
-import {networkRequest} from '../../lib/network';
 import { setCurrencyRate, setMobileNavIsOpen, setModalIsActive } from './global.action';
-import store from '../store';
 
 export default {
   '[GLOBAL] SET_CURRENCY': async (store: Object, next: Function, action: Action<string>) => { // $FlowFixMe

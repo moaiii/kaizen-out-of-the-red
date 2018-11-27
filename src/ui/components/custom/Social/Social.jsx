@@ -1,13 +1,12 @@
 // @flow
 // node_modules
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 
+import InfoLogo from '../../../../assets/svg/info.svg';
 import ReactSVG from 'react-svg';
+import embedIcon from '../../../../assets/svg/embed.svg';
 import facebookIcon from '../../../../assets/svg/facebook.svg';
 import twitterIcon from '../../../../assets/svg/twitter.svg';
-import embedIcon from '../../../../assets/svg/embed.svg';
-import InfoLogo from '../../../../assets/svg/info.svg';
 
 type Props = {};
 
@@ -60,6 +59,7 @@ export default class Social extends Component<Props, State> {
         + description 
         + '&url=' + `${process.env.PUBLIC_URL}`;
         break;
+      
       default: 
         alert('Oops social sharing isnt working at present');
     }

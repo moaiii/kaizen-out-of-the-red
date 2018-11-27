@@ -10,7 +10,6 @@ import CompanyLogo from '../../../assets/svg/top-company.svg';
 import FCRLogo from '../../../assets/svg/foreign-currency-reserves.svg';
 import FootballLogo from '../../../assets/svg/football.svg';
 import Humanize from 'humanize-plus';
-import InfoLogo from '../../../assets/svg/info.svg';
 import Modal from '../../components/container/Modal';
 import NationalDebtLogo from '../../../assets/svg/nat-debt.svg';
 import NationalWealthLogo from '../../../assets/svg/nat-wealth.svg';
@@ -20,7 +19,6 @@ import SportCultureLogo from '../../../assets/svg/sportculture.svg';
 import Tooltip from '../../components/custom/Tooltip';
 import TourismLogo from '../../../assets/svg/tourism.svg';
 import WalkthroughModal from "../../components/common/WalkthroughModal";
-import WatchingLogo from '../../../assets/svg/watching.svg';
 
 type Props = {
   walkthroughInfoIsOpen: boolean,
@@ -141,12 +139,7 @@ export default class CountryDetail extends React.Component<Props, State> {
   }
 
   render(): React.Element<"div"> {
-
-    // // VARIABLES
-
-    // const { deleteStatus } = this.props;
-
-    const { countryData, modalIsActive, setModalIsActive, dataProps } = this.state;
+    const { countryData, dataProps } = this.state;
     const { data, walkthroughInfoIsOpen } = this.props;
 
     let maxBarValue = Math.max(...[countryData['National Debt'], 
@@ -169,17 +162,17 @@ export default class CountryDetail extends React.Component<Props, State> {
     let _tooltip 
       = <div className="details__tooltip">
           {
-            dataProps.map( x => {
+            dataProps.map( (x, index) => {
               let $ = typeof x[1] === 'number'
                 ? `${this.props.currencySymbol} ${Humanize.compactInteger(Math.ceil((x[1] * this.props.currencyRate)), 1)}`
                 : x[1];
 
               return(
-                <p className={'item'}>
+                <span className={'item'} key={`${index}-tooltip-country-detail`}>
                   <p className={`a`}>{x[0]}</p>
                   <p className={`angle`}> > </p>
                   <p className={`b`}>{$}</p>
-                </p>
+                </span>
               )
             })
           }
@@ -190,7 +183,7 @@ export default class CountryDetail extends React.Component<Props, State> {
           </div>
         </div>
 
-    let $ = this.props.walkthroughInfoIsOpen 
+    let $ = walkthroughInfoIsOpen 
       ? <WalkthroughModal /> 
       : _tooltip;
 
@@ -213,8 +206,6 @@ export default class CountryDetail extends React.Component<Props, State> {
               <Bar attr={`debt`} onClick={() => this.onBarClick('debt')} width={nationalDebtWidth} classMod={'--national-debt'}/>  
             </div>
           </div>
-
-
           <div className="row">
             <div className="label">
               <ReactSVG className={`label__icon`} src={NationalWealthLogo} />
@@ -222,7 +213,6 @@ export default class CountryDetail extends React.Component<Props, State> {
             </div>
             <Bar attr={`wealth`} onClick={() => this.onBarClick('wealth')} width={nationalWealthWidth} classMod={'--national-wealth'} />
           </div>
-
           <div className="row">
             <div className="label">
               <ReactSVG className={`label__icon`} src={BusinessLogo} />
@@ -243,7 +233,6 @@ export default class CountryDetail extends React.Component<Props, State> {
               <Bar attr={`company`} onClick={() => this.onBarClick('company')} width={companyWidth} classMod={'--business'} />
             </div>
           </div>
-          
           <div className="row">
             <div className="label">
               <ReactSVG className={`label__icon`} src={ResourceLogo} />
@@ -264,7 +253,6 @@ export default class CountryDetail extends React.Component<Props, State> {
               <Bar attr={`fx`} onClick={() => this.onBarClick('fx')} width={foreignWidth} classMod={'--resource'} />
             </div>
           </div>
-          
           <div className="row">
             <div className="label">
               <ReactSVG className={`label__icon`} src={TourismLogo} />
@@ -274,7 +262,6 @@ export default class CountryDetail extends React.Component<Props, State> {
               <Bar attr={`tourism`} onClick={() => this.onBarClick('tourism')} width={tourismWidth} classMod={'--tourism'} />
             </div>
           </div>
-
           <div className="row">
             <div className="label">
               <ReactSVG className={`label__icon`} src={SportCultureLogo} />
