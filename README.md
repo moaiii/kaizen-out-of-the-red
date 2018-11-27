@@ -1,18 +1,18 @@
-### Out of the Red
+# Out of the Red
 
-# Run
+## Run
 `npm i`
 
 `npm start`
 
-# Deploy
+## Deploy
 `npm run build`
 
 Your build files will be placed in `./build` 
 
 Feel free to throw the `manifest.json` and `service-worker.js` files as they are not needed. 
 
-# Application
+## Application
 
 Its a React/ Redux app. 
 - All of the Redux functionality is in the `./db` folder as is the data set. 
@@ -23,7 +23,7 @@ Its a React/ Redux app.
 
 I didnt know id be handing it over so appologies if some bits of the JS is a bit of a brain fart. 
 
-# Flow
+## Flow
 This was built with my own cookie-cutter application so there is pieces of Flow type in different files. 
 You can just ignore these as babel will strip them out when building. 
 
