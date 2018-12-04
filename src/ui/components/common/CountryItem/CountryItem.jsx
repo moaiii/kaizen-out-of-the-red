@@ -1,18 +1,10 @@
 // @flow
-// NODE MODULES
 import * as React from "react";
+
+import Bar from '../../custom/Bar';
 import Humanize from 'humanize-plus';
 import ReactCountryFlag from "react-country-flag";
-import Bar from '../../custom/Bar';
 
-// TYPES
-type Props = {};
-
-type State = {
-  animateClass: string
-};
-
-// COMPONENT
 export default class CountryItem extends React.Component<Props, State> {
   constructor() {
     super();
@@ -22,7 +14,6 @@ export default class CountryItem extends React.Component<Props, State> {
     };
   }
 
-  // CLASS FUNCTIONS
   componentDidMount(): void {
     setTimeout(() => {
       this.setState({
@@ -85,19 +76,16 @@ export default class CountryItem extends React.Component<Props, State> {
               <ReactCountryFlag code={data.code} svg/>
               <h3>{data.Country}</h3>
             </div>
-            <div className="debt-card --mobile">
+            <div className="debt-card-national">
               <div className="inner">
                 <div className="top">
                   <p>{currencySymbol} {_nationalDebt} </p>
-                </div>
-                <div className="bottom">
-                  <p>{data["% of debt (with national wealth)"]}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="stacked-bar-chart">
-            <Bar style={{'opacity':_redBarMod}} attr={'National Debt'} width={totalDebtWidth} classMod={'--national-debt'} onClick={() => null}/>
+            {/* <Bar style={{'opacity':_redBarMod}} attr={'National Debt'} width={totalDebtWidth} classMod={'--national-debt'} onClick={() => null}/> */}
             <div className="stack">
               {isNationalWealthSelected 
                 ? <Bar style={{'opacity':_blueBarMod}} attr={'National Net Wealth'} width={nationalWealthWidth} classMod={'--national-wealth'} onClick={this.onBarClick}/>  
@@ -113,10 +101,12 @@ export default class CountryItem extends React.Component<Props, State> {
         <div className="debt-card" style={_walkthroughStyle}>
           <div className="inner">
             <div className="top">
+              <p className={'--small'}>Remaining Debt</p>
               <p>{currencySymbol} {_nationalDebt} </p>
             </div>
             <div className="bottom">
               <p>{Math.ceil(percPaidOff)} %</p>
+              <p>Cleared</p>
             </div>
           </div>
         </div>

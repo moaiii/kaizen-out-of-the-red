@@ -34,8 +34,7 @@ body {
   font-family: 'maven-200', serif; }
 
 .Bar {
-  height: 50%;
-  max-height: 25px;
+  height: 100%;
   cursor: pointer;
   min-width: 1%;
   margin-right: 0px; }
@@ -182,6 +181,21 @@ body {
   .CountryList .list {
     height: 80%;
     overflow-y: scroll; }
+
+.list-banner {
+  width: 100%;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .list-banner h2 {
+    color: white;
+    text-transform: uppercase; }
+  .list-banner.--red {
+    background-color: #DB614B; }
+  .list-banner.--black {
+    background-color: #070707;
+    margin-top: 2rem; }
 
 .CountryDetail p {
   font-size: 18px; }
@@ -485,30 +499,34 @@ body {
               .Navigation .bottom .controls .control .icon-stack svg {
                 width: 13px; } }
 
-.debt-card {
-  max-width: 100px;
-  width: 10%; }
-  .debt-card .top {
+.debt-card-national {
+  max-width: 150px;
+  width: 100%;
+  height: 40px; }
+  .debt-card-national .inner {
+    height: 100%; }
+  .debt-card-national .top {
     display: flex;
     padding: 0.3rem;
     justify-content: center;
     align-items: center;
-    background-color: #DB614B; }
+    background-color: #DB614B;
+    height: 100%; }
     @media (max-width: 768px) {
-      .debt-card .top {
+      .debt-card-national .top {
         padding: 0.5rem; } }
-    .debt-card .top p {
+    .debt-card-national .top p {
       color: white; }
-  .debt-card .paid-off {
+  .debt-card-national .paid-off {
     display: flex;
     padding: 0.3rem;
     justify-content: center;
     align-items: center;
     background-color: #92c34b; }
-    .debt-card .paid-off p {
+    .debt-card-national .paid-off p {
       color: white; }
   @media (max-width: 768px) {
-    .debt-card.--nav {
+    .debt-card-national.--nav {
       display: block;
       max-width: 100%;
       width: 100%; } }
@@ -646,7 +664,6 @@ body {
   font-family: 'maven-300', serif; }
 
 .CountryItem {
-  padding: 1rem;
   height: 75px;
   display: flex;
   align-items: center;
@@ -658,10 +675,11 @@ body {
     .CountryItem {
       height: 125px; } }
   .CountryItem .group {
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    width: 90%; }
+    justify-content: space-between;
+    width: 75%; }
     @media (max-width: 768px) {
       .CountryItem .group {
         flex-direction: column;
@@ -669,11 +687,12 @@ body {
         width: 100%;
         justify-content: space-between; } }
   .CountryItem .lhs {
+    height: 100%;
     align-items: center;
     cursor: pointer;
     display: flex;
-    width: 20%;
-    justify-content: flex-start; }
+    width: 40%;
+    justify-content: space-between; }
     @media (max-width: 768px) {
       .CountryItem .lhs {
         width: 100%;
@@ -683,18 +702,23 @@ body {
       transform: scale(2) translateX(20%); }
 
 .stacked-bar-chart {
-  width: 80%;
-  height: 50px; }
+  width: 75%;
+  max-width: 50%;
+  height: 40px; }
   @media (max-width: 768px) {
     .stacked-bar-chart {
       width: 100%; } }
   .stacked-bar-chart .stack {
     display: flex;
-    height: 50%; }
+    height: 100%;
+    background-color: #ECEDEB; }
 
 .debt-card {
-  max-width: 100px;
-  width: 10%; }
+  width: 100%;
+  max-width: 25%; }
+  .debt-card .inner {
+    display: flex;
+    flex-direction: row-reverse; }
   @media (max-width: 768px) {
     .debt-card {
       display: none; } }
@@ -708,24 +732,33 @@ body {
         .debt-card.--mobile .inner {
           display: flex; } }
   .debt-card .top {
+    width: 50%;
     display: flex;
-    padding: 0.3rem;
+    flex-direction: column;
+    padding: 0.3rem 0.5rem;
     justify-content: center;
-    align-items: center;
-    background-color: #DB614B; }
+    align-items: center; }
     .debt-card .top p {
-      color: white; }
+      font-size: 1.3rem;
+      color: #101754; }
+    .debt-card .top p.--small {
+      font-size: 1rem; }
   .debt-card .bottom {
+    width: 50%;
     display: flex;
-    padding: 0.3rem;
+    flex-direction: column;
+    padding: 0.3rem 0.5rem;
     justify-content: center;
     align-items: center;
-    background-color: #92c34b; }
+    border-right: 1px solid #101754; }
     .debt-card .bottom p {
-      color: white; }
+      font-size: 1.3rem;
+      color: #101754; }
 
 .countryandflag {
   display: flex; }
+  .countryandflag span {
+    border: 0.5px solid #101754; }
 
 .InfoModal {
   background: white;

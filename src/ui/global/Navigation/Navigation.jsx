@@ -143,14 +143,14 @@ export default class Navigation extends React.Component<Props, State> {
               </div>
             </div>
             <div className="debt-card --nav" style={debtBoxStyle}>
-              <div className="twotone">
+              {/* <div className="twotone">
                 <div className="top">
                   <p>National debt</p>
                 </div>
                 <div className="paid-off">
                   <p>How much could be cleared</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

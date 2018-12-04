@@ -63,20 +63,10 @@ export default class CountryList extends React.Component {
     this.props.setModalIsActive(true);
   }
 
-  render(): React.Element<"div"> {
-    // VARIABLES
+  renderCountryItems = (data) => {
     const { maxValue } = this.state;
-    const { data, countryDataSelected, dataSelection, 
-      infoModal, walkthroughInfoIsOpen } = this.props;
-
-    let _tooltip = <Tooltip handleCountrySelect={this._handleCountrySelect} country={countryDataSelected} dataSelection={dataSelection}/>;
-    let _info = infoModal.isOpen ? <InfoModal /> : null;
-    let _walkthrough = walkthroughInfoIsOpen ? <WalkthroughModal /> : null;
-    let $ = _info || _walkthrough || _tooltip;
-    let _modal = <Modal modalComponent={ $ } />;
-
-    let _countryItems 
-      = data.map( (countryData, i) => {
+    return(
+      data.map((countryData, i) => {
         return (
           <CountryItem
             onSelected={this._handleSlection}
@@ -86,6 +76,29 @@ export default class CountryList extends React.Component {
             debtMax={maxValue} />
         );
       })
+    )
+  }
+
+  render(): React.Element<"div"> {
+    // VARIABLES
+    const { data, countryDataSelected, dataSelection, 
+      infoModal, walkthroughInfoIsOpen } = this.props;
+
+    let _tooltip = <Tooltip handleCountrySelect={this._handleCountrySelect} country={countryDataSelected} dataSelection={dataSelection}/>;
+    let _info = infoModal.isOpen ? <InfoModal /> : null;
+    let _walkthrough = walkthroughInfoIsOpen ? <WalkthroughModal /> : null;
+    let $ = _info || _walkthrough || _tooltip;
+    let _modal = <Modal modalComponent={ $ } />;
+
+    let _countryItemsInRed
+      = data.filter(country => {
+          return country["National Net Wealth"] < country["National Debt"]
+        })
+
+    let _countryItemsInBlack
+      = data.filter(country => {
+          return country["National Net Wealth"] > country["National Debt"]
+        })
 
     return (
       <div className={`CountryList`}>
@@ -93,7 +106,14 @@ export default class CountryList extends React.Component {
         <Walkthrough />
         <Navigation />
         <div className="list">
-          {_countryItems}
+          <div className={`list-banner --red`}>
+            <h2>In the red</h2>
+          </div>
+          {this.renderCountryItems(_countryItemsInRed)}
+          <div className={`list-banner --black`}>
+            <h2>In the black</h2>
+          </div>
+          {this.renderCountryItems(_countryItemsInBlack)}
         </div>
       </div>
     );
