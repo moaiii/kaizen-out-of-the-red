@@ -10,7 +10,6 @@ import ReactSVG from 'react-svg';
 import ResourceLogo from '../../../../assets/svg/resource.svg';
 import SportCultureLogo from '../../../../assets/svg/sportculture.svg';
 import TourismLogo from '../../../../assets/svg/tourism.svg';
-import NationalWealthLogo from '../../../../assets/svg/nat-wealth.svg';
 
 export default class CountryItem extends React.Component<Props, State> {
   constructor() {
