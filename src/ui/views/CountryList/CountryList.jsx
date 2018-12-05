@@ -11,6 +11,8 @@ import Walkthrough from '../../global/Walkthrough';
 import WalkthroughModal from "../../components/common/WalkthroughModal";
 import {trackPage} from '../../../lib/utils/google-analytics'
 
+var sortBy = require('lodash.sortby');
+
 export default class CountryList extends React.Component {
   constructor() {
     super();
@@ -52,21 +54,21 @@ export default class CountryList extends React.Component {
     return true;
   };
 
-  // CLASS FUNCTIONS
-
   _handleCountrySelect = ( name ) => { //console.log(id)
     this.props.history.push( `/country?name=${ encodeURI(name) }` );
   }
 
   _handleSlection = () => {
-    // open modal 
     this.props.setModalIsActive(true);
   }
 
   renderCountryItems = (data) => {
     const { maxValue } = this.state;
+
+    let _data = sortBy(data, "National Debt").reverse();
+
     return(
-      data.map((countryData, i) => {
+      _data.map((countryData, i) => {
         return (
           <CountryItem
             onSelected={this._handleSlection}
@@ -81,8 +83,13 @@ export default class CountryList extends React.Component {
 
   render(): React.Element<"div"> {
     // VARIABLES
-    const { data, countryDataSelected, dataSelection, 
-      infoModal, walkthroughInfoIsOpen } = this.props;
+    const { 
+      data, 
+      countryDataSelected, 
+      dataSelection, 
+      infoModal, 
+      isNationalWealthSelected,
+      walkthroughInfoIsOpen } = this.props;
 
     let _tooltip = <Tooltip handleCountrySelect={this._handleCountrySelect} country={countryDataSelected} dataSelection={dataSelection}/>;
     let _info = infoModal.isOpen ? <InfoModal /> : null;
@@ -91,14 +98,24 @@ export default class CountryList extends React.Component {
     let _modal = <Modal modalComponent={ $ } />;
 
     let _countryItemsInRed
-      = data.filter(country => {
-          return country["National Net Wealth"] < country["National Debt"]
-        })
+      = data
+        .filter(country => {
+            if(isNationalWealthSelected) {
+              return country["National Net Wealth"] < country["National Debt"]
+            } else {
+              return country["Total assets (with national wealth)"] < country["National Debt"]
+            }
+          })
 
     let _countryItemsInBlack
-      = data.filter(country => {
-          return country["National Net Wealth"] > country["National Debt"]
-        })
+      = data
+        .filter(country => {
+            if(isNationalWealthSelected) {
+              return country["National Net Wealth"] > country["National Debt"]
+            } else {
+              return country["Total assets (with national wealth)"] > country["National Debt"]
+            }
+          })
 
     return (
       <div className={`CountryList`}>

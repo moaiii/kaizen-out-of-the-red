@@ -33,6 +33,10 @@ body {
 * {
   font-family: 'maven-200', serif; }
 
+.Router__container {
+  max-height: 100vh;
+  overflow-y: hidden; }
+
 .Bar {
   height: 100%;
   cursor: pointer;
@@ -180,7 +184,8 @@ body {
   overflow: hidden; }
   .CountryList .list {
     height: 80%;
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    padding-bottom: 4rem; }
 
 .list-banner {
   width: 100%;
@@ -301,7 +306,7 @@ body {
     text-align: center; }
 
 .Header {
-  height: 100px;
+  height: 130px;
   background-color: #21418E;
   position: relative;
   display: flex;
@@ -331,24 +336,42 @@ body {
     width: 700px;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    flex-direction: column; }
     @media (max-width: 768px) {
       .Header .title {
         height: auto;
         transform: translateY(10px); } }
     .Header .title .logo-svg svg {
-      width: 500px; }
+      width: 700px; }
       @media (max-width: 768px) {
         .Header .title .logo-svg svg {
           width: 100%; } }
 
+.header-tagline {
+  font-size: 1.2rem;
+  color: white;
+  text-transform: capitalize;
+  transform: translateY(-7px);
+  letter-spacing: 0.5px; }
+
+.title-line {
+  letter-spacing: -1.5px;
+  font-size: 5rem;
+  color: white;
+  font-weight: 100;
+  opacity: 0.85; }
+  .title-line span {
+    color: #DB614B; }
+
 .Currency {
-  width: 20%;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: 0.5rem 1.5rem 0.5rem 0rem; }
+  -ms-flex-align: start;
+  align-items: center;
+  -ms-flex-direction: column; }
   @media (max-width: 768px) {
     .Currency {
       display: none; }
@@ -362,19 +385,20 @@ body {
     color: #101754;
     font-size: 20px;
     width: 100%;
-    margin-bottom: 0.5rem; }
+    line-height: 1;
+    opacity: 0.8; }
   .Currency .buttons {
     width: 100%;
     display: flex;
     justify-content: space-evenly; }
   .Currency .button {
     opacity: 0.5;
-    margin: 0 0.25rem;
+    margin: 0 0.5rem;
     cursor: pointer;
-    border: 1px solid #3566B2;
+    border: 1px solid #101754;
     border-radius: 50%;
-    width: 30px;
-    height: 30px; }
+    width: 25px;
+    height: 25px; }
     .Currency .button div {
       height: 100%;
       width: 100%;
@@ -384,8 +408,9 @@ body {
     .Currency .button.--euro.--isSelected svg g g g * {
       stroke: white !important; }
     .Currency .button.--isSelected {
-      background-color: #3566B2;
-      opacity: 1; }
+      background-color: #DB614B;
+      opacity: 1;
+      border: 1px solid #DB614B; }
       .Currency .button.--isSelected svg g * {
         fill: white !important; }
       .Currency .button.--isSelected svg g g * {
@@ -404,13 +429,12 @@ body {
   height: auto; }
   .Navigation .inner {
     width: 100%;
-    height: 100px;
+    height: 100%;
     display: flex;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    max-width: 1500px;
     padding: 0 1rem;
-    background-color: #BABAB9;
-    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
     flex-direction: row; }
@@ -422,6 +446,7 @@ body {
         padding: 0; } }
   .Navigation .banner {
     height: 75%;
+    min-height: 95px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -432,13 +457,16 @@ body {
     .Navigation .banner p {
       color: white;
       text-align: center;
-      max-width: 700px;
-      padding: 1rem; }
+      max-width: 900px;
+      padding: 1rem;
+      font-size: 1.2rem;
+      opacity: 0.85;
+      letter-spacing: 1px; }
   .Navigation .bottom {
-    height: 100px;
+    height: 90px;
     display: flex;
     justify-content: space-between;
-    background-color: #BABAB9;
+    background-color: #ECEDEB;
     width: 100%;
     z-index: 7; }
     .Navigation .bottom .bttm-lhs {
@@ -454,8 +482,8 @@ body {
         height: auto; } }
     .Navigation .bottom .controls {
       display: flex;
-      flex-direction: space-between;
-      width: 80%; }
+      justify-content: space-between;
+      width: 100%; }
       @media (max-width: 768px) {
         .Navigation .bottom .controls {
           width: 100%;
@@ -467,6 +495,7 @@ body {
       .Navigation .bottom .controls .control {
         display: flex;
         align-items: center;
+        justify-content: center;
         width: 25%; }
         @media (max-width: 768px) {
           .Navigation .bottom .controls .control {
@@ -490,7 +519,6 @@ body {
               font-size: 1rem; } }
         .Navigation .bottom .controls .control .icon-stack {
           cursor: pointer;
-          width: 25%;
           display: flex;
           flex-direction: column; }
           .Navigation .bottom .controls .control .icon-stack svg {
@@ -504,7 +532,8 @@ body {
   width: 100%;
   height: 40px; }
   .debt-card-national .inner {
-    height: 100%; }
+    height: 100%;
+    background-color: #ECEDEB; }
   .debt-card-national .top {
     display: flex;
     padding: 0.3rem;
@@ -516,6 +545,7 @@ body {
       .debt-card-national .top {
         padding: 0.5rem; } }
     .debt-card-national .top p {
+      font-size: 1.2rem;
       color: white; }
   .debt-card-national .paid-off {
     display: flex;
@@ -559,6 +589,25 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center; }
+
+.column-titles {
+  width: 38.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .column-titles .column-country p {
+    color: #101754;
+    opacity: 0.8;
+    font-size: 1.3rem; }
+  .column-titles .column-debt .block {
+    background-color: #DB614B;
+    padding: 0.5rem;
+    min-width: 150px;
+    display: flex;
+    justify-content: center; }
+    .column-titles .column-debt .block p {
+      color: white;
+      font-size: 1.2rem; }
 
 .MobileNav {
   position: absolute;
@@ -669,7 +718,8 @@ body {
   align-items: center;
   border-bottom: 1px solid #3566B2;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1500px;
+  padding: 0 1rem;
   margin: 0.5rem auto; }
   @media (max-width: 768px) {
     .CountryItem {
@@ -757,8 +807,8 @@ body {
 
 .countryandflag {
   display: flex; }
-  .countryandflag span {
-    border: 0.5px solid #101754; }
+  .countryandflag h3 {
+    color: #101754; }
 
 .InfoModal {
   background: white;

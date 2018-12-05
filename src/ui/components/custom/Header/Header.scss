@@ -1,5 +1,5 @@
 .Header {
-  height: 100px;
+  height: 130px;
   background-color: $blue2;
   position: relative;
   display: flex;
@@ -38,6 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     @media(max-width: $mobilebreak) {
       height: auto;
@@ -46,7 +47,7 @@
 
     .logo-svg {
       svg {
-        width: 500px;
+        width: 700px;
         // max-width: 500px;
 
         @media(max-width: $mobilebreak) {
@@ -76,4 +77,24 @@
   @media (min-width: 1024px) {}
 
   @media (min-width: 1440px) {}
+}
+
+.header-tagline {
+  font-size: 1.2rem;
+  color: white;
+  text-transform: capitalize;
+  transform: translateY(-7px);
+  letter-spacing: 0.5px;
+}
+
+.title-line {
+  letter-spacing: -1.5px;
+  font-size: 5rem;
+  color: white;
+  font-weight: 100;
+  opacity: 0.85;
+
+  span {
+    color: $red;
+  }
 }

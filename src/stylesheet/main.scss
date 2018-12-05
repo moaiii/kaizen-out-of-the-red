@@ -91,6 +91,10 @@ body {
   @include maven200;
 }
 
+.Router__container {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
 
 @import "../ui/components/custom/Bar/Bar.scss";
 @import "../ui/components/custom/Tooltip/Tooltip.scss";

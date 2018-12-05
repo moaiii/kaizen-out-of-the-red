@@ -1,11 +1,13 @@
+import {setModalIsActive, setWalkthroughStep} from '../../../db/global/global.action';
+
+import CountryList from "./CountryList.jsx";
 import {connect} from "react-redux";
 import store from "../../../db/store";
-import {setModalIsActive, setWalkthroughStep} from '../../../db/global/global.action';
-import CountryList from "./CountryList.jsx";
 
 function mapStoreToProps( store ) {
   return {
     data: store.GlobalReducer.data,
+    isNationalWealthSelected: store.GlobalReducer.isNationalWealthSelected,
     walkthroughInfoIsOpen: store.GlobalReducer.walkthroughInfoIsOpen,
     infoModal: store.GlobalReducer.infoModal,
     modalIsActive: store.GlobalReducer.modalIsActive,

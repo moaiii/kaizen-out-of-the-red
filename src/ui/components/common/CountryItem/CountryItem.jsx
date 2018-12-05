@@ -38,12 +38,20 @@ export default class CountryItem extends React.Component<Props, State> {
 
     const { animateClass } = this.state;
     const { 
-      data, debtMax, currencySymbol, 
-      currencyRate, isNationalWealthSelected,
-      onSelect, walkthroughStep } = this.props;
+      data, 
+      debtMax,
+      currencySymbol, 
+      currencyRate, 
+      isNationalWealthSelected,
+      onSelect, 
+      walkthroughStep } = this.props;
 
     let _debtVal = data["National Debt"] * currencyRate;
-    let _nationalDebt = Humanize.compactInteger(_debtVal, 1);
+    let _nationalDebt = Humanize
+      .compactInteger(_debtVal, 1)
+      .replace('T', ' Trillion')
+      .replace('B', ' Billion');
+
     let totalDebtWidth = data["National Debt"] / debtMax;
     let nationalWealthWidth = data["National Net Wealth"] / debtMax;
     let businessWidth = data['Business (Top Bank and Company)'] / debtMax;
@@ -85,10 +93,14 @@ export default class CountryItem extends React.Component<Props, State> {
             </div>
           </div>
           <div className="stacked-bar-chart">
-            {/* <Bar style={{'opacity':_redBarMod}} attr={'National Debt'} width={totalDebtWidth} classMod={'--national-debt'} onClick={() => null}/> */}
             <div className="stack">
               {isNationalWealthSelected 
-                ? <Bar style={{'opacity':_blueBarMod}} attr={'National Net Wealth'} width={nationalWealthWidth} classMod={'--national-wealth'} onClick={this.onBarClick}/>  
+                ? <Bar 
+                    style={{'opacity':_blueBarMod}} 
+                    attr={'National Net Wealth'} 
+                    width={nationalWealthWidth} 
+                    classMod={'--national-wealth'} 
+                    onClick={this.onBarClick}/>  
                 : null 
               }
               <Bar style={{'opacity':_blueBarMod}} attr={'Business (Top Bank and Company)'} width={businessWidth} classMod={'--business'} onClick={this.onBarClick}/>  

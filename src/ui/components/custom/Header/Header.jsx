@@ -1,14 +1,13 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
-import ReactSVG from 'react-svg';
-
-// COMPONENTS
-import Social from '../Social';
-import { MdMenu } from 'react-icons/md';
 
 // ASSETS
 import Logo from '../../../../assets/svg/Logo.svg';
+import { MdMenu } from 'react-icons/md';
+import ReactSVG from 'react-svg';
+// COMPONENTS
+import Social from '../Social';
 
 // UTILITIES
 // ........
@@ -56,10 +55,18 @@ export default class Header extends React.Component<Props, State> {
     return (
       <div className={`Header ${ animateClass }`} style={style}>
         <div className="title">
-          <ReactSVG src={Logo} className={'logo-svg'}/>
+          <h1 className="title-line">
+            OUT OF THE <span>RED</span>
+          </h1>
+          <p className="header-tagline">
+            What would countries have to sell to pay off their national debt?
+          </p>
         </div>
-        <MdMenu className={`mobile-nav-control`} onClick={() => this.props.setMobileNavIsOpen(true)}/>
-        <Social classMod={`--header`}/>
+        <MdMenu 
+          className={`mobile-nav-control`} 
+          onClick={() => this.props.setMobileNavIsOpen(true)}/>
+        <Social 
+          classMod={`--header`}/>
       </div>
     );
   }
