@@ -51,7 +51,7 @@ body {
   .Bar.--resource {
     background-color: #3566B2; }
   .Bar.--tourism {
-    background-color: #7EA6D7; }
+    background-color: #7ea6d7; }
   .Bar.--sport {
     background-color: #DFF1FD; }
   .Bar.--animate {
@@ -616,7 +616,7 @@ body {
   z-index: 99;
   height: 100%;
   width: 100%;
-  background-color: #7EA6D7;
+  background-color: #7ea6d7;
   transform: translateX(-105%);
   transition: transform 0.25s ease;
   border-right: 3px solid #101754;
@@ -810,6 +810,9 @@ body {
   display: flex; }
   .countryandflag h3 {
     color: #101754; }
+  .countryandflag span {
+    border: 0.5px solid rgba(126, 166, 215, 0.5);
+    border-radius: 1px; }
 
 .Angle-Tooltip {
   cursor: pointer;
