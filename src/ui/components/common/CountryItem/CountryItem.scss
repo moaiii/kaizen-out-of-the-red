@@ -59,6 +59,7 @@
   width:75%;
   max-width: 50%;
   height: 40px;
+  position: relative;
 
   @media(max-width: $mobilebreak) {
     width: 100%;
@@ -140,4 +141,44 @@
   span {
     // border: 0.5px solid $blue1;
   }
+}
+
+.Angle-Tooltip {
+  cursor: pointer;
+  box-shadow: 0 9px 15px -1px rgba(0,0,0,0.4);
+  z-index: 2;
+  background-color: #F4F4F4;
+  padding: 2rem;
+  position: absolute;
+  left: -10%;
+  top: 50%;
+  transform: translate(-50%, -50%, 0%);
+  display: none;
+
+  p {
+    color: $blue1;
+  }
+
+  .arrow {
+    width: 25px;
+    height: 25px;
+    background-color: #F4F4F4;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 45%;
+    top: -5px;
+  }
+
+  &.show {
+    display: block;
+  }
+
+  .holder {
+    display: flex;
+  }
+}
+
+.angletooltip__icon {
+  width: 25px;
+  margin-right: 1.5rem;
 }

@@ -754,7 +754,8 @@ body {
 .stacked-bar-chart {
   width: 75%;
   max-width: 50%;
-  height: 40px; }
+  height: 40px;
+  position: relative; }
   @media (max-width: 768px) {
     .stacked-bar-chart {
       width: 100%; } }
@@ -809,6 +810,36 @@ body {
   display: flex; }
   .countryandflag h3 {
     color: #101754; }
+
+.Angle-Tooltip {
+  cursor: pointer;
+  box-shadow: 0 9px 15px -1px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  background-color: #F4F4F4;
+  padding: 2rem;
+  position: absolute;
+  left: -10%;
+  top: 50%;
+  transform: translate(-50%, -50%, 0%);
+  display: none; }
+  .Angle-Tooltip p {
+    color: #101754; }
+  .Angle-Tooltip .arrow {
+    width: 25px;
+    height: 25px;
+    background-color: #F4F4F4;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 45%;
+    top: -5px; }
+  .Angle-Tooltip.show {
+    display: block; }
+  .Angle-Tooltip .holder {
+    display: flex; }
+
+.angletooltip__icon {
+  width: 25px;
+  margin-right: 1.5rem; }
 
 .InfoModal {
   background: white;

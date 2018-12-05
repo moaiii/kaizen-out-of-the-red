@@ -2,15 +2,22 @@
 import * as React from "react";
 
 import Bar from '../../custom/Bar';
+import BusinessLogo from '../../../../assets/svg/business.svg';
 import Humanize from 'humanize-plus';
+import NationalWealthLogo from '../../../../assets/svg/nat-wealth.svg';
 import ReactCountryFlag from "react-country-flag";
+import ReactSVG from 'react-svg';
+import ResourceLogo from '../../../../assets/svg/resource.svg';
+import SportCultureLogo from '../../../../assets/svg/sportculture.svg';
+import TourismLogo from '../../../../assets/svg/tourism.svg';
 
 export default class CountryItem extends React.Component<Props, State> {
   constructor() {
     super();
 
     this.state = {
-      animateClass: ""
+      animateClass: "",
+      showTooltip: false
     };
   }
 
@@ -23,9 +30,13 @@ export default class CountryItem extends React.Component<Props, State> {
   }
 
   onBarClick = (attr) => {
-    let countryName = this.props.data.Country;
-    this.props.setBarClicked( {countryName, attr} );
-    this.props.onBarSelected();
+    // let countryName = this.props.data.Country;
+    // this.props.setBarClicked( {countryName, attr} );
+    // this.props.onBarSelected();
+
+    this.setState({
+      showTooltip: !this.state.showTooltip
+    })
   }
 
   shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
@@ -34,9 +45,17 @@ export default class CountryItem extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props, prevState: State): void {}
 
+  getHumanValue = (val) => {
+    return Humanize
+      .compactInteger(val, 1)
+      .replace('T', ' Trillion')
+      .replace('B', ' Billion')
+      .replace('M', ' Million')
+  }
+
   render(): React.Element<"div"> {
 
-    const { animateClass } = this.state;
+    const { animateClass, showTooltip } = this.state;
     const { 
       data, 
       debtMax,
@@ -45,6 +64,36 @@ export default class CountryItem extends React.Component<Props, State> {
       isNationalWealthSelected,
       onSelect, 
       walkthroughStep } = this.props;
+
+    let _AngleToolTip = <div 
+      className={`Angle-Tooltip ${showTooltip ? 'show' :''}`}
+      onClick={this.onBarClick}>
+      <div className="arrow" />
+      <div className="holder">
+        <ReactSVG 
+          className={`angletooltip__icon`} 
+          src={BusinessLogo} />
+        <p>Business {currencySymbol} {this.getHumanValue(data["Business (Top Bank and Company)"])}</p>
+      </div>
+      <div className="holder">
+        <ReactSVG 
+          className={`angletooltip__icon`} 
+          src={ResourceLogo} />
+        <p>Resource {currencySymbol} {this.getHumanValue(data["Resource (Gold and FX Reserves)"])}</p>
+      </div>
+      <div className="holder">
+        <ReactSVG 
+          className={`angletooltip__icon`} 
+          src={SportCultureLogo} />
+        <p>Sport & Culture {currencySymbol} {this.getHumanValue(data["Sport & Culture (Top Footballer and Piece of Art)"])}</p>
+      </div>
+      <div className="holder">
+        <ReactSVG 
+          className={`angletooltip__icon`} 
+          src={TourismLogo} />
+        <p>Tourism {currencySymbol} {this.getHumanValue(data["Tourism Receipts"])}</p>
+      </div>
+    </div>
 
     let _debtVal = data["National Debt"] * currencyRate;
     let _nationalDebt = Humanize
@@ -93,6 +142,7 @@ export default class CountryItem extends React.Component<Props, State> {
             </div>
           </div>
           <div className="stacked-bar-chart">
+            {_AngleToolTip}
             <div className="stack">
               {isNationalWealthSelected 
                 ? <Bar 
