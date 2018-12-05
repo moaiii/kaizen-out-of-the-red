@@ -73,6 +73,12 @@ export default class CountryItem extends React.Component<Props, State> {
         <ReactSVG 
           className={`angletooltip__icon`} 
           src={BusinessLogo} />
+        <p>National Wealth {currencySymbol} {this.getHumanValue(data["National Net Wealth"])}</p>
+      </div>
+      <div className="holder">
+        <ReactSVG 
+          className={`angletooltip__icon`} 
+          src={BusinessLogo} />
         <p>Business {currencySymbol} {this.getHumanValue(data["Business (Top Bank and Company)"])}</p>
       </div>
       <div className="holder">
@@ -84,14 +90,14 @@ export default class CountryItem extends React.Component<Props, State> {
       <div className="holder">
         <ReactSVG 
           className={`angletooltip__icon`} 
-          src={SportCultureLogo} />
-        <p>Sport & Culture {currencySymbol} {this.getHumanValue(data["Sport & Culture (Top Footballer and Piece of Art)"])}</p>
+          src={TourismLogo} />
+        <p>Tourism {currencySymbol} {this.getHumanValue(data["Tourism Receipts"])}</p>
       </div>
       <div className="holder">
         <ReactSVG 
           className={`angletooltip__icon`} 
-          src={TourismLogo} />
-        <p>Tourism {currencySymbol} {this.getHumanValue(data["Tourism Receipts"])}</p>
+          src={SportCultureLogo} />
+        <p>Sport & Culture {currencySymbol} {this.getHumanValue(data["Sport & Culture (Top Footballer and Piece of Art)"])}</p>
       </div>
     </div>
 
