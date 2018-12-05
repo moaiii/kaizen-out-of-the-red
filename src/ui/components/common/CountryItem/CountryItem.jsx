@@ -10,6 +10,7 @@ import ReactSVG from 'react-svg';
 import ResourceLogo from '../../../../assets/svg/resource.svg';
 import SportCultureLogo from '../../../../assets/svg/sportculture.svg';
 import TourismLogo from '../../../../assets/svg/tourism.svg';
+import NationalWealthLogo from '../../../../assets/svg/nat-wealth.svg';
 
 export default class CountryItem extends React.Component<Props, State> {
   constructor() {
@@ -69,12 +70,16 @@ export default class CountryItem extends React.Component<Props, State> {
       className={`Angle-Tooltip ${showTooltip ? 'show' :''}`}
       onClick={this.onBarClick}>
       <div className="arrow" />
-      <div className="holder">
-        <ReactSVG 
-          className={`angletooltip__icon`} 
-          src={BusinessLogo} />
-        <p>National Wealth {currencySymbol} {this.getHumanValue(data["National Net Wealth"])}</p>
-      </div>
+      {
+        this.props.isNationalWealthSelected
+          ? <div className="holder">
+              <ReactSVG 
+                className={`angletooltip__icon`} 
+                src={NationalWealthLogo} />
+              <p>National Wealth {currencySymbol} {this.getHumanValue(data["National Net Wealth"])}</p>
+            </div>
+          : null
+      }
       <div className="holder">
         <ReactSVG 
           className={`angletooltip__icon`} 
