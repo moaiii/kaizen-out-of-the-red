@@ -21,7 +21,6 @@
     margin: 0 auto;
     width: 100%;
     flex-direction: row;
-    box-shadow: 0 7px 15px -1px rgba(0,0,0,0.2);
 
     @media(max-width: $mobilebreak) {
       padding: 0 0.5rem;
@@ -61,6 +60,7 @@
     background-color: #ECEDEB;
     width: 100%;
     z-index: 7;
+    box-shadow: 0 7px 15px -1px rgba(0,0,0,0.2);
 
     .bttm-lhs {
       display: flex;

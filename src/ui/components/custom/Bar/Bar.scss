@@ -4,6 +4,13 @@
   cursor: pointer;
   min-width: 1%;
   margin-right: 0px;
+  // transform: translateX(-100%);
+  // transition: 1s transform ease 2s;
+  
+  &.--animate {
+    // transform: translateX(0);
+    // transition: 1s transform ease 2s;
+  }
 
   &.--national-debt {
     background-color: $red;
