@@ -367,7 +367,6 @@ body {
   cursor: pointer;
   width: 40px;
   height: 40px;
-  display: block;
   position: absolute;
   top: 10%;
   left: 2%;
@@ -376,7 +375,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; }
+  z-index: 999;
+  display: none; }
+  @media (max-width: 768px) {
+    .mobile-nav-wrapper {
+      display: block; } }
 
 .Header {
   height: 130px;
@@ -694,6 +697,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between; }
+  .column-titles .Currency {
+    display: none; }
   @media (max-width: 768px) {
     .column-titles {
       width: 100%; }

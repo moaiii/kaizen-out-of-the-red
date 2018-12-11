@@ -269,7 +269,10 @@
   align-items: center;
   justify-content: space-between;
 
-  
+  .Currency {
+    display: none;
+  }
+
   @media(max-width: $mobilebreak) {
     width: 100%;
 
