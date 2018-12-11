@@ -43,6 +43,10 @@
     span {
       margin-right: 2rem;
       transform: scale(2) translateX(20%);
+      
+      @media (max-width: 768px) {
+        transform: scale(1.5) translateX(20%);
+      }
     }
   }
   
@@ -60,8 +64,9 @@
   max-width: 50%;
   height: 40px;
   position: relative;
-
+  
   @media(max-width: $mobilebreak) {
+    height: 30px;
     width: 100%;
   }
 
@@ -83,7 +88,7 @@
   }
 
   @media(max-width: $mobilebreak) {
-    display: none;
+    // display: none;
   }
 
   &.--mobile {
@@ -136,6 +141,10 @@
 
   h3 {
     color: $blue1;
+
+    @media(max-width: $mobilebreak) {
+      font-size: 14px;
+    }
   }
 
   span {

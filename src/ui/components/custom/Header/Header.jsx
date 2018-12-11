@@ -2,9 +2,10 @@
 // NODE MODULES
 import * as React from "react";
 
+import { MdClose, MdMenu } from 'react-icons/md';
+
 // ASSETS
 import Logo from '../../../../assets/svg/Logo.svg';
-import { MdMenu } from 'react-icons/md';
 import ReactSVG from 'react-svg';
 // COMPONENTS
 import Social from '../Social';
@@ -46,7 +47,7 @@ export default class Header extends React.Component<Props, State> {
 
   render(): React.Element<"div"> {
     // VARIABLES
-    const { walkthroughStep } = this.props;
+    const { walkthroughStep, isMobileNavOpen } = this.props;
     const { animateClass } = this.state;
 
     let style = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
@@ -58,13 +59,21 @@ export default class Header extends React.Component<Props, State> {
           <h1 className="title-line">
             OUT OF THE <span>RED</span>
           </h1>
-          <p className="header-tagline">
+          <p className="header-tagline --title">
             What would countries have to sell to pay off their national debt?
           </p>
         </div>
-        <MdMenu 
-          className={`mobile-nav-control`} 
-          onClick={() => this.props.setMobileNavIsOpen(true)}/>
+        <div className="mobile-nav-wrapper">
+          {
+            !isMobileNavOpen
+              ? <MdMenu 
+                  className={`mobile-nav-control`} 
+                  onClick={() => this.props.setMobileNavIsOpen(true)}/>
+              : <MdClose 
+                  className={'mobile-nav-control'} 
+                  onClick={() => this.props.setMobileNavIsOpen(false)} />
+          }
+        </div>
         <Social 
           classMod={`--header`}/>
       </div>

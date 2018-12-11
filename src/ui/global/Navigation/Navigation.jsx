@@ -101,6 +101,7 @@ export default class Navigation extends React.Component<Props, State> {
                   <p>National Debt</p>
                 </div>
               </div>
+              <Currency />
             </div>
             <div className="bttm-lhs">
               <div className="controls">

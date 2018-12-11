@@ -363,6 +363,21 @@ body {
 .label__icon svg {
   height: 40px; }
 
+.mobile-nav-wrapper {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  border-radius: 50%;
+  background-color: #DB614B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; }
+
 .Header {
   height: 130px;
   background-color: #21418E;
@@ -375,7 +390,6 @@ body {
     width: 30px;
     height: 30px;
     display: block;
-    position: absolute;
     top: 0;
     right: 0;
     display: none; }
@@ -412,13 +426,23 @@ body {
   text-transform: capitalize;
   transform: translateY(-7px);
   letter-spacing: 0.5px; }
+  @media (max-width: 768px) {
+    .header-tagline {
+      font-size: 12px;
+      width: 100%;
+      text-align: center; }
+      .header-tagline.--title {
+        max-width: 30%; } }
 
 .title-line {
   letter-spacing: -1.5px;
   font-size: 5rem;
   color: white;
-  font-weight: 100;
+  font-weight: 700;
   opacity: 0.85; }
+  @media (max-width: 768px) {
+    .title-line {
+      display: none; } }
   .title-line span {
     color: #DB614B; }
 
@@ -445,6 +469,9 @@ body {
     width: 100%;
     line-height: 1;
     opacity: 0.8; }
+    @media (max-width: 768px) {
+      .Currency p {
+        font-size: 12px; } }
   .Currency .buttons {
     width: 100%;
     display: flex;
@@ -455,8 +482,12 @@ body {
     cursor: pointer;
     border: 1px solid #101754;
     border-radius: 50%;
-    width: 25px;
-    height: 25px; }
+    width: 28px;
+    height: 28px; }
+    @media (max-width: 768px) {
+      .Currency .button {
+        width: 14px;
+        height: 14px; } }
     .Currency .button div {
       height: 100%;
       width: 100%;
@@ -499,7 +530,7 @@ body {
     @media (max-width: 768px) {
       .Navigation .inner {
         padding: 0 0.5rem;
-        flex-direction: column;
+        flex-direction: column-reverse;
         height: auto;
         padding: 0; } }
   .Navigation .banner {
@@ -531,6 +562,7 @@ body {
     .Navigation .bottom .bttm-lhs {
       display: flex;
       width: 90%;
+      justify-content: flex-end;
       overflow: hidden; }
       @media (max-width: 768px) {
         .Navigation .bottom .bttm-lhs {
@@ -542,7 +574,9 @@ body {
     .Navigation .bottom .controls {
       display: flex;
       justify-content: space-between;
-      width: 100%; }
+      width: 100%;
+      margin: 0 1rem;
+      max-width: 650px; }
       @media (max-width: 768px) {
         .Navigation .bottom .controls {
           width: 100%;
@@ -563,7 +597,7 @@ body {
         .Navigation .bottom .controls .control.--national-wealth {
           cursor: pointer; }
         .Navigation .bottom .controls .control .control__icon svg {
-          width: 30px;
+          width: 40px;
           margin-right: 0.5rem; }
           @media (max-width: 768px) {
             .Navigation .bottom .controls .control .control__icon svg {
@@ -590,6 +624,9 @@ body {
   max-width: 150px;
   width: 100%;
   height: 40px; }
+  @media (max-width: 768px) {
+    .debt-card-national {
+      max-width: 100px; } }
   .debt-card-national .inner {
     height: 100%;
     background-color: #ECEDEB; }
@@ -606,6 +643,9 @@ body {
     .debt-card-national .top p {
       font-size: 1.2rem;
       color: white; }
+      @media (max-width: 768px) {
+        .debt-card-national .top p {
+          font-size: 14px; } }
   .debt-card-national .paid-off {
     display: flex;
     padding: 0.3rem;
@@ -654,43 +694,64 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between; }
+  @media (max-width: 768px) {
+    .column-titles {
+      width: 100%; }
+      .column-titles .Currency {
+        display: block !important; } }
   .column-titles .column-country p {
     color: #101754;
     opacity: 0.8;
     font-size: 1.3rem; }
+    @media (max-width: 768px) {
+      .column-titles .column-country p {
+        font-size: 14px;
+        display: flex; } }
   .column-titles .column-debt .block {
     background-color: #DB614B;
     padding: 0.5rem;
     min-width: 150px;
     display: flex;
     justify-content: center; }
+    @media (max-width: 768px) {
+      .column-titles .column-debt .block {
+        min-width: 100px; } }
     .column-titles .column-debt .block p {
       color: white;
       font-size: 1.2rem; }
+      @media (max-width: 768px) {
+        .column-titles .column-debt .block p {
+          font-size: 14px; } }
 
 .MobileNav {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 99;
-  height: 100%;
+  z-index: 90;
+  height: 50%;
   width: 100%;
-  background-color: #7ea6d7;
-  transform: translateX(-105%);
+  background-color: #21418E;
+  transform: translateY(-200%);
   transition: transform 0.25s ease;
-  border-right: 3px solid #101754;
-  padding: 1rem; }
+  padding: 1rem;
+  box-shadow: 0 7px 15px -1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column-reverse; }
+  .MobileNav .header-tagline {
+    width: 60%;
+    transform: none; }
+  .MobileNav .Social__container {
+    height: auto; }
   .MobileNav.--isOpen {
-    transform: translateX(0%);
-    transition: transform 0.25s ease; }
+    transform: translateY(0%);
+    transition: transform 0.25s ease;
+    align-items: center; }
   .MobileNav .blurb {
     text-align: center;
     margin-top: 2rem;
     padding: 2rem;
+    color: white;
     font-size: 1rem; }
-    @media (max-width: 768px) {
-      .MobileNav .blurb {
-        font-weight: 500; } }
 
 .close-container {
   width: 100%;
@@ -723,11 +784,13 @@ body {
 
 .Social__container {
   position: absolute;
-  width: 200px;
+  width: 250px;
   margin: 0 auto;
   right: 0;
   display: flex;
-  flex-direction: column-reverse; }
+  flex-direction: column-reverse;
+  height: 100%;
+  padding-bottom: 0.6rem; }
   @media (max-width: 768px) {
     .Social__container {
       display: none; }
@@ -736,7 +799,7 @@ body {
         position: relative;
         width: 100%; }
         .Social__container.--mobile-nav .c-t-m {
-          font-size: 1.5rem; } }
+          font-size: 1.8rem; } }
 
 .social__link {
   margin-top: 2px;
@@ -747,8 +810,8 @@ body {
   justify-content: center;
   align-items: center; }
   .social__link svg {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     fill: white; }
   .social__link.--info {
     transform: scale(1.2) translate(2px); }
@@ -760,16 +823,17 @@ body {
       stroke-width: 2px; }
 
 .brought-to-you {
-  color: #BABAB9;
-  font-size: 12px;
+  color: white;
+  font-size: 14px;
   text-align: center;
   font-weight: bolder; }
 
 .c-t-m {
   font-weight: bolder;
   text-align: center;
-  color: #BABAB9;
-  font-family: 'maven-300', serif; }
+  color: white;
+  font-family: 'maven-300', serif;
+  font-size: 1.2rem !important; }
 
 .CountryItem {
   height: 75px;
@@ -809,6 +873,9 @@ body {
     .CountryItem .lhs span {
       margin-right: 2rem;
       transform: scale(2) translateX(20%); }
+      @media (max-width: 768px) {
+        .CountryItem .lhs span {
+          transform: scale(1.5) translateX(20%); } }
 
 .stacked-bar-chart {
   width: 75%;
@@ -817,6 +884,7 @@ body {
   position: relative; }
   @media (max-width: 768px) {
     .stacked-bar-chart {
+      height: 30px;
       width: 100%; } }
   .stacked-bar-chart .stack {
     display: flex;
@@ -829,9 +897,6 @@ body {
   .debt-card .inner {
     display: flex;
     flex-direction: row-reverse; }
-  @media (max-width: 768px) {
-    .debt-card {
-      display: none; } }
   .debt-card.--mobile {
     display: none; }
     @media (max-width: 768px) {
@@ -869,6 +934,9 @@ body {
   display: flex; }
   .countryandflag h3 {
     color: #101754; }
+    @media (max-width: 768px) {
+      .countryandflag h3 {
+        font-size: 14px; } }
   .countryandflag span {
     border: 0.5px solid rgba(126, 166, 215, 0.5);
     border-radius: 1px; }

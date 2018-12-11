@@ -2,28 +2,42 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 99;
-  height: 100%;
+  z-index: 90;
+  height: 50%;
   width: 100%;
-  background-color: $blue4;
-  transform: translateX(-105%);
+  background-color: $blue2;
+  transform: translateY(-200%);
   transition: transform 0.25s ease;
-  border-right: 3px solid $blue1;
   padding: 1rem;
+  box-shadow: 0 7px 15px -1px rgba(0,0,0,0.2);
+
+  .header-tagline {
+    width: 60%;
+    transform: none;
+  }
+
+  display: flex;
+  flex-direction: column-reverse;
   
+  .Social__container {
+    height: auto;
+  }
+
   &.--isOpen {
-    transform: translateX(0%);
+    transform: translateY(0%);
     transition: transform 0.25s ease;
+    align-items: center;
   }
 
   .blurb {
     text-align: center;
     margin-top: 2rem;
     padding: 2rem;
+    color: white;
     font-size: 1rem;
 
     @media(max-width: $mobilebreak) {
-      font-weight: 500;
+      // font-weight: 500;
     }
   }
 }

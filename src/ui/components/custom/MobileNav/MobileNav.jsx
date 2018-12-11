@@ -46,12 +46,14 @@ export default class MobileNav extends React.Component<Props, State> {
 
     return (
       <div className={`MobileNav ${ animateClass } ${ openClassMod }`}>
-        <div className="close-container">
-          <MdClose className={'mobile-nav-menu-close'} onClick={() => setMobileNavIsOpen( false )} />
-        </div>
+        <div className="close-container" />
         <Social classMod={`--mobile-nav`}/>
-        <p className={`blurb`}> Most countries are in trillions of debt to other nations in what seems like a never ending cycle of IOU's. If these countries needed to actually pay up, what assets could they sell to do so?</p>
-        <Currency classMod={`--mobile-nav`}/>
+        <p className={`blurb`}> 
+          Most countries are in trillions of debt to other nations in what seems like a never ending cycle of IOU's. If these countries needed to actually pay up, what assets could they sell to do so?
+        </p>
+        <p className="header-tagline">
+            What would countries have to sell to pay off their national debt?
+          </p>
       </div>
     );
   }
