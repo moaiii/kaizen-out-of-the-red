@@ -342,8 +342,10 @@ body {
     align-items: center; }
 
 .label-cat {
-  width: 100%;
+  width: 50%;
   padding: 0 1rem; }
+  .label-cat.--debt {
+    width: 100%; }
   .label-cat ._bar {
     cursor: pointer;
     height: 40px;
@@ -354,6 +356,11 @@ body {
     overflow: hidden; }
     .label-cat ._bar .figure {
       margin-left: 1rem; }
+      .label-cat ._bar .figure.--center {
+        position: absolute;
+        color: white;
+        left: 50%;
+        transform: translateX(50%); }
     .label-cat ._bar > .Bar {
       height: 100% !important; }
 

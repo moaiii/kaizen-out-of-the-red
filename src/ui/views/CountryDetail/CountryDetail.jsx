@@ -132,20 +132,31 @@ export default class CountryDetail extends React.Component {
     const { countryData, dataProps } = this.state;
     const { data, walkthroughInfoIsOpen, currencySymbol, setModalIsActive } = this.props;
 
+    const vals = [
+      countryData["National Debt"],
+      countryData["Total Assets"],
+      countryData["VALUE"],
+      countryData["Resource (Gold and FX Reserves)"] - countryData["FX Reserves Value"],
+      countryData["FX Reserves Value"],
+      countryData["Tourism Receipts"],
+      countryData["Sport ($)"],
+      countryData["Sport & Culture (Top Footballer and Piece of Art)"] - countryData["Sport ($)"],
+    ];
+
+    const _theBiggestNumber = Math.max(...vals);
 
     /**
      * widths
      */
 
-    let nationalDebtWidth = 1;
-    // let nationalWealthWidth = Math.min(countryData["National Net Wealth"] / countryData["National Debt"], 1);
-    let bankWidth = Math.min(countryData["Total Assets"] / countryData["National Debt"], 1);
-    let companyWidth = Math.min(countryData["VALUE"] / countryData["National Debt"], 1);
-    let goldWidth = Math.min(countryData["FX Reserves Value"] / countryData["National Debt"], 1);
-    let foreignWidth = Math.min(countryData["Resource Net Wealth"] / countryData["National Debt"], 1);
-    let tourismWidth = Math.min(countryData["Tourism Receipts"] / countryData["National Debt"], 1);
-    let footballWidth = Math.min(countryData["Sport ($)"] / countryData["National Debt"], 1);
-    let artWidth = Math.min((countryData["Sport & Culture (Top Footballer and Piece of Art)"] - countryData["Sport ($)"]) / countryData["National Debt"], 1);
+    let nationalDebtWidth = Math.min(countryData["National Debt"] / _theBiggestNumber);
+    let bankWidth = Math.min(countryData["Total Assets"] / _theBiggestNumber);
+    let companyWidth = Math.min(countryData["VALUE"] / _theBiggestNumber);
+    let goldWidth = Math.min((countryData["Resource (Gold and FX Reserves)"] - countryData["FX Reserves Value"]) / _theBiggestNumber);
+    let foreignWidth = Math.min(countryData["FX Reserves Value"] / _theBiggestNumber);
+    let tourismWidth = Math.min(countryData["Tourism Receipts"] / _theBiggestNumber);
+    let footballWidth = Math.min(countryData["Sport ($)"] / _theBiggestNumber);
+    let artWidth = Math.min((countryData["Sport & Culture (Top Footballer and Piece of Art)"] - countryData["Sport ($)"]) / _theBiggestNumber);
 
 
     /**
@@ -203,13 +214,13 @@ export default class CountryDetail extends React.Component {
               <p>National Debt</p>
             </div>
             <div className="sub-labels">
-              <div className="label-cat">
+              <div className="label-cat --debt">
                 <div className="_bar" onClick={() => this.onBarClick('debt')} >
                   <Bar 
                     attr={`debt`} 
-                    width={nationalDebtWidth} 
+                    width={nationalDebtWidth * 100} 
                     classMod={'--national-debt'} />
-                  <p className={`figure`}>
+                  <p className={`figure ${nationalDebtWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["National Debt"])}
                   </p>
                 </div>
@@ -241,9 +252,9 @@ export default class CountryDetail extends React.Component {
                 <div className="_bar" onClick={() => this.onBarClick('bank')}>
                   <Bar 
                     attr={`bank`} 
-                    width={bankWidth} 
+                    width={bankWidth * 100} 
                     classMod={'--business'} />
-                    <p className={`figure`}>
+                    <p className={`figure ${bankWidth > 0.75 ? "--center" : null}`}>
                       {currencySymbol} {this.getHumanValue(countryData["Total Assets"])}
                     </p>
                 </div>
@@ -258,9 +269,9 @@ export default class CountryDetail extends React.Component {
                 <div className="_bar" onClick={() => this.onBarClick('company')} >
                   <Bar 
                     attr={`company`} 
-                    width={companyWidth} 
+                    width={companyWidth * 100} 
                     classMod={'--business'} />
-                  <p className={`figure`}>
+                  <p className={`figure ${companyWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["VALUE"])}
                   </p>
                 </div>
@@ -290,9 +301,9 @@ export default class CountryDetail extends React.Component {
                 <div className="_bar" onClick={() => this.onBarClick('gold')} >
                   <Bar 
                     attr={`gold`} 
-                    width={goldWidth} 
+                    width={goldWidth * 100} 
                     classMod={'--resource'} />
-                  <p className={`figure`}>
+                  <p className={`figure ${goldWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["Resource (Gold and FX Reserves)"] - countryData["FX Reserves Value"])}
                   </p>
                 </div>
@@ -307,9 +318,9 @@ export default class CountryDetail extends React.Component {
                 <div className="_bar" onClick={() => this.onBarClick('fx')} >
                   <Bar 
                     attr={`fx`} 
-                    width={foreignWidth} 
+                    width={foreignWidth * 100} 
                     classMod={'--resource'} />
-                  <p className={`figure`}>
+                  <p className={`figure ${foreignWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["FX Reserves Value"])}
                   </p>
                 </div>
@@ -339,7 +350,7 @@ export default class CountryDetail extends React.Component {
                 <div className="_bar" onClick={() => this.onBarClick('football')} >
                   <Bar 
                     attr={`football`} 
-                    width={footballWidth} 
+                    width={footballWidth * 100} 
                     classMod={'--sport'} />
                   <p className={`figure`}>
                     {currencySymbol} {this.getHumanValue(countryData["Sport ($)"])}
@@ -356,7 +367,7 @@ export default class CountryDetail extends React.Component {
                 <div className="_bar" onClick={() => this.onBarClick('art')} >
                   <Bar 
                     attr={`art`}
-                    width={artWidth} 
+                    width={artWidth * 100} 
                     classMod={'--sport'} />
                   <p className={`figure`}>
                     {currencySymbol} {this.getHumanValue(countryData["Sport & Culture (Top Footballer and Piece of Art)"] - countryData["Sport ($)"])}
@@ -382,9 +393,9 @@ export default class CountryDetail extends React.Component {
                 <div className="_bar" onClick={() => this.onBarClick('tourism')} >
                   <Bar 
                     attr={`tourism`} 
-                    width={tourismWidth} 
+                    width={tourismWidth * 100} 
                     classMod={'--tourism'} />
-                  <p className={`figure`}>
+                  <p className={`figure ${tourismWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["Tourism Receipts"])}
                   </p>
                 </div>

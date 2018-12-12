@@ -204,8 +204,12 @@
 }
 
 .label-cat {
-  width: 100%;
+  width: 50%;
   padding: 0 1rem;
+
+  &.--debt {
+    width: 100%;
+  }
 
   ._bar {
     cursor: pointer;
@@ -218,6 +222,13 @@
 
     .figure {
       margin-left: 1rem;
+      
+      &.--center {
+        position: absolute;
+        color: white;
+        left: 50%;
+        transform: translateX(50%);
+      }
     }
 
     > .Bar {
