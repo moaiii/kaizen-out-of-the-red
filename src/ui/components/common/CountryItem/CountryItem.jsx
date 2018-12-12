@@ -2,14 +2,9 @@
 import * as React from "react";
 
 import Bar from '../../custom/Bar';
-import BusinessLogo from '../../../../assets/svg/business.svg';
+import {AngleTooltip} from './AngleTooltip';
 import Humanize from 'humanize-plus';
-import NationalWealthLogo from '../../../../assets/svg/nat-wealth.svg';
 import ReactCountryFlag from "react-country-flag";
-import ReactSVG from 'react-svg';
-import ResourceLogo from '../../../../assets/svg/resource.svg';
-import SportCultureLogo from '../../../../assets/svg/sportculture.svg';
-import TourismLogo from '../../../../assets/svg/tourism.svg';
 
 export default class CountryItem extends React.Component<Props, State> {
   constructor() {
@@ -21,7 +16,7 @@ export default class CountryItem extends React.Component<Props, State> {
     };
   }
 
-  componentDidMount(): void {
+  componentDidMount() {
     setTimeout(() => {
       this.setState({
         animateClass: "--animate"
@@ -30,20 +25,10 @@ export default class CountryItem extends React.Component<Props, State> {
   }
 
   onBarClick = (attr) => {
-    // let countryName = this.props.data.Country;
-    // this.props.setBarClicked( {countryName, attr} );
-    // this.props.onBarSelected();
-
     this.setState({
       showTooltip: !this.state.showTooltip
     })
   }
-
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return true;
-  };
-
-  componentDidUpdate(prevProps: Props, prevState: State): void {}
 
   getHumanValue = (val) => {
     return Humanize
@@ -53,9 +38,10 @@ export default class CountryItem extends React.Component<Props, State> {
       .replace('M', ' Million')
   }
 
-  render(): React.Element<"div"> {
+  render() {
 
     const { animateClass, showTooltip } = this.state;
+
     const { 
       data, 
       debtMax,
@@ -65,58 +51,65 @@ export default class CountryItem extends React.Component<Props, State> {
       onSelect, 
       walkthroughStep } = this.props;
 
-    let _AngleToolTip = <div 
-      className={`Angle-Tooltip ${showTooltip ? 'show' :''}`}
-      onClick={this.onBarClick}>
-      <div className="arrow" />
-      {
-        this.props.isNationalWealthSelected
-          ? <div className="holder">
-              <ReactSVG 
-                className={`angletooltip__icon`} 
-                src={NationalWealthLogo} />
-              <p>National Wealth {currencySymbol} {this.getHumanValue(data["National Net Wealth"])}</p>
-            </div>
-          : null
-      }
-      <div className="holder">
-        <ReactSVG 
-          className={`angletooltip__icon`} 
-          src={BusinessLogo} />
-        <p>Business {currencySymbol} {this.getHumanValue(data["Business (Top Bank and Company)"])}</p>
-      </div>
-      <div className="holder">
-        <ReactSVG 
-          className={`angletooltip__icon`} 
-          src={ResourceLogo} />
-        <p>Resource {currencySymbol} {this.getHumanValue(data["Resource (Gold and FX Reserves)"])}</p>
-      </div>
-      <div className="holder">
-        <ReactSVG 
-          className={`angletooltip__icon`} 
-          src={TourismLogo} />
-        <p>Tourism {currencySymbol} {this.getHumanValue(data["Tourism Receipts"])}</p>
-      </div>
-      <div className="holder">
-        <ReactSVG 
-          className={`angletooltip__icon`} 
-          src={SportCultureLogo} />
-        <p>Sport & Culture {currencySymbol} {this.getHumanValue(data["Sport & Culture (Top Footballer and Piece of Art)"])}</p>
-      </div>
-    </div>
 
-    let _debtVal = data["National Debt"] * currencyRate;
+    /**
+     * TOOLTIP
+     */
+    let _AngleToolTip = 
+      <AngleTooltip 
+        data={data}
+        currencySymbol={currencySymbol}
+        getHumanValue={this.getHumanValue}/>
+
+
+    /**
+     * WIDTHS OF BARS
+     */
+
+    let _remainingDebt = (data["National Debt"] - data["Total assets (without national wealth)"]) * currencyRate;
+    let debtCleared = Math.max(data["debt cleared"], 100);
+
+
+    /**
+     * WRITE NEATLY
+     */
+    
     let _nationalDebt = Humanize
-      .compactInteger(_debtVal, 1)
+      .compactInteger(_remainingDebt, 1)
       .replace('T', ' Trillion')
       .replace('B', ' Billion');
 
-    let totalDebtWidth = data["National Debt"] / debtMax;
-    let nationalWealthWidth = data["National Net Wealth"] / debtMax;
-    let businessWidth = data['Business (Top Bank and Company)'] / debtMax;
-    let resourceWidth = data["Resource (Gold and FX Reserves)"] / debtMax;
-    let tourismWidth = data["Tourism Receipts"] / debtMax;
-    let sportCultureWidth = data["Sport & Culture (Top Footballer and Piece of Art)"] / debtMax;
+
+    /**
+     * VALUES
+     */
+
+    const nationalWealth = data["National Net Wealth"];
+    const business = data['Business (Top Bank and Company)'];
+    const resource = data["Resource (Gold and FX Reserves)"];
+    const tourism = data["Tourism Receipts"];
+    const sportCulture = data["Sport & Culture (Top Footballer and Piece of Art)"];
+
+    const totalAssets = 
+      nationalWealth 
+      + business
+      + resource
+      + tourism
+      + sportCulture;
+
+    
+    /**
+     * BLUE BAR WIDTHS
+     */
+
+    const _widths = {
+      nationalWealth: Math.ceil(nationalWealth / totalAssets),
+      business: Math.ceil(business / totalAssets),
+      resource: Math.ceil(resource / totalAssets),
+      tourism: Math.ceil(tourism / totalAssets),
+      sportCulture: Math.ceil(sportCulture / totalAssets),
+    };
+
 
     const percPaidOff 
       = isNationalWealthSelected
@@ -124,15 +117,27 @@ export default class CountryItem extends React.Component<Props, State> {
         : ((data['Business (Top Bank and Company)'] + data["Resource (Gold and FX Reserves)"] + data["Tourism Receipts"] + data["Sport & Culture (Top Footballer and Piece of Art)"]) / data["National Debt"] * 100);
 
 
-    let _redBarMod = walkthroughStep !== 2 && walkthroughStep < 5 ? '0.1' : '1';
-    let _blueBarMod = walkthroughStep !== 3 && walkthroughStep < 5 ? '0.1' : '1';
+    /**
+     * WALKTHROUGH STEPS
+     */
+    let _blueBarMod = walkthroughStep !== 3 && walkthroughStep < 5 
+      ? '0.1' 
+      : '1';
+
     let _walkthroughStyle = {
-      'opacity': walkthroughStep < 5 ? '0.1' : '1'
+      'opacity': walkthroughStep < 5 
+        ? '0.1' : '1'
     };
 
+
+    /**
+     * CUSTOM STYLES
+     */
     let _hideBorder = {
-      'borderBottom': walkthroughStep < 5 ? 'none' : '1px solid #3566B2'
+      'borderBottom': walkthroughStep < 5 
+        ? 'none' : '1px solid #3566B2'
     };
+
 
     // FINAL RENDERED JSX
     return (
@@ -153,20 +158,35 @@ export default class CountryItem extends React.Component<Props, State> {
           </div>
           <div className="stacked-bar-chart">
             {_AngleToolTip}
-            <div className="stack">
-              {isNationalWealthSelected 
-                ? <Bar 
-                    style={{'opacity':_blueBarMod}} 
-                    attr={'National Net Wealth'} 
-                    width={nationalWealthWidth} 
-                    classMod={'--national-wealth'} 
-                    onClick={this.onBarClick}/>  
-                : null 
-              }
-              <Bar style={{'opacity':_blueBarMod}} attr={'Business (Top Bank and Company)'} width={businessWidth} classMod={'--business'} onClick={this.onBarClick}/>  
-              <Bar style={{'opacity':_blueBarMod}} attr={'Resource (Gold and FX Reserves)'} width={resourceWidth} classMod={'--resource'} onClick={this.onBarClick}/>  
-              <Bar style={{'opacity':_blueBarMod}} attr={'Tourism Receipts'} width={tourismWidth} classMod={'--tourism'} onClick={this.onBarClick}/>  
-              <Bar style={{'opacity':_blueBarMod}} attr={'Sport & Culture (Top Footballer and Piece of Art)'} width={sportCultureWidth} classMod={'--sport'} onClick={this.onBarClick}/>  
+            <div className="stack" style={
+                {
+                  width:`${debtCleared / 100}%`
+                }
+              }>
+              <Bar 
+                style={{'opacity':_blueBarMod}} 
+                attr={'Business (Top Bank and Company)'} 
+                width={_widths.business} 
+                classMod={'--business'} 
+                onClick={this.onBarClick}/>  
+              <Bar 
+                style={{'opacity':_blueBarMod}} 
+                attr={'Resource (Gold and FX Reserves)'} 
+                width={_widths.resource} 
+                classMod={'--resource'} 
+                onClick={this.onBarClick}/>  
+              <Bar 
+                style={{'opacity':_blueBarMod}} 
+                attr={'Tourism Receipts'} 
+                width={_widths.tourism} 
+                classMod={'--tourism'} 
+                onClick={this.onBarClick}/>  
+              <Bar 
+                style={{'opacity':_blueBarMod}} 
+                attr={'Sport & Culture (Top Footballer and Piece of Art)'} 
+                width={_widths.sportCulture} 
+                classMod={'--sport'} 
+                onClick={this.onBarClick}/>  
             </div>
           </div>
         </div>
@@ -177,7 +197,7 @@ export default class CountryItem extends React.Component<Props, State> {
               <p>{currencySymbol} {_nationalDebt} </p>
             </div>
             <div className="bottom">
-              <p>{Math.ceil(percPaidOff)} %</p>
+              <p>{Math.ceil(debtCleared)} %</p>
               <p>Cleared</p>
             </div>
           </div>

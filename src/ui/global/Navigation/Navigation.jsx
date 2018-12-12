@@ -105,84 +105,50 @@ export default class Navigation extends React.Component<Props, State> {
             </div>
             <div className="bttm-lhs">
               <div className="controls">
-                <div className="control --national-wealth" 
-                  style={xClass}>
-                  <ReactSVG 
-                    className={`control__icon`} 
-                    src={NationalWealthLogo} />
-                  <p>National Wealth</p>
-                  <div className="icon-stack">
-                    <ReactSVG 
-                      onClick={() => this._setNationalWealthSelection()} 
-                      src={WatchingLogo} 
-                      className={`watch-logo ${_viewMod}`}/>
-                    <ReactSVG 
-                      onClick={() => this._bringUpInfoModal('national wealth')} 
-                      src={InfoLogo} />
-                  </div>
-                </div>
                 <div className="control" 
-                  style={yClass}
-                  /** onClick={() => this._handleControlSelect('business')}*/>
+                  style={yClass}>
                   <ReactSVG className={`control__icon`} src={BusinessLogo} />
                   <p>Business</p>
                   <div 
                     className="icon-stack" 
                     onClick={() => this._bringUpInfoModal('business')}>
-                    <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
+                    <ReactSVG src={InfoLogo} />
                   </div>
                 </div>
                 <div className="control" 
-                  style={yClass}
-                  /** onClick={() => this._handleControlSelect('resouce')}*/>
+                  style={yClass}>
                   <ReactSVG className={`control__icon`} src={ResourceLogo} />
                   <p>Resource</p>
                   <div 
                     className="icon-stack" 
                     onClick={() => this._bringUpInfoModal('resource')}>
-                    <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
+                    <ReactSVG src={InfoLogo} />
                   </div>
                 </div>
                 <div className="control" 
-                style={yClass}
-                  /** onClick={() => this._handleControlSelect('tourism')}*/>
+                  style={yClass}>
                   <ReactSVG className={`control__icon`} src={TourismLogo} />
                   <p>Tourism</p>
                   <div 
                     className="icon-stack" 
                     onClick={() => this._bringUpInfoModal('tourism')}>
-                    <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
+                    <ReactSVG src={InfoLogo} />
+                  </div>
+                </div>
+                <div className="control" 
+                  style={yClass}>
+                  <ReactSVG className={`control__icon`} src={SportCultureLogo} />
+                  <p>Sport & Culture</p>
+                  <div className="icon-stack" onClick={() => this._bringUpInfoModal('sport and culture')}>
+                    <ReactSVG src={InfoLogo} />
                   </div>
                 </div>
               </div>
               <Currency />
             </div>
-            {/* <div className="debt-card --nav" style={debtBoxStyle}> */}
-              {/* <div className="twotone">
-                <div className="top">
-                  <p>National debt</p>
-                </div>
-                <div className="paid-off">
-                  <p>How much could be cleared</p>
-                </div>
-              </div> */}
-            {/* </div> */}
           </div>
         </div>
       </div>
     );
   }
-} 
-
-// <div 
-// className="control" 
-// style={yClass}
-// /** onClick={() => this._handleControlSelect('sport & culture')}*/>
-// <ReactSVG className={`control__icon`} src={SportCultureLogo} />
-// <p>Sport & Culture</p>
-// <div 
-//   className="icon-stack" 
-//   onClick={() => this._bringUpInfoModal('sport and culture')}>
-//   <ReactSVG /*style={iconBottom}*/ src={InfoLogo} />
-// </div>
-// </div>
+}
