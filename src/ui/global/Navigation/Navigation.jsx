@@ -72,7 +72,7 @@ export default class Navigation extends React.Component {
     let _viewMod = isNationalWealthSelected ? '--isActive' : '';
 
     let _x = {
-      'opacity': walkthroughStep !== 2 && walkthroughStep !== 5 
+      'opacity': walkthroughStep !== 2 && walkthroughStep !== 5 && walkthroughStep !== 6
         ? '0.1' : '1'
     };
     

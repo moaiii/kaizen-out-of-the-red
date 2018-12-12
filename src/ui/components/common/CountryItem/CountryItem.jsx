@@ -135,7 +135,7 @@ export default class CountryItem extends React.Component {
     };
 
     let _x = {
-      'opacity': walkthroughStep !== 2 && walkthroughStep !== 5 
+      'opacity': walkthroughStep !== 2 && walkthroughStep !== 5 && walkthroughStep !== 6
         ? '0.1' : '1'
     };
 
