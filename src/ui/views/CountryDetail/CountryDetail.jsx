@@ -270,7 +270,7 @@ export default class CountryDetail extends React.Component {
           </div>
 
           {/* 
-          RESOURCE
+            RESOURCE
           */}
 
           <div className="row">
@@ -319,7 +319,7 @@ export default class CountryDetail extends React.Component {
           </div>
           
           {/* 
-          SPORT AND CULTURE
+            SPORT AND CULTURE
           */}
 
           <div className="row">
