@@ -7,7 +7,7 @@ import BusinessLogo from '../../../../assets/svg/business.svg';
 import NationalWealthLogo from '../../../../assets/svg/nat-wealth.svg';
 
 
-export const AngleTooltip = ({data, currencySymbol, getHumanValue}) => {
+const AngleTooltip = ({data, currencySymbol, getHumanValue}) => {
     return(
         <div 
             className={`Angle-Tooltip ${showTooltip ? 'show' :''}`}
@@ -46,3 +46,5 @@ export const AngleTooltip = ({data, currencySymbol, getHumanValue}) => {
         </div>
     )
 }
+
+export default AngleTooltip;

@@ -19,12 +19,12 @@ export default class Bar extends React.Component<Props, State> {
     }, 50);
   }
 
-  render(): React.Element<"div"> {
+  render() {
     let { animateClass } = this.state;
     let { width, classMod, style } = this.props;
 
     let _style = Object.assign({}, style, {
-      width: `${width * 100}%`
+      width: `${width}%`
     });
 
     return (

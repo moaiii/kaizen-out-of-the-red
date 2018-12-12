@@ -2,11 +2,11 @@
 import * as React from "react";
 
 import Bar from '../../custom/Bar';
-import {AngleTooltip} from './AngleTooltip';
+import AngleTooltip from './AngleTooltip';
 import Humanize from 'humanize-plus';
 import ReactCountryFlag from "react-country-flag";
 
-export default class CountryItem extends React.Component<Props, State> {
+export default class CountryItem extends React.Component {
   constructor() {
     super();
 
@@ -24,7 +24,7 @@ export default class CountryItem extends React.Component<Props, State> {
     }, 50);
   }
 
-  onBarClick = (attr) => {
+  onBarClick = () => {
     this.setState({
       showTooltip: !this.state.showTooltip
     })
@@ -65,9 +65,14 @@ export default class CountryItem extends React.Component<Props, State> {
     /**
      * WIDTHS OF BARS
      */
+    
+    let _inProfit = data["Total assets (without national wealth)"] > data["National Debt"];
 
     let _remainingDebt = (data["National Debt"] - data["Total assets (without national wealth)"]) * currencyRate;
-    let debtCleared = Math.max(data["debt cleared"], 100);
+    
+    let _debtCleared = Math.min(data["debt cleared"], 100);
+
+    let _profit = Math.ceil(100 - data["debt cleared"]);
 
 
     /**
@@ -75,10 +80,15 @@ export default class CountryItem extends React.Component<Props, State> {
      */
     
     let _nationalDebt = Humanize
-      .compactInteger(_remainingDebt, 1)
+      .compactInteger(data["National Debt"], 1)
       .replace('T', ' Trillion')
       .replace('B', ' Billion');
 
+
+    let _remainingDebtString = Humanize
+      .compactInteger(_remainingDebt, 1)
+      .replace('T', ' Trillion')
+      .replace('B', ' Billion');
 
     /**
      * VALUES
@@ -109,12 +119,6 @@ export default class CountryItem extends React.Component<Props, State> {
       tourism: Math.ceil(tourism / totalAssets),
       sportCulture: Math.ceil(sportCulture / totalAssets),
     };
-
-
-    const percPaidOff 
-      = isNationalWealthSelected
-        ? ((data["National Net Wealth"] + data['Business (Top Bank and Company)'] + data["Resource (Gold and FX Reserves)"] + data["Tourism Receipts"] + data["Sport & Culture (Top Footballer and Piece of Art)"]) / data["National Debt"] * 100) 
-        : ((data['Business (Top Bank and Company)'] + data["Resource (Gold and FX Reserves)"] + data["Tourism Receipts"] + data["Sport & Culture (Top Footballer and Piece of Art)"]) / data["National Debt"] * 100);
 
 
     /**
@@ -160,7 +164,7 @@ export default class CountryItem extends React.Component<Props, State> {
             {_AngleToolTip}
             <div className="stack" style={
                 {
-                  width:`${debtCleared / 100}%`
+                  width:`${_debtCleared}%`
                 }
               }>
               <Bar 
@@ -174,7 +178,7 @@ export default class CountryItem extends React.Component<Props, State> {
                 attr={'Resource (Gold and FX Reserves)'} 
                 width={_widths.resource} 
                 classMod={'--resource'} 
-                onClick={this.onBarClick}/>  
+                onClick={this.onBarClick}/>
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Tourism Receipts'} 
@@ -194,11 +198,11 @@ export default class CountryItem extends React.Component<Props, State> {
           <div className="inner">
             <div className="top">
               <p className={'--small'}>Remaining Debt</p>
-              <p>{currencySymbol} {_nationalDebt} </p>
+              <p>{currencySymbol} {_remainingDebtString} </p>
             </div>
             <div className="bottom">
-              <p>{Math.ceil(debtCleared)} %</p>
-              <p>Cleared</p>
+              <p>{_inProfit ? _profit : _debtCleared} %</p>
+              <p>{_inProfit ? "Profit" : "Cleared"}</p>
             </div>
           </div>
         </div>

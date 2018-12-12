@@ -1,26 +1,15 @@
 // @flow
-// NODE MODULES
 import * as React from "react";
 
 import BusinessLogo from '../../../assets/svg/business.svg';
-// COMPONENTS
 import Currency from '../../components/custom/Currency';
 import InfoLogo from '../../../assets/svg/info.svg';
-// ASSETS
-import NationalWealthLogo from '../../../assets/svg/nat-wealth.svg';
 import ReactSVG from 'react-svg';
 import ResourceLogo from '../../../assets/svg/resource.svg';
 import SportCultureLogo from '../../../assets/svg/sportculture.svg';
 import TourismLogo from '../../../assets/svg/tourism.svg';
-import WatchingLogo from '../../../assets/svg/watching.svg';
 
-type State = {
-  animateClass: string,
-  setNationalWealthSelection: boolean
-};
-
-// COMPONENT
-export default class Navigation extends React.Component<Props, State> {
+export default class Navigation extends React.Component {
   constructor() {
     super();
 
@@ -29,20 +18,13 @@ export default class Navigation extends React.Component<Props, State> {
     };
   }
 
-  // CLASS FUNCTIONS
-  componentDidMount(): void {
+  componentDidMount() {
     setTimeout(() => {
       this.setState({
         animateClass: "--animate"
       })
     }, 50);
   }
-
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return true;
-  };
-
-  componentDidUpdate(prevProps: Props, prevState: State): void {}
 
   _setNationalWealthSelection = ( ) => {
     this.props.setNationalWealthSelection( !this.props.isNationalWealthSelected )
@@ -52,37 +34,44 @@ export default class Navigation extends React.Component<Props, State> {
     this.props.setInfoModal(type);
   }
 
-  render(): React.Element<"div"> {
+  render() {
 
-    // VARIABLES
+
+    /** 
+     * VARIABLES
+     **/
+
     const { isNationalWealthSelected, walkthroughStep } = this.props;
     const { animateClass } = this.state;
 
-    // DYNAMIC STYLES AND CLASSES
-    // ...
 
-    // PRIVATE COMPONENTS
-    // ...
+    /**
+     * CUSTOM STYLES 
+     */
 
     let styleBanner = { 
       opacity: walkthroughStep < 5 ? '0.1' : 1,
       // backgroundColor: walkthroughStep < 5 ? 'white' : '#101754' 
     }
-    let styleBottom = { opacity: walkthroughStep < 5 && walkthroughStep !== 1 & walkthroughStep !== 4 ? '0.1' : 1 }
-    // let iconBottom = { transform: walkthroughStep < 5 && walkthroughStep !== 1 ? 'scale(1)' : 'scale(2)' }
+    let styleBottom = { opacity: walkthroughStep < 5 && walkthroughStep !== 1 & walkthroughStep !== 4 
+        ? '0.1' : 1 
+    }
 
     let xClass = { 
-      opacity: (walkthroughStep === 4 || walkthroughStep === 1 || walkthroughStep === 5 || walkthroughStep === 6)  ? '1' : '0.1' 
+      opacity: (walkthroughStep === 4 || walkthroughStep === 1 || walkthroughStep === 5 || walkthroughStep === 6)  
+        ? '1' : '0.1' 
     }
+
     let yClass = { 
-      opacity: walkthroughStep === 4 ? '0.1' : '1' 
+      opacity: walkthroughStep === 4 
+        ? '0.1' : '1' 
     }
 
     let debtBoxStyle = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
 
     let _viewMod = isNationalWealthSelected ? '--isActive' : '';
+    
 
-    // FINAL RENDERED JSX
     return (
       <div className={`Navigation ${ animateClass }`}>
         <div className="banner" style={styleBanner}>

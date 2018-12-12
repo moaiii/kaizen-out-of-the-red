@@ -1,5 +1,4 @@
 // @flow
-// NODE MODULES
 import * as React from "react";
 
 import ArtLogo from '../../../assets/svg/art.svg';
@@ -20,23 +19,11 @@ import SportCultureLogo from '../../../assets/svg/sportculture.svg';
 import Tooltip from '../../components/custom/Tooltip';
 import TourismLogo from '../../../assets/svg/tourism.svg';
 import WalkthroughModal from "../../components/common/WalkthroughModal";
+import Tooltip from './Tooltip';
 
-type Props = {
-  walkthroughInfoIsOpen: boolean,
-  data: Object,
-  modalIsActive: boolean,
-  currencyRate: number,
-  currencySymbol: string,
-};
-
-type State = {
-  nameFromUrlParams: string,
-  countryData: Object,
-  dataProps: Array<Object>
-};
 
 // COMPONENT
-export default class CountryDetail extends React.Component<Props, State> {
+export default class CountryDetail extends React.Component {
   constructor() {
     super();
 
@@ -47,9 +34,7 @@ export default class CountryDetail extends React.Component<Props, State> {
     };
   }
 
-  // LIFECYCLE FUNCTIONS 
-
-  componentDidMount(): void {
+  componentDidMount() {
     this.setState({
       nameFromUrlParams: decodeURI(new URL(window.location.href).hash.split('name=')[1])
     }, () => {
@@ -58,10 +43,7 @@ export default class CountryDetail extends React.Component<Props, State> {
     })
   }
 
-  componentWillUnmount(): void {
-  }
-
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
+  shouldComponentUpdate(nextProps, nextState) {
     return true;
   };
 
@@ -147,60 +129,54 @@ export default class CountryDetail extends React.Component<Props, State> {
     });
   }
 
-  render(): React.Element<"div"> {
+  render() {
     const { countryData, dataProps } = this.state;
-    const { data, walkthroughInfoIsOpen, currencySymbol } = this.props;
+    const { data, walkthroughInfoIsOpen, currencySymbol, setModalIsActive } = this.props;
 
-    let maxBarValue = Math.max(...[countryData['National Debt'], 
-      countryData['National Net Wealth'], 
-      countryData['Business (Top Bank and Company)'], 
-      countryData['Resource (Gold and FX Reserves)'], 
-      countryData['Tourism Receipts']]); 
 
-    // let _nationalDebt = parseInt(Humanize.compactInteger(countryData["National Debt"], 1)) * currencyRate;
-    let nationalDebtWidth = 0.5;
-    let nationalWealthWidth = countryData["National Net Wealth"] / countryData["National Debt"];
-    let bankWidth = countryData["Total Assets"] / countryData["National Debt"];
-    let companyWidth = countryData["VALUE"] / countryData["National Debt"];
-    let goldWidth = countryData["FX Reserves Value"] / countryData["National Debt"];
-    let foreignWidth = countryData["Resource Net Wealth"] / countryData["National Debt"];
-    let tourismWidth = countryData["Tourism Receipts"] / countryData["National Debt"];
-    let footballWidth = countryData["Sport ($)"] / countryData["National Debt"];
-    let artWidth = (countryData["Sport ($)"] - countryData["Sport & Culture Net Wealth"]) / countryData["National Debt"];
+    /**
+     * widths
+     */
+
+    let nationalDebtWidth = 1;
+    // let nationalWealthWidth = Math.min(countryData["National Net Wealth"] / countryData["National Debt"], 1);
+    let bankWidth = Math.min(countryData["Total Assets"] / countryData["National Debt"], 1);
+    let companyWidth = Math.min(countryData["VALUE"] / countryData["National Debt"], 1);
+    let goldWidth = Math.min(countryData["FX Reserves Value"] / countryData["National Debt"], 1);
+    let foreignWidth = Math.min(countryData["Resource Net Wealth"] / countryData["National Debt"], 1);
+    let tourismWidth = Math.min(countryData["Tourism Receipts"] / countryData["National Debt"], 1);
+    let footballWidth = Math.min(countryData["Sport ($)"] / countryData["National Debt"], 1);
+    let artWidth = Math.min((countryData["Sport & Culture (Top Footballer and Piece of Art)"] - countryData["Sport ($)"]) / countryData["National Debt"], 1);
+
+
+    /**
+     * Tooltip
+     */
 
     let _tooltip 
-      = <div className="details__tooltip">
-          {
-            dataProps.map( (x, index) => {
-              let $ = typeof x[1] === 'number'
-                ? `${this.props.currencySymbol} ${Humanize.compactInteger(Math.ceil((x[1] * this.props.currencyRate)), 1)}`
-                : x[1];
+      = <Tooltip 
+          dataProps={dataProps} 
+          currencySymbol={currencySymbol} 
+          currencyRate={this.props.currencyRate}
+          setModalIsActive={setModalIsActive} />
 
-              return(
-                <span className={'item'} key={`${index}-tooltip-country-detail`}>
-                  <p className={`a`}>{x[0]}</p>
-                  <p className={`angle`}> > </p>
-                  <p className={`b`}>{$}</p>
-                </span>
-              )
-            })
-          }
-          <div className="footer">
-            <button onClick={() => this.props.setModalIsActive(false)}>
-              <h2>Close X</h2>  
-            </button>        
-          </div>
-        </div>
+    /**
+     * Custom components
+     */
 
-    let $ = walkthroughInfoIsOpen 
-      ? <WalkthroughModal /> 
-      : _tooltip;
+    let $ = 
+      walkthroughInfoIsOpen 
+        ? <WalkthroughModal /> 
+        : _tooltip;
 
-    let countryFlag = countryData.code
-      ? <ReactCountryFlag code={countryData.code} svg/>
-      : null;
+    let countryFlag = 
+      countryData.code
+        ? <ReactCountryFlag code={countryData.code} svg/>
+        : null;
 
-    let _modal = <Modal modalComponent={ $ } />;
+    let _modal = 
+      <Modal modalComponent={ $ } />;
+
 
     return (
       <div className={`CountryDetail`}>
@@ -215,6 +191,10 @@ export default class CountryDetail extends React.Component<Props, State> {
           </div>
           </div>
         <div className="data-vis">
+
+          {/* 
+            NATIONAL DEBT
+          */}
 
           <div className="row --top">
             <div className="label">
@@ -239,6 +219,10 @@ export default class CountryDetail extends React.Component<Props, State> {
           </div>
 
           <hr/>
+          
+          {/* 
+            BUSINESS AND FINANCE
+          */}
 
           <div className="row">
             <div className="label">
@@ -285,6 +269,10 @@ export default class CountryDetail extends React.Component<Props, State> {
             </div>
           </div>
 
+          {/* 
+          RESOURCE
+          */}
+
           <div className="row">
             <div className="label">
               <ReactSVG 
@@ -329,6 +317,10 @@ export default class CountryDetail extends React.Component<Props, State> {
               </div>
             </div>
           </div>
+          
+          {/* 
+          SPORT AND CULTURE
+          */}
 
           <div className="row">
             <div className="label">
@@ -374,6 +366,10 @@ export default class CountryDetail extends React.Component<Props, State> {
               </div>
             </div>
           </div>
+          
+          {/* 
+          TOURISM
+          */}
 
           <div className="row --tourism">
             <div className="label">
@@ -396,9 +392,13 @@ export default class CountryDetail extends React.Component<Props, State> {
               </div>
             </div>
           </div>
-
           <hr/>
         </div>
+
+        {/* 
+          BACK BUTTON  
+        */}
+
         <div className="footer">
           <button onClick={() => this._goBack()}>
             <h2>{`< Back`}</h2>  
@@ -408,63 +408,3 @@ export default class CountryDetail extends React.Component<Props, State> {
     );
   }
 }
-
-
-
-
-          
-{/* <div className="row">
-<div className="label">
-  <ReactSVG className={`label__icon`} src={ResourceLogo} />
-  <p>Resources</p>
-</div>
-<div className="sub-labels">
-  <div className="label">
-    <ReactSVG className={`label__icon`} src={ResourceLogo} />
-    <p>Gold</p>
-  </div>
-  <div className="label">
-    <ReactSVG className={`label__icon`} src={FCRLogo} />
-    <p>Foreign currency reserves</p>
-  </div>
-</div>
-<div className="bar-group">
-  <Bar attr={`gold`} onClick={() => this.onBarClick('gold')} width={goldWidth} classMod={'--resource'} />
-  <Bar attr={`fx`} onClick={() => this.onBarClick('fx')} width={foreignWidth} classMod={'--resource'} />
-</div>
-</div> */}
-
-
-
-
-{/* <div className="row">
-<div className="label">
-  <ReactSVG className={`label__icon`} src={TourismLogo} />
-  <p>Tourism</p>
-</div>
-<div className="bar-group">
-  <Bar attr={`tourism`} onClick={() => this.onBarClick('tourism')} width={tourismWidth} classMod={'--tourism'} />
-</div>
-</div> */}
-
-
-// <div className="row">
-// <div className="label">
-//   <ReactSVG className={`label__icon`} src={SportCultureLogo} />
-//   <p>Sport & Culture</p>
-// </div>
-// <div className="sub-labels">
-//   <div className="label">
-//     <ReactSVG className={`label__icon`} src={FootballLogo} />
-//     <p>Footballer</p>
-//   </div>
-//   <div className="label">
-//     <ReactSVG className={`label__icon`} src={ArtLogo} />
-//     <p>Art/ Artist</p>
-//   </div>
-// </div>
-// <div className="bar-group">
-//   <Bar attr={`football`} onClick={() => this.onBarClick('football')} width={footballWidth} classMod={'--sport'} />
-//   <Bar attr={`art`} onClick={() => this.onBarClick('art')} width={artWidth} classMod={'--sport'} />
-// </div>
-// </div>
