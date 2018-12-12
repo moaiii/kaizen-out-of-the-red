@@ -17,10 +17,9 @@ import ReactSVG from 'react-svg';
 import ResourceLogo from '../../../assets/svg/resource.svg';
 import SportCultureLogo from '../../../assets/svg/sportculture.svg';
 import Tooltip from '../../components/custom/Tooltip';
+import {TooltipOther} from './Tooltip';
 import TourismLogo from '../../../assets/svg/tourism.svg';
 import WalkthroughModal from "../../components/common/WalkthroughModal";
-import Tooltip from './Tooltip';
-
 
 // COMPONENT
 export default class CountryDetail extends React.Component {
@@ -154,7 +153,7 @@ export default class CountryDetail extends React.Component {
      */
 
     let _tooltip 
-      = <Tooltip 
+      = <TooltipOther
           dataProps={dataProps} 
           currencySymbol={currencySymbol} 
           currencyRate={this.props.currencyRate}

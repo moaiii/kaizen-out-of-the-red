@@ -1,8 +1,8 @@
 // @flow
 import * as React from "react";
 
-import Bar from '../../custom/Bar';
 import AngleTooltip from './AngleTooltip';
+import Bar from '../../custom/Bar';
 import Humanize from 'humanize-plus';
 import ReactCountryFlag from "react-country-flag";
 
@@ -57,6 +57,8 @@ export default class CountryItem extends React.Component {
      */
     let _AngleToolTip = 
       <AngleTooltip 
+        showTooltip={showTooltip}
+        onBarClick={this.onBarClick}
         data={data}
         currencySymbol={currencySymbol}
         getHumanValue={this.getHumanValue}/>
@@ -68,11 +70,11 @@ export default class CountryItem extends React.Component {
     
     let _inProfit = data["Total assets (without national wealth)"] > data["National Debt"];
 
-    let _remainingDebt = (data["National Debt"] - data["Total assets (without national wealth)"]) * currencyRate;
+    let _remainingDebt = Math.abs((data["National Debt"] - data["Total assets (without national wealth)"]) * currencyRate);
     
-    let _debtCleared = Math.min(data["debt cleared"], 100);
+    let _debtCleared = Math.min(data["debt cleared"], 100).toFixed(0);
 
-    let _profit = Math.ceil(100 - data["debt cleared"]);
+    let _profit = Math.ceil(data["debt cleared"] - 100);
 
 
     /**
@@ -101,7 +103,7 @@ export default class CountryItem extends React.Component {
     const sportCulture = data["Sport & Culture (Top Footballer and Piece of Art)"];
 
     const totalAssets = 
-      nationalWealth 
+      // nationalWealth 
       + business
       + resource
       + tourism
@@ -113,11 +115,10 @@ export default class CountryItem extends React.Component {
      */
 
     const _widths = {
-      nationalWealth: Math.ceil(nationalWealth / totalAssets),
-      business: Math.ceil(business / totalAssets),
-      resource: Math.ceil(resource / totalAssets),
-      tourism: Math.ceil(tourism / totalAssets),
-      sportCulture: Math.ceil(sportCulture / totalAssets),
+      business: business / totalAssets,
+      resource: resource / totalAssets,
+      tourism: tourism / totalAssets,
+      sportCulture: sportCulture / totalAssets,
     };
 
 
@@ -161,34 +162,34 @@ export default class CountryItem extends React.Component {
             </div>
           </div>
           <div className="stacked-bar-chart">
-            {_AngleToolTip}
             <div className="stack" style={
-                {
-                  width:`${_debtCleared}%`
-                }
-              }>
+              {
+                width:`${_debtCleared}%`
+              }
+            }>
+              {_AngleToolTip}
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Business (Top Bank and Company)'} 
-                width={_widths.business} 
+                width={_widths.business * 100} 
                 classMod={'--business'} 
                 onClick={this.onBarClick}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Resource (Gold and FX Reserves)'} 
-                width={_widths.resource} 
+                width={_widths.resource * 100} 
                 classMod={'--resource'} 
                 onClick={this.onBarClick}/>
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Tourism Receipts'} 
-                width={_widths.tourism} 
+                width={_widths.tourism * 100} 
                 classMod={'--tourism'} 
                 onClick={this.onBarClick}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Sport & Culture (Top Footballer and Piece of Art)'} 
-                width={_widths.sportCulture} 
+                width={_widths.sportCulture * 100} 
                 classMod={'--sport'} 
                 onClick={this.onBarClick}/>  
             </div>
@@ -197,7 +198,7 @@ export default class CountryItem extends React.Component {
         <div className="debt-card" style={_walkthroughStyle}>
           <div className="inner">
             <div className="top">
-              <p className={'--small'}>Remaining Debt</p>
+              <p className={'--small'}>{_inProfit ? "Remaining profit" : "Remaining debt"}</p>
               <p>{currencySymbol} {_remainingDebtString} </p>
             </div>
             <div className="bottom">

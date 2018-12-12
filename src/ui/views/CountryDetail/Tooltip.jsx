@@ -1,7 +1,12 @@
-import React from 'react';
 import Humanize from 'humanize-plus';
+import React from 'react';
 
-const Tooltip = ({dataProps, currencySymbol, currencyRate, setModalIsActive}) => {
+export const TooltipOther = ({
+  dataProps, 
+  currencySymbol, 
+  currencyRate, 
+  setModalIsActive
+}) => {
     return (
         <div className="details__tooltip">
           {

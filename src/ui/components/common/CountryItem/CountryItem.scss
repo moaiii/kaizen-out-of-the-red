@@ -64,6 +64,8 @@
   max-width: 50%;
   height: 40px;
   position: relative;
+  background-color: #ECEDEB;
+  border-radius: 1px;
   
   @media(max-width: $mobilebreak) {
     height: 30px;
@@ -71,8 +73,10 @@
   }
 
   .stack {
+    position: relative;
     display: flex;
     height: 100%;
+    border-radius: 1px;
     background-color: #ECEDEB;
   }
 }
@@ -160,9 +164,10 @@
   background-color: #F4F4F4;
   padding: 2rem;
   position: absolute;
-  left: -10%;
-  top: 50%;
-  transform: translate(-50%, -50%, 0%);
+  left: 50%;
+  min-width: 350px;
+  top: 100%;
+  transform: translate3d(-50%, 0, 0);
   display: none;
 
   p {

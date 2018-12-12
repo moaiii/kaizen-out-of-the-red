@@ -98,24 +98,14 @@ export default class CountryList extends React.Component {
     let _modal = <Modal modalComponent={ $ } />;
 
     let _countryItemsInRed
-      = data
-        .filter(country => {
-            if(isNationalWealthSelected) {
-              return country["National Net Wealth"] < country["National Debt"]
-            } else {
-              return country["Total assets (with national wealth)"] < country["National Debt"]
-            }
-          })
+      = data.filter(country => {
+          return parseInt(country["debt cleared"], 10) < 100
+        })
 
     let _countryItemsInBlack
-      = data
-        .filter(country => {
-            if(isNationalWealthSelected) {
-              return country["National Net Wealth"] > country["National Debt"]
-            } else {
-              return country["Total assets (with national wealth)"] > country["National Debt"]
-            }
-          })
+      = data.filter(country => {
+          return parseInt(country["debt cleared"], 10) > 100
+        })
 
     return (
       <div className={`CountryList`}>
