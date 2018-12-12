@@ -134,6 +134,11 @@ export default class CountryItem extends React.Component {
         ? '0.1' : '1'
     };
 
+    let _x = {
+      'opacity': walkthroughStep !== 2 && walkthroughStep !== 5 
+        ? '0.1' : '1'
+    };
+
 
     /**
      * CUSTOM STYLES
@@ -153,7 +158,7 @@ export default class CountryItem extends React.Component {
               <ReactCountryFlag code={data.code} svg/>
               <h3>{data.Country}</h3>
             </div>
-            <div className="debt-card-national">
+            <div className="debt-card-national" style={_x}>
               <div className="inner">
                 <div className="top">
                   <p>{currencySymbol} {_nationalDebt} </p>

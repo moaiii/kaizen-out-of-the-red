@@ -88,6 +88,7 @@ export default class CountryList extends React.Component {
       countryDataSelected, 
       dataSelection, 
       infoModal, 
+      walkthroughStep,
       isNationalWealthSelected,
       walkthroughInfoIsOpen } = this.props;
 
@@ -107,17 +108,23 @@ export default class CountryList extends React.Component {
           return parseInt(country["debt cleared"], 10) > 100
         })
 
+    console.log('walkthroughStep', walkthroughStep)
+
+    let _style = {
+      opacity: walkthroughStep < 5 ? "0.1" : "1"
+    }
+
     return (
       <div className={`CountryList`}>
         { _modal }
         <Walkthrough />
         <Navigation />
         <div className="list">
-          <div className={`list-banner --red`}>
+          <div className={`list-banner --red`} style={_style}>
             <h2>In the red</h2>
           </div>
           {this.renderCountryItems(_countryItemsInRed)}
-          <div className={`list-banner --black`}>
+          <div className={`list-banner --black`} style={_style}>
             <h2>In the black</h2>
           </div>
           {this.renderCountryItems(_countryItemsInBlack)}

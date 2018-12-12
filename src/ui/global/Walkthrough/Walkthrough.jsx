@@ -38,9 +38,9 @@ export default class Walkthrough extends React.Component<Props, State> {
     let text;
 
     if( walkthroughStep === 1 ) text = `Click the i to find out more about each asset`
-    if( walkthroughStep === 2 ) text = `The red bar shows the overall national debt of the country`
+    if( walkthroughStep === 2 ) text = `The red bar box the overall national debt of the country`
     if( walkthroughStep === 3 ) text = `Click the assets to see how much national debt could be paid off by selling them`
-    if( walkthroughStep === 4 ) text = `You can switch National Wealth on or off to see how countries would fare without it`
+    if( walkthroughStep === 4 ) text = `WHAT ELSE TO SHOW NOW NO NATIONAL WEALTH ??`
 
     return text;
   }

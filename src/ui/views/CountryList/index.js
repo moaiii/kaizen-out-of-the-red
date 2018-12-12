@@ -9,6 +9,7 @@ function mapStoreToProps( store ) {
     data: store.GlobalReducer.data,
     isNationalWealthSelected: store.GlobalReducer.isNationalWealthSelected,
     walkthroughInfoIsOpen: store.GlobalReducer.walkthroughInfoIsOpen,
+    walkthroughStep: store.GlobalReducer.walkthroughStep,
     infoModal: store.GlobalReducer.infoModal,
     modalIsActive: store.GlobalReducer.modalIsActive,
     dataSelection: store.GlobalReducer.barSelected.dataLabel,

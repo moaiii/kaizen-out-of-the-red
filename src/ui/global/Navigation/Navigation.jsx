@@ -70,6 +70,11 @@ export default class Navigation extends React.Component {
     let debtBoxStyle = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
 
     let _viewMod = isNationalWealthSelected ? '--isActive' : '';
+
+    let _x = {
+      'opacity': walkthroughStep !== 2 && walkthroughStep !== 5 
+        ? '0.1' : '1'
+    };
     
 
     return (
@@ -79,20 +84,20 @@ export default class Navigation extends React.Component {
             Most countries are in trillions of debt to other nations in what seems like a never ending cycle of IOU's. If these countries needed to actually pay up, what assets could they sell to do so?
           </p>
         </div>
-        <div className="bottom" style={styleBottom}>
+        <div className="bottom">
           <div className="inner">
             <div className="column-titles">
-              <div className="column-country">
+              <div className="column-country" style={styleBanner}>
                 <p>Country Name</p>
               </div>
-              <div className="column-debt">
+              <div className="column-debt" style={_x}>
                 <div className="block">
                   <p>National Debt</p>
                 </div>
               </div>
               <Currency />
             </div>
-            <div className="bttm-lhs">
+            <div className="bttm-lhs" style={styleBottom}>
               <div className="controls">
                 <div className="control" 
                   style={yClass}>
