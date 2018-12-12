@@ -198,7 +198,7 @@ export default class CountryItem extends React.Component {
         <div className="debt-card" style={_walkthroughStyle}>
           <div className="inner">
             <div className="top">
-              <p className={'--small'}>{_inProfit ? "Remaining profit" : "Remaining debt"}</p>
+              <p className={'--small'}>{_inProfit ? "Surplus" : "Remaining debt"}</p>
               <p>{currencySymbol} {_remainingDebtString} </p>
             </div>
             <div className="bottom">

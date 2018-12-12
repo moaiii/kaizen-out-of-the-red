@@ -212,6 +212,7 @@
   }
 
   ._bar {
+    position: relative;
     cursor: pointer;
     height: 40px;
     background-color: #ECEDEB;
@@ -227,7 +228,7 @@
         position: absolute;
         color: white;
         left: 50%;
-        transform: translateX(50%);
+        transform: translateX(-50%);
       }
     }
 
