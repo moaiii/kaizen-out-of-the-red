@@ -291,6 +291,7 @@
 
   @media(max-width: $mobilebreak) {
     width: 100%;
+    padding: 0.5rem;
 
     .Currency {
       display: block !important;
@@ -317,6 +318,7 @@
       justify-content: center;
       @media(max-width: $mobilebreak) {
         min-width: 100px;
+        padding: 0.25rem;
       }
       p {
         color: white;

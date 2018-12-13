@@ -30,6 +30,9 @@ export default class Bar extends React.Component<Props, State> {
     return (
       <div className={ `Bar ${ animateClass } ${ classMod }` } 
         onClick={() => this.props.onClick( this.props.attr )}
+        onMouseOver={() => this.props.onClick()}
+        onMouseOut={() => {
+          this.props.leaving()}}
         style={ _style } />
     );
   }

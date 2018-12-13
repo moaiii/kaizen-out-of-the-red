@@ -183,24 +183,32 @@ export default class CountryItem extends React.Component {
                 attr={'Business (Top Bank and Company)'} 
                 width={_widths.business * 100} 
                 classMod={'--business'} 
+                onMouseOver={() => this.onBarClick(this.props.index)}
+                leaving={() => this.onBarClick(null)}
                 onClick={() => this.onBarClick(this.props.index)}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Resource (Gold and FX Reserves)'} 
                 width={_widths.resource * 100} 
                 classMod={'--resource'} 
+                onMouseOver={() => this.onBarClick(this.props.index)}
+                leaving={() => this.onBarClick(null)}
                 onClick={() => this.onBarClick(this.props.index)}/>
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Tourism Receipts'} 
                 width={_widths.tourism * 100} 
                 classMod={'--tourism'} 
+                onMouseOver={() => this.onBarClick(this.props.index)}
+                leaving={() => this.onBarClick(null)}
                 onClick={() => this.onBarClick(this.props.index)}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Sport & Culture (Top Footballer and Piece of Art)'} 
                 width={_widths.sportCulture * 100} 
                 classMod={'--sport'} 
+                onMouseOver={() => this.onBarClick(this.props.index)}
+                leaving={() => this.onBarClick(null)}
                 onClick={() => this.onBarClick(this.props.index)}/>  
             </div>
           </div>

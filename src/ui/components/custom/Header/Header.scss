@@ -16,6 +16,15 @@
   @media(max-width: $mobilebreak) {
     display: block;
   }
+
+  @media(max-width: 768px) {
+    svg {
+      position: absolute;
+      top: 50% !important;
+      left: 50%;
+      transform: translate3d(-50%,-50%,0);
+    }
+  }
 }
 
 .Header {

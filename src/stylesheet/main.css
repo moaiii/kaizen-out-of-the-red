@@ -402,6 +402,12 @@ body {
   @media (max-width: 768px) {
     .mobile-nav-wrapper {
       display: block; } }
+  @media (max-width: 768px) {
+    .mobile-nav-wrapper svg {
+      position: absolute;
+      top: 50% !important;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0); } }
 
 .Header {
   height: 130px;
@@ -737,7 +743,8 @@ body {
     display: none; }
   @media (max-width: 768px) {
     .column-titles {
-      width: 100%; }
+      width: 100%;
+      padding: 0.5rem; }
       .column-titles .Currency {
         display: block !important; } }
   .column-titles .column-country p {
@@ -756,7 +763,8 @@ body {
     justify-content: center; }
     @media (max-width: 768px) {
       .column-titles .column-debt .block {
-        min-width: 100px; } }
+        min-width: 100px;
+        padding: 0.25rem; } }
     .column-titles .column-debt .block p {
       color: white;
       font-size: 1.2rem; }
@@ -1019,8 +1027,8 @@ body {
   left: 50%;
   min-width: 350px;
   top: 100%;
-  transform: translate3d(-50%, 0, 0);
-  display: none; }
+  transform: translate3d(200%, 0, 0);
+  opacity: 0; }
   .Angle-Tooltip p {
     color: #101754; }
   .Angle-Tooltip .arrow {
@@ -1032,6 +1040,9 @@ body {
     left: 45%;
     top: -5px; }
   .Angle-Tooltip.show {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+    transition: 0.25s opacity ease;
     display: block; }
   .Angle-Tooltip .holder {
     display: flex; }
