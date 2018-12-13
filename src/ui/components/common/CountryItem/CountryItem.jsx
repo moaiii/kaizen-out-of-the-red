@@ -61,7 +61,7 @@ export default class CountryItem extends React.Component {
         onBarClick={this.onBarClick}
         data={data}
         currencySymbol={currencySymbol}
-        getHumanValue={this.getHumanValue}/>
+        getHumanValue={this.getHumanValue} />
 
 
     /**
@@ -81,10 +81,13 @@ export default class CountryItem extends React.Component {
      * WRITE NEATLY
      */
     
-    let _nationalDebt = Humanize
-      .compactInteger(data["National Debt"], 1)
-      .replace('T', ' Trillion')
-      .replace('B', ' Billion');
+    let _nationalDebt = window.innerWidth > 425
+      ? Humanize
+          .compactInteger(data["National Debt"], 1)
+          .replace('T', ' Trillion')
+          .replace('B', ' Billion')
+      : Humanize
+          .compactInteger(data["National Debt"], 1)
 
 
     let _remainingDebtString = Humanize
@@ -170,10 +173,9 @@ export default class CountryItem extends React.Component {
             <div className="stack" style={
               {
                 width:`${_debtCleared}%`
-              }
-            }>
+              }}>
               {_AngleToolTip}
-              <Bar 
+              <Bar
                 style={{'opacity':_blueBarMod}} 
                 attr={'Business (Top Bank and Company)'} 
                 width={_widths.business * 100} 
@@ -203,8 +205,12 @@ export default class CountryItem extends React.Component {
         <div className="debt-card" style={_walkthroughStyle}>
           <div className="inner">
             <div className="top">
-              <p className={'--small'}>{_inProfit ? "Surplus" : "Remaining debt"}</p>
-              <p>{currencySymbol} {_remainingDebtString} </p>
+              <p className={'--small'}>
+                {_inProfit ? "Surplus" : "Remaining debt"}
+               </p>
+              <p>
+                {currencySymbol} {_remainingDebtString} 
+              </p>
             </div>
             <div className="bottom">
               <p>{_inProfit ? _profit : _debtCleared} %</p>

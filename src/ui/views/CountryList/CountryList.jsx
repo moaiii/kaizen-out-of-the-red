@@ -81,7 +81,7 @@ export default class CountryList extends React.Component {
     )
   }
 
-  render(): React.Element<"div"> {
+  render() {
     // VARIABLES
     const { 
       data, 
@@ -107,8 +107,6 @@ export default class CountryList extends React.Component {
       = data.filter(country => {
           return parseInt(country["debt cleared"], 10) > 100
         })
-
-    console.log('walkthroughStep', walkthroughStep)
 
     let _style = {
       opacity: walkthroughStep < 5 ? "0.1" : "1"

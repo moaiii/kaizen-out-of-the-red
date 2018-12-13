@@ -21,15 +21,15 @@ body {
 
 @font-face {
   font-family: 'maven-100';
-  src: url("../assets/fonts/MavenProLight-100.otf") format("opentype"); }
+  src: url("../assets/Fonts/MavenProLight-100.otf") format("opentype"); }
 
 @font-face {
   font-family: 'maven-200';
-  src: url("../assets/fonts/MavenProLight-200.otf") format("opentype"); }
+  src: url("../assets/Fonts/MavenProLight-200.otf") format("opentype"); }
 
 @font-face {
   font-family: 'maven-300';
-  src: url("../assets/fonts/MavenProLight-300.otf") format("opentype"); }
+  src: url("../assets/Fonts/MavenProLight-300.otf") format("opentype"); }
 
 * {
   font-family: 'maven-200', serif; }
@@ -339,6 +339,12 @@ body {
   margin-right: 2rem; }
   .countrywithflag span {
     font-size: 3.5rem !important; }
+    @media (max-width: 768px) {
+      .countrywithflag span {
+        font-size: 2.5rem !important; } }
+  @media (max-width: 768px) {
+    .countrywithflag {
+      border: none; } }
   .countrywithflag p {
     display: flex;
     align-items: center; }
@@ -639,7 +645,8 @@ body {
   height: 40px; }
   @media (max-width: 768px) {
     .debt-card-national {
-      max-width: 100px; } }
+      height: 30px;
+      max-width: 75px; } }
   .debt-card-national .inner {
     height: 100%;
     background-color: #ECEDEB; }
@@ -861,7 +868,10 @@ body {
   margin: 0.5rem auto; }
   @media (max-width: 768px) {
     .CountryItem {
-      height: 125px; } }
+      height: 80px;
+      flex-direction: column;
+      border-bottom: none !important;
+      margin: 1.5rem 0; } }
   .CountryItem .group {
     height: 100%;
     display: flex;
@@ -870,7 +880,7 @@ body {
     width: 75%; }
     @media (max-width: 768px) {
       .CountryItem .group {
-        flex-direction: column;
+        flex-direction: row;
         height: 100%;
         width: 100%;
         justify-content: space-between; } }
@@ -884,13 +894,16 @@ body {
     @media (max-width: 768px) {
       .CountryItem .lhs {
         width: 100%;
-        justify-content: space-between; } }
+        justify-content: space-between;
+        transform: translateX(-2px); } }
     .CountryItem .lhs span {
       margin-right: 2rem;
       transform: scale(2) translateX(20%); }
       @media (max-width: 768px) {
         .CountryItem .lhs span {
-          transform: scale(1.5) translateX(20%); } }
+          margin-right: 1rem;
+          transform: scale(1.5) translateX(20%);
+          background-size: cover; } }
 
 .stacked-bar-chart {
   width: 75%;
@@ -902,7 +915,8 @@ body {
   @media (max-width: 768px) {
     .stacked-bar-chart {
       height: 30px;
-      width: 100%; } }
+      width: 100%;
+      transform: translateX(2px); } }
   .stacked-bar-chart .stack {
     position: relative;
     display: flex;
@@ -916,6 +930,11 @@ body {
   .debt-card .inner {
     display: flex;
     flex-direction: row-reverse; }
+  @media (max-width: 768px) {
+    .debt-card {
+      max-width: 100%; }
+      .debt-card p {
+        font-size: 14px !important; } }
   .debt-card.--mobile {
     display: none; }
     @media (max-width: 768px) {
@@ -937,6 +956,10 @@ body {
       color: #101754; }
     .debt-card .top p.--small {
       font-size: 1rem; }
+    @media (max-width: 768px) {
+      .debt-card .top {
+        padding-top: 0;
+        align-items: flex-start; } }
   .debt-card .bottom {
     width: 50%;
     display: flex;
@@ -948,9 +971,16 @@ body {
     .debt-card .bottom p {
       font-size: 1.3rem;
       color: #101754; }
+    @media (max-width: 768px) {
+      .debt-card .bottom {
+        padding-top: 0;
+        align-items: flex-end; } }
 
 .countryandflag {
   display: flex; }
+  @media (max-width: 768px) {
+    .countryandflag {
+      align-items: center; } }
   .countryandflag h3 {
     color: #101754; }
     @media (max-width: 768px) {
