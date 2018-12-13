@@ -61,7 +61,7 @@ export default class CountryDetail extends React.Component {
   }
 
   _navigateBack = () => {
-    this.props.overideWalkthroughStep(4);
+    this.props.overideWalkthroughStep(5);
     this.props.history.goBack();
   }
 
@@ -219,7 +219,10 @@ export default class CountryDetail extends React.Component {
                   <Bar 
                     attr={`debt`} 
                     width={nationalDebtWidth * 100} 
-                    classMod={'--national-debt'} />
+                    classMod={'--national-debt'} 
+                    onMouseOver={() => null}
+                    leaving={() => null}
+                    onClick={() => null} />
                   <p className={`figure ${nationalDebtWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["National Debt"])}
                   </p>
@@ -253,7 +256,10 @@ export default class CountryDetail extends React.Component {
                   <Bar 
                     attr={`bank`} 
                     width={bankWidth * 100} 
-                    classMod={'--business'} />
+                    classMod={'--business'} 
+                    onMouseOver={() => null}
+                    leaving={() => null}
+                    onClick={() => null} />
                     <p className={`figure ${bankWidth > 0.75 ? "--center" : null}`}>
                       {currencySymbol} {this.getHumanValue(countryData["Total Assets"])}
                     </p>
@@ -270,7 +276,10 @@ export default class CountryDetail extends React.Component {
                   <Bar 
                     attr={`company`} 
                     width={companyWidth * 100} 
-                    classMod={'--business'} />
+                    classMod={'--business'} 
+                    onMouseOver={() => null}
+                    leaving={() => null}
+                    onClick={() => null} />
                   <p className={`figure ${companyWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["VALUE"])}
                   </p>
@@ -302,7 +311,10 @@ export default class CountryDetail extends React.Component {
                   <Bar 
                     attr={`gold`} 
                     width={goldWidth * 100} 
-                    classMod={'--resource'} />
+                    classMod={'--resource'} 
+                    onMouseOver={() => null}
+                    leaving={() => null}
+                    onClick={() => null} />
                   <p className={`figure ${goldWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["Resource (Gold and FX Reserves)"] - countryData["FX Reserves Value"])}
                   </p>
@@ -319,7 +331,10 @@ export default class CountryDetail extends React.Component {
                   <Bar 
                     attr={`fx`} 
                     width={foreignWidth * 100} 
-                    classMod={'--resource'} />
+                    classMod={'--resource'} 
+                    onMouseOver={() => null}
+                    leaving={() => null}
+                    onClick={() => null} />
                   <p className={`figure ${foreignWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["FX Reserves Value"])}
                   </p>
@@ -351,7 +366,10 @@ export default class CountryDetail extends React.Component {
                   <Bar 
                     attr={`football`} 
                     width={footballWidth * 100} 
-                    classMod={'--sport'} />
+                    classMod={'--sport'} 
+                    onMouseOver={() => null}
+                    leaving={() => null}
+                    onClick={() => null} />
                   <p className={`figure`}>
                     {currencySymbol} {this.getHumanValue(countryData["Sport ($)"])}
                   </p>
@@ -368,7 +386,10 @@ export default class CountryDetail extends React.Component {
                   <Bar 
                     attr={`art`}
                     width={artWidth * 100} 
-                    classMod={'--sport'} />
+                    classMod={'--sport'} 
+                    onMouseOver={() => null}
+                    leaving={() => null}
+                    onClick={() => null} />
                   <p className={`figure`}>
                     {currencySymbol} {this.getHumanValue(countryData["Sport & Culture (Top Footballer and Piece of Art)"] - countryData["Sport ($)"])}
                   </p>
@@ -394,7 +415,10 @@ export default class CountryDetail extends React.Component {
                   <Bar 
                     attr={`tourism`} 
                     width={tourismWidth * 100} 
-                    classMod={'--tourism'} />
+                    classMod={'--tourism'} 
+                    onMouseOver={() => null}
+                    leaving={() => null}
+                    onClick={() => null} />
                   <p className={`figure ${tourismWidth > 0.75 ? "--center" : null}`}>
                     {currencySymbol} {this.getHumanValue(countryData["Tourism Receipts"])}
                   </p>
