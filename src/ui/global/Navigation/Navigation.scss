@@ -70,6 +70,10 @@
         width: 100%;
         padding: 1rem 0.5rem;
       }
+      
+      @media(max-width: 425px) {
+        padding: 0.5rem;
+      }
     }
 
     @media(max-width: $mobilebreak) {
@@ -87,6 +91,7 @@
         width: 100%;
         flex-wrap: wrap;
         justify-content: flex-start;
+        margin: 0;
       }
       
       @media(max-width: 465px) {
@@ -100,8 +105,12 @@
         width: 25%;
         
         @media(max-width: $mobilebreak) {
-          width: 33%;
+          width: 25%;
           justify-content: space-between;
+
+          p {
+            font-size: 14px !important;
+          }
         }
 
         &.--national-wealth {
@@ -115,6 +124,11 @@
             
             @media(max-width: $mobilebreak) {
               width: 25px;
+              margin-right: 0.25rem;
+            }
+
+            @media(max-width: 425px) {
+              width: 20px;
               margin-right: 0.25rem;
             }
           }

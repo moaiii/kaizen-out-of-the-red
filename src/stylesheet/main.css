@@ -188,6 +188,9 @@ body {
     height: 80%;
     overflow-y: scroll;
     padding-bottom: 4rem; }
+    @media (max-width: 768px) {
+      .CountryList .list {
+        height: 100%; } }
 
 .list-banner {
   width: 100%;
@@ -214,6 +217,9 @@ body {
   .CountryDetail {
     overflow-y: scroll;
     height: 80%; } }
+  @media (max-width: 768px) and (max-width: 768px) {
+    .CountryDetail {
+      height: 100%; } }
 
 .CountryDetail .data-vis {
   max-width: 1500px;
@@ -421,6 +427,9 @@ body {
     .Header {
       flex-direction: column;
       height: 80px; } }
+  @media (max-width: 425px) {
+    .Header {
+      height: 60px; } }
   .Header .title {
     height: 100%;
     max-width: 700px;
@@ -587,6 +596,9 @@ body {
         .Navigation .bottom .bttm-lhs {
           width: 100%;
           padding: 1rem 0.5rem; } }
+      @media (max-width: 425px) {
+        .Navigation .bottom .bttm-lhs {
+          padding: 0.5rem; } }
     @media (max-width: 768px) {
       .Navigation .bottom {
         height: auto; } }
@@ -600,7 +612,8 @@ body {
         .Navigation .bottom .controls {
           width: 100%;
           flex-wrap: wrap;
-          justify-content: flex-start; } }
+          justify-content: flex-start;
+          margin: 0; } }
       @media (max-width: 465px) {
         .Navigation .bottom .controls {
           justify-content: center; } }
@@ -611,8 +624,10 @@ body {
         width: 25%; }
         @media (max-width: 768px) {
           .Navigation .bottom .controls .control {
-            width: 33%;
-            justify-content: space-between; } }
+            width: 25%;
+            justify-content: space-between; }
+            .Navigation .bottom .controls .control p {
+              font-size: 14px !important; } }
         .Navigation .bottom .controls .control.--national-wealth {
           cursor: pointer; }
         .Navigation .bottom .controls .control .control__icon svg {
@@ -621,6 +636,10 @@ body {
           @media (max-width: 768px) {
             .Navigation .bottom .controls .control .control__icon svg {
               width: 25px;
+              margin-right: 0.25rem; } }
+          @media (max-width: 425px) {
+            .Navigation .bottom .controls .control .control__icon svg {
+              width: 20px;
               margin-right: 0.25rem; } }
         .Navigation .bottom .controls .control p {
           width: 50%;
@@ -903,7 +922,7 @@ body {
         .CountryItem .lhs span {
           margin-right: 1rem;
           transform: scale(1.5) translateX(20%);
-          background-size: cover; } }
+          background-size: cover !important; } }
 
 .stacked-bar-chart {
   width: 75%;

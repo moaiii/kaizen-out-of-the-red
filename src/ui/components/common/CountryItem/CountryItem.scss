@@ -51,8 +51,8 @@
       @media (max-width: 768px) {
         margin-right: 1rem;
         transform: scale(1.5) translateX(20%);
-        background-size: cover;
-        
+        background-size: cover !important;
+
       }
     }
   }
