@@ -215,7 +215,7 @@ export default class CountryDetail extends React.Component {
             </div>
             <div className="sub-labels">
               <div className="label-cat --debt">
-                <div className="_bar" onClick={() => this.onBarClick('debt')} >
+                <div className="_bar">
                   <Bar 
                     attr={`debt`} 
                     width={nationalDebtWidth * 100} 
