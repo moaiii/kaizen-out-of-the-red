@@ -38,7 +38,7 @@ export default class CountryDetail extends React.Component {
       nameFromUrlParams: decodeURI(new URL(window.location.href).hash.split('name=')[1])
     }, () => {
       this._getCountryDataFromStore();
-      this.props.overideWalkthroughStep(5);
+      this.props.overideWalkthroughStep(4);
     })
   }
 
@@ -61,7 +61,7 @@ export default class CountryDetail extends React.Component {
   }
 
   _navigateBack = () => {
-    this.props.overideWalkthroughStep(5);
+    this.props.overideWalkthroughStep(4);
     this.props.history.goBack();
   }
 

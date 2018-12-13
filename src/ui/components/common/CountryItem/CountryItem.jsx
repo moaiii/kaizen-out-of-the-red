@@ -24,10 +24,8 @@ export default class CountryItem extends React.Component {
     }, 50);
   }
 
-  onBarClick = () => {
-    this.setState({
-      showTooltip: !this.state.showTooltip
-    })
+  onBarClick = (o) => {
+    this.props.setTooltipVisibility(o)
   }
 
   getHumanValue = (val) => {
@@ -40,7 +38,7 @@ export default class CountryItem extends React.Component {
 
   render() {
 
-    const { animateClass, showTooltip } = this.state;
+    const { animateClass } = this.state;
 
     const { 
       data, 
@@ -49,37 +47,28 @@ export default class CountryItem extends React.Component {
       currencyRate, 
       isNationalWealthSelected,
       onSelect, 
+      showToolTip,
       walkthroughStep } = this.props;
-
+      
 
     /**
      * TOOLTIP
      */
     let _AngleToolTip = 
       <AngleTooltip 
-        showTooltip={showTooltip}
-        onBarClick={this.onBarClick}
+        showTooltip={showToolTip}
+        onBarClick={() => this.onBarClick(null)}
         data={data}
         currencySymbol={currencySymbol}
         getHumanValue={this.getHumanValue} />
 
 
-    /**
-     * WIDTHS OF BARS
-     */
-    
-    let _inProfit = data["Total assets (without national wealth)"] > data["National Debt"];
-
-    let _remainingDebt = Math.abs((data["National Debt"] - data["Total assets (without national wealth)"]) * currencyRate);
-    
-    let _debtCleared = Math.min(data["debt cleared"], 100).toFixed(0);
-
-    let _profit = Math.ceil(data["debt cleared"] - 100);
-
 
     /**
      * WRITE NEATLY
      */
+
+    let _remainingDebt = Math.abs((data["National Debt"] - data["Total assets (without national wealth)"]) * currencyRate);
     
     let _nationalDebt = window.innerWidth > 425
       ? Humanize
@@ -95,6 +84,7 @@ export default class CountryItem extends React.Component {
       .replace('T', ' Trillion')
       .replace('B', ' Billion');
 
+      
     /**
      * VALUES
      */
@@ -111,6 +101,19 @@ export default class CountryItem extends React.Component {
       + resource
       + tourism
       + sportCulture;
+      
+
+    /**
+     * WIDTHS OF BARS
+     */
+    
+    let _inProfit = data["Total assets (without national wealth)"] > data["National Debt"];
+    
+    let _debtCleared = Math.min(data["debt cleared"], 100).toFixed(1);
+
+    let _percOfDebt = ((totalAssets / data["National Debt"]) * 100).toFixed(1);
+
+    let _profit = Math.ceil(data["debt cleared"] - 100);
 
     
     /**
@@ -128,17 +131,17 @@ export default class CountryItem extends React.Component {
     /**
      * WALKTHROUGH STEPS
      */
-    let _blueBarMod = walkthroughStep !== 3 && walkthroughStep < 5 
+    let _blueBarMod = walkthroughStep !== 3 && walkthroughStep < 4 
       ? '0.1' 
       : '1';
 
     let _walkthroughStyle = {
-      'opacity': walkthroughStep < 5 
+      'opacity': walkthroughStep < 4
         ? '0.1' : '1'
     };
 
     let _x = {
-      'opacity': walkthroughStep !== 2 && walkthroughStep !== 5 && walkthroughStep !== 6
+      'opacity': walkthroughStep !== 2 && walkthroughStep !== 4 && walkthroughStep !== 5
         ? '0.1' : '1'
     };
 
@@ -147,7 +150,7 @@ export default class CountryItem extends React.Component {
      * CUSTOM STYLES
      */
     let _hideBorder = {
-      'borderBottom': walkthroughStep < 5 
+      'borderBottom': walkthroughStep < 4
         ? 'none' : '1px solid #3566B2'
     };
 
@@ -180,25 +183,25 @@ export default class CountryItem extends React.Component {
                 attr={'Business (Top Bank and Company)'} 
                 width={_widths.business * 100} 
                 classMod={'--business'} 
-                onClick={this.onBarClick}/>  
+                onClick={() => this.onBarClick(this.props.index)}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Resource (Gold and FX Reserves)'} 
                 width={_widths.resource * 100} 
                 classMod={'--resource'} 
-                onClick={this.onBarClick}/>
+                onClick={() => this.onBarClick(this.props.index)}/>
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Tourism Receipts'} 
                 width={_widths.tourism * 100} 
                 classMod={'--tourism'} 
-                onClick={this.onBarClick}/>  
+                onClick={() => this.onBarClick(this.props.index)}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
                 attr={'Sport & Culture (Top Footballer and Piece of Art)'} 
                 width={_widths.sportCulture * 100} 
                 classMod={'--sport'} 
-                onClick={this.onBarClick}/>  
+                onClick={() => this.onBarClick(this.props.index)}/>  
             </div>
           </div>
         </div>
@@ -213,7 +216,7 @@ export default class CountryItem extends React.Component {
               </p>
             </div>
             <div className="bottom">
-              <p>{_inProfit ? _profit : _debtCleared} %</p>
+              <p>{_inProfit ? _profit : _percOfDebt} %</p>
               <p>{_inProfit ? "Cleared" : "Cleared"}</p>
             </div>
           </div>

@@ -50,29 +50,29 @@ export default class Navigation extends React.Component {
      */
 
     let styleBanner = { 
-      opacity: walkthroughStep < 5 ? '0.1' : 1,
+      opacity: walkthroughStep < 4 ? '0.1' : 1,
       // backgroundColor: walkthroughStep < 5 ? 'white' : '#101754' 
     }
-    let styleBottom = { opacity: walkthroughStep < 5 && walkthroughStep !== 1 & walkthroughStep !== 4 
+    let styleBottom = { opacity: walkthroughStep < 4 && walkthroughStep !== 1 & walkthroughStep !== 3 
         ? '0.1' : 1 
     }
 
     let xClass = { 
-      opacity: (walkthroughStep === 4 || walkthroughStep === 1 || walkthroughStep === 5 || walkthroughStep === 6)  
+      opacity: (walkthroughStep === 3 || walkthroughStep === 1 || walkthroughStep === 4 || walkthroughStep === 5)  
         ? '1' : '0.1' 
     }
 
     let yClass = { 
-      opacity: walkthroughStep === 4 
+      opacity: walkthroughStep === 3
         ? '0.1' : '1' 
     }
 
-    let debtBoxStyle = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
+    let debtBoxStyle = { opacity: walkthroughStep < 4 ? '0.1' : 1 }
 
     let _viewMod = isNationalWealthSelected ? '--isActive' : '';
 
     let _x = {
-      'opacity': walkthroughStep !== 2 && walkthroughStep !== 5 && walkthroughStep !== 6
+      'opacity': walkthroughStep !== 2 && walkthroughStep !== 4 && walkthroughStep !== 5
         ? '0.1' : '1'
     };
     

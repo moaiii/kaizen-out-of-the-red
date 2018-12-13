@@ -1,7 +1,8 @@
+import {overideWalkthroughStep, setModalIsActive} from '../../../db/global/global.action';
+
+import CountryDetail from "./CountryDetail.jsx";
 import {connect} from "react-redux";
 import store from "../../../db/store";
-import {setModalIsActive, overideWalkthroughStep} from '../../../db/global/global.action';
-import CountryDetail from "./CountryDetail.jsx";
 
 function mapStoreToProps( store ) {
   return {
@@ -18,7 +19,7 @@ function mapDispatchToProps( dispatch ) {
     setModalIsActive: ( modalIsActive ) => 
       dispatch(setModalIsActive( modalIsActive )),
     
-    overideWalkthroughStep: () => dispatch(overideWalkthroughStep(5))
+    overideWalkthroughStep: () => dispatch(overideWalkthroughStep(3))
   }
 }
 

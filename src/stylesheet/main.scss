@@ -46,7 +46,7 @@ body {
 
 @font-face {
   font-family: 'maven-100';
-  src: url("../assets/Fonts/MavenProLight-100.otf") format("opentype");
+  src: url("../assets/fonts/MavenProLight-100.otf") format("opentype");
 }
 
 @mixin maven100() {
@@ -55,7 +55,7 @@ body {
 
 @font-face {
   font-family: 'maven-200';
-  src: url("../assets/Fonts/MavenProLight-200.otf") format("opentype");
+  src: url("../assets/fonts/MavenProLight-200.otf") format("opentype");
 }
 
 @mixin maven200() {
@@ -64,7 +64,7 @@ body {
 
 @font-face {
   font-family: 'maven-300';
-  src: url("../assets/Fonts/MavenProLight-300.otf") format("opentype");
+  src: url("../assets/fonts/MavenProLight-300.otf") format("opentype");
 }
 
 @mixin maven300() {

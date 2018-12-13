@@ -30,10 +30,9 @@ export default class WalkthroughModal extends React.Component<Props, State> {
           <h2>INFORMATION</h2>
           <h3 onClick={() => this.props.openWalkThroughInfo(false)}>x</h3>
         </div>
-        <p>1. Click the i to find out more about each asset</p>
+        <p>1. Click the (i) to find out more about each asset</p>
         <p>2. The red box shows the overall national debt of the country</p>
         <p>3. Click the assets to see how much national debt could be paid off by selling them</p>
-        <p>4. WHAT ELSE TO SHOW NOW NO NATIONAL WEALTH ??</p>
       </div>
     );
   }

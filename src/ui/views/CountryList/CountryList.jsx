@@ -18,7 +18,8 @@ export default class CountryList extends React.Component {
     super();
 
     this.state = {
-      maxValue: 0
+      maxValue: 0,
+      showTooltipNum: null
     };
   }
 
@@ -28,6 +29,14 @@ export default class CountryList extends React.Component {
     trackPage();
     this._getMaxValue();
     this.props.setWalkthroughStep();
+
+    const List = document.getElementsByClassName('CountryList')[0];
+    
+    List.addEventListener("click", () => {
+      this.setState({
+        showTooltipNum: null
+      })
+    })
   }
 
   _getMaxValue = () => {
@@ -62,15 +71,23 @@ export default class CountryList extends React.Component {
     this.props.setModalIsActive(true);
   }
 
+  setTooltipVisibility = (index) => {
+    this.setState({
+      showTooltipNum: index
+    })
+  }
+
   renderCountryItems = (data) => {
     const { maxValue } = this.state;
 
-    let _data = sortBy(data, "National Debt").reverse();
-
+    let _data = sortBy(data, "debt cleared").reverse();
     return(
       _data.map((countryData, i) => {
         return (
           <CountryItem
+            index={i}
+            showToolTip={this.state.showTooltipNum === i ? true : false}
+            setTooltipVisibility={this.setTooltipVisibility}
             onSelected={this._handleSlection}
             onSelect={this._handleCountrySelect}
             key={`${i}-country-list-item`}
@@ -109,7 +126,7 @@ export default class CountryList extends React.Component {
         })
 
     let _style = {
-      opacity: walkthroughStep < 5 ? "0.1" : "1"
+      opacity: walkthroughStep < 4 ? "0.1" : "1"
     }
 
     return (

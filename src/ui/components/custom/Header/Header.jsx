@@ -50,7 +50,7 @@ export default class Header extends React.Component<Props, State> {
     const { walkthroughStep, isMobileNavOpen } = this.props;
     const { animateClass } = this.state;
 
-    let style = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
+    let style = { opacity: walkthroughStep < 4 ? '0.1' : 1 }
 
     // FINAL RENDERED JSX
     return (

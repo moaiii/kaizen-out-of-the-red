@@ -60,7 +60,7 @@ export default class Currency extends React.Component<Props, State> {
       ? '--isSelected' : '';
       
 
-    let styleCurrency = { opacity: walkthroughStep < 5 ? '0.1' : 1 }
+    let styleCurrency = { opacity: walkthroughStep < 4 ? '0.1' : 1 }
 
 
     // FINAL RENDERED JSX
