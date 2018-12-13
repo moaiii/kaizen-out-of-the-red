@@ -21,12 +21,6 @@ const AngleTooltip = ({
             <div className="holder">
                 <ReactSVG 
                     className={`angletooltip__icon`} 
-                    src={NationalWealthLogo} />
-                <p>National Wealth {currencySymbol} {getHumanValue(data["National Net Wealth"])}</p>
-            </div>
-            <div className="holder">
-                <ReactSVG 
-                    className={`angletooltip__icon`} 
                     src={BusinessLogo} />
                 <p>Business {currencySymbol} {getHumanValue(data["Business (Top Bank and Company)"])}</p>
             </div>

@@ -46,7 +46,7 @@ export default {
         'business': 'The combined value of assets held by the leading bank and the market value of the top valued company',
         'resource': 'The value of gold and foreign currency held',
         'tourism': 'Tourism receipts are the income attributed from tourists in each year',
-        'sport and culture': 'The value of the 5 most expensive national football players and the highest value artwork to be sold from the country',
+        'sport and culture': 'The value of the most expensive national football player and the highest value artwork to be sold from the country',
       }
   
       let _textChoice = text[action.payload];

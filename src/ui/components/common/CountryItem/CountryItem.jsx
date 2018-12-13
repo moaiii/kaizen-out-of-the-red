@@ -83,11 +83,11 @@ export default class CountryItem extends React.Component {
     
     let _nationalDebt = window.innerWidth > 425
       ? Humanize
-          .compactInteger(data["National Debt"], 1)
+          .compactInteger(data["National Debt"] * this.props.currencyRate, 1)
           .replace('T', ' Trillion')
           .replace('B', ' Billion')
       : Humanize
-          .compactInteger(data["National Debt"], 1)
+          .compactInteger(data["National Debt"] * this.props.currencyRate, 1)
 
 
     let _remainingDebtString = Humanize
@@ -214,7 +214,7 @@ export default class CountryItem extends React.Component {
             </div>
             <div className="bottom">
               <p>{_inProfit ? _profit : _debtCleared} %</p>
-              <p>{_inProfit ? "Profit" : "Cleared"}</p>
+              <p>{_inProfit ? "Cleared" : "Cleared"}</p>
             </div>
           </div>
         </div>
