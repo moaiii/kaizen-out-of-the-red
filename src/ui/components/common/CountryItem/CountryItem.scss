@@ -7,6 +7,8 @@
   max-width: 1500px;
   padding: 0 1rem;
   margin: 0.5rem auto;
+  position: relative;
+  // z-index: 99;
 
   @media(max-width: $mobilebreak) {
     height: 80px;
@@ -27,6 +29,10 @@
       height: 100%;
       width: 100%;
       justify-content: space-between;
+    }
+
+    &:hover {
+      z-index: 99;
     }
   }
 
@@ -196,6 +202,11 @@
   // transform: translateX(200%);
   opacity: 0;
   // transition: 1s opacity ease;
+
+  @media (max-width: 768px) {
+    min-width: 300px;
+    left: 30%;
+  }
 
   p {
     color: $blue1;

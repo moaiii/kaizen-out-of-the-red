@@ -8,12 +8,7 @@
   }
 
   @media(max-width: $mobilebreak) {
-    overflow-y: scroll;
-    height: 80%;
-
-    @media(max-width: 768px) {
-      height: 100%;
-    }
+    height: calc(100vh - 60px);
   }
 
   .data-vis {
@@ -21,6 +16,16 @@
     margin: 0 auto;
     width: 100%;
     height: auto;
+
+    @media(max-width: $mobilebreak) {
+
+      overflow-y: scroll;
+      height: 70%;
+
+      p {
+        font-size: 14px;
+      }
+    }
 
     hr {
       background-color: $blue2;
@@ -112,6 +117,18 @@
     display: flex;
     justify-content: center;
 
+    &.--mobile {
+      display: none;
+    }
+    
+    @media(max-width: 768px) {
+      display: none;
+
+      &.--mobile {
+        display: flex;
+      }
+    }
+
     button {
       background-color: $blue1;
       padding: 1rem;
@@ -144,6 +161,10 @@
 
   svg {
     height: 20px;
+
+    @media(max-width: 768px) {
+      height: 15px;
+    }
   }
 }
 
@@ -156,6 +177,11 @@
   background: white;
   border-radius: 5px;
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.1);
+
+  @media(max-width: 768px) {
+    width: 80%;
+    padding: 2rem 0.5rem;
+  }
 
   .item {
     display: flex;
@@ -221,6 +247,7 @@
 
   &.--debt {
     width: 100%;
+    cursor: none;
   }
 
   ._bar {
@@ -259,5 +286,9 @@
 .label__icon {
   svg {
     height: 40px;
+
+    @media(max-width: 768px) {
+      height: 30px;
+    }
   }
 }

@@ -14,11 +14,6 @@ button:hover, a:hover {
 body {
   filter: saturate(1.15); }
 
-@media (max-width: 768px) {
-  .Router__container {
-    height: 100vh;
-    overflow: hidden; } }
-
 @font-face {
   font-family: 'maven-100';
   src: url("../assets/fonts/MavenProLight-100.otf") format("opentype"); }
@@ -35,8 +30,12 @@ body {
   font-family: 'maven-200', serif; }
 
 .Router__container {
-  max-height: 100vh;
-  overflow-y: hidden; }
+  height: 100vh; }
+
+.Router__inner-container {
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden; }
 
 .Bar {
   height: 100%;
@@ -183,11 +182,12 @@ body {
   z-index: 1; }
 
 .CountryList {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 60px);
   overflow: hidden; }
   .CountryList .list {
-    height: 80%;
+    height: 90%;
     overflow-y: scroll;
+    overflow-x: hidden;
     padding-bottom: 4rem; }
     @media (max-width: 768px) {
       .CountryList .list {
@@ -216,17 +216,19 @@ body {
 
 @media (max-width: 768px) {
   .CountryDetail {
-    overflow-y: scroll;
-    height: 80%; } }
-  @media (max-width: 768px) and (max-width: 768px) {
-    .CountryDetail {
-      height: 100%; } }
+    height: calc(100vh - 60px); } }
 
 .CountryDetail .data-vis {
   max-width: 1500px;
   margin: 0 auto;
   width: 100%;
   height: auto; }
+  @media (max-width: 768px) {
+    .CountryDetail .data-vis {
+      overflow-y: scroll;
+      height: 70%; }
+      .CountryDetail .data-vis p {
+        font-size: 14px; } }
   .CountryDetail .data-vis hr {
     background-color: #21418E;
     color: #21418E;
@@ -286,6 +288,13 @@ body {
 .CountryDetail .footer {
   display: flex;
   justify-content: center; }
+  .CountryDetail .footer.--mobile {
+    display: none; }
+  @media (max-width: 768px) {
+    .CountryDetail .footer {
+      display: none; }
+      .CountryDetail .footer.--mobile {
+        display: flex; } }
   .CountryDetail .footer button {
     background-color: #101754;
     padding: 1rem; }
@@ -308,6 +317,9 @@ body {
   margin-right: 0.5rem; }
   .label__icon svg {
     height: 20px; }
+    @media (max-width: 768px) {
+      .label__icon svg {
+        height: 15px; } }
 
 .details__tooltip {
   z-index: 3;
@@ -318,6 +330,10 @@ body {
   background: white;
   border-radius: 5px;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1); }
+  @media (max-width: 768px) {
+    .details__tooltip {
+      width: 80%;
+      padding: 2rem 0.5rem; } }
   .details__tooltip .item {
     display: flex;
     justify-content: space-between;
@@ -360,7 +376,8 @@ body {
   width: 50%;
   padding: 0 1rem; }
   .label-cat.--debt {
-    width: 100%; }
+    width: 100%;
+    cursor: none; }
   .label-cat ._bar {
     position: relative;
     cursor: pointer;
@@ -385,6 +402,9 @@ body {
 
 .label__icon svg {
   height: 40px; }
+  @media (max-width: 768px) {
+    .label__icon svg {
+      height: 30px; } }
 
 .mobile-nav-wrapper {
   cursor: pointer;
@@ -893,7 +913,8 @@ body {
   justify-content: space-between;
   max-width: 1500px;
   padding: 0 1rem;
-  margin: 0.5rem auto; }
+  margin: 0.5rem auto;
+  position: relative; }
   @media (max-width: 768px) {
     .CountryItem {
       height: 80px;
@@ -912,6 +933,8 @@ body {
         height: 100%;
         width: 100%;
         justify-content: space-between; } }
+    .CountryItem .group:hover {
+      z-index: 99; }
   .CountryItem .lhs {
     height: 100%;
     align-items: center;
@@ -1030,6 +1053,10 @@ body {
   top: 100%;
   transform: translate3d(200%, 0, 0);
   opacity: 0; }
+  @media (max-width: 768px) {
+    .Angle-Tooltip {
+      min-width: 300px;
+      left: 30%; } }
   .Angle-Tooltip p {
     color: #101754; }
   .Angle-Tooltip .arrow {
