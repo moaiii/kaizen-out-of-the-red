@@ -95,8 +95,7 @@ export default class CountryItem extends React.Component {
     const tourism = data["Tourism Receipts"];
     const sportCulture = data["Sport & Culture (Top Footballer and Piece of Art)"];
 
-    const totalAssets = 
-      // nationalWealth 
+    const totalAssets =
       + business
       + resource
       + tourism
@@ -220,7 +219,7 @@ export default class CountryItem extends React.Component {
             <div className="top">
               <p className={'--small'}>
                 {_inProfit ? "Surplus" : "Remaining debt"}
-               </p>
+              </p>
               <p>
                 {currencySymbol} {_remainingDebtString} 
               </p>
