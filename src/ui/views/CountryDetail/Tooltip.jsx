@@ -7,6 +7,7 @@ export const TooltipOther = ({
   currencyRate, 
   setModalIsActive
 }) => {
+  console.log(dataProps)
     return (
         <div className="details__tooltip">
           {
@@ -17,8 +18,8 @@ export const TooltipOther = ({
 
               return(
                 <span className={'item'} key={`${index}-tooltip-country-detail`}>
-                  <p className={`a`}>{x[0]}</p>
-                  <p className={`angle`}> > </p>
+                  <p className={`a`}>{x[0].toLowerCase()}</p>
+                  <p className={`angle`}> - </p>
                   <p className={`b`}>{$}</p>
                 </span>
               )

@@ -113,7 +113,6 @@ export default class CountryItem extends React.Component {
     let _percOfDebt = ((totalAssets / data["National Debt"]) * 100).toFixed(0);
 
     let _profit = Math.ceil(data["% of debt (without national wealth)"] * 100 - 100);
-    console.log(data["Country"], totalAssets, data["National Debt"], _percOfDebt, _profit)
     
     /**
      * BLUE BAR WIDTHS
