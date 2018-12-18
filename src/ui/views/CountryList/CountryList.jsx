@@ -59,10 +59,6 @@ export default class CountryList extends React.Component {
     this.setState({ maxValue });
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
-  };
-
   _handleCountrySelect = ( name ) => { //console.log(id)
     this.props.history.push( `/country?name=${ encodeURI(name) }` );
   }
@@ -80,7 +76,7 @@ export default class CountryList extends React.Component {
   renderCountryItems = (data) => {
     const { maxValue } = this.state;
 
-    let _data = sortBy(data, "debt cleared").reverse();
+    let _data = sortBy(data, "% of debt (without national wealth)").reverse();
     return(
       _data.map((countryData, i) => {
         return (
@@ -117,12 +113,12 @@ export default class CountryList extends React.Component {
 
     let _countryItemsInRed
       = data.filter(country => {
-          return parseInt(country["debt cleared"], 10) < 100
+          return parseInt(country["% of debt (without national wealth)"] * 100, 10) < 100
         })
 
     let _countryItemsInBlack
       = data.filter(country => {
-          return parseInt(country["debt cleared"], 10) > 100
+          return parseInt(country["% of debt (without national wealth)"] * 100, 10) > 100
         })
 
     let _style = {

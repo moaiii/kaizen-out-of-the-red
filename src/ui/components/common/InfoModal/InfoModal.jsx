@@ -2,7 +2,7 @@
 import * as React from "react";
 
 // COMPONENT
-export default class InfoModal extends React.Component<Props, State> {
+export default class InfoModal extends React.Component {
   constructor() {
     super();
 
@@ -11,7 +11,7 @@ export default class InfoModal extends React.Component<Props, State> {
     };
   }
 
-  componentDidMount(): void {
+  componentDidMount() {
     setTimeout(() => {
       this.setState({
         animateClass: "--animate"
@@ -19,7 +19,7 @@ export default class InfoModal extends React.Component<Props, State> {
     }, 50);
   }
 
-  render(): React.Element<"div"> {
+  render() {
     let { animateClass } = this.state;
     let { infoModal } = this.props;
 
