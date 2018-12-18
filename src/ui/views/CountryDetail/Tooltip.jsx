@@ -13,7 +13,7 @@ export const TooltipOther = ({
           {
             dataProps.map( (x, index) => {
               let $ = typeof x[1] === 'number'
-                ? `${currencySymbol} ${Humanize.compactInteger(Math.ceil((x[1] * currencyRate)), 1)}`
+                ? `${x[0] !== "GOLD Tonnes" ? currencySymbol : ""} ${Humanize.compactInteger(Math.ceil((x[1] * currencyRate)), 1)}`
                 : x[1];
 
               return(

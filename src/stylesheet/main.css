@@ -337,7 +337,7 @@ body {
   .details__tooltip .item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.5rem; }
+    margin-bottom: 1rem; }
     .details__tooltip .item p {
       text-transform: capitalize; }
   .details__tooltip .footer {
