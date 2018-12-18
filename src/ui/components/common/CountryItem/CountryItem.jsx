@@ -93,7 +93,7 @@ export default class CountryItem extends React.Component {
     const business = data['BUSINESS AND FINANCE TOTAL'];
     const resource = data["RESOURCE TOTAL"];
     const tourism = data["Tourism Receipts"];
-    const sportCulture = data["SPORTS VALUE"];
+    const sportCulture = data["SPORT & CULTURE TOTAL"];
 
     const totalAssets =
       + business
@@ -110,10 +110,10 @@ export default class CountryItem extends React.Component {
     
     let _debtCleared = Math.min(data["% of debt (without national wealth)"] * 100, 100).toFixed(1);
 
-    let _percOfDebt = ((totalAssets / data["National Debt"]) * 100).toFixed(1);
+    let _percOfDebt = ((totalAssets / data["National Debt"]) * 100).toFixed(0);
 
     let _profit = Math.ceil(data["% of debt (without national wealth)"] * 100 - 100);
-
+    console.log(data["Country"], totalAssets, data["National Debt"], _percOfDebt, _profit)
     
     /**
      * BLUE BAR WIDTHS
@@ -187,7 +187,7 @@ export default class CountryItem extends React.Component {
                 onMouseOver={() => this.onBarClick(this.props.index)}
                 leaving={() => this.onBarClick(null)}
                 onClick={() => this.onBarClick(this.props.index)}/>  
-              <Bar 
+              <Bar
                 style={{'opacity':_blueBarMod}} 
                 attr={'RESOURCE TOTAL'} 
                 width={_widths.resource * 100} 
@@ -225,7 +225,7 @@ export default class CountryItem extends React.Component {
               </p>
             </div>
             <div className="bottom">
-              <p>{_inProfit ? _profit : _percOfDebt} %</p>
+              <p>{_percOfDebt} %</p>
               <p>{_inProfit ? "Cleared" : "Cleared"}</p>
             </div>
           </div>
