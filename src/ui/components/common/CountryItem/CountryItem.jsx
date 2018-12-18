@@ -158,8 +158,10 @@ export default class CountryItem extends React.Component {
     return (
       <div className={`CountryItem ${ animateClass }`} style={_hideBorder}>
         <div className="group">
-          <div className="lhs" onClick={() => onSelect(data.Country)}>
-            <div className="countryandflag" style={_walkthroughStyle}>
+          <div className="lhs">
+            <div className="countryandflag"
+              onClick={() => onSelect(data.Country)}
+              style={_walkthroughStyle} >
               <ReactCountryFlag code={data.code} svg/>
               <h3>{data.Country}</h3>
             </div>

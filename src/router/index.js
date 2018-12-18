@@ -1,24 +1,26 @@
-import React from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
+import { Route, HashRouter as Router } from "react-router-dom";
 
+import CountryDetail from '../ui/views/CountryDetail';
 // components
 import CountryList from '../ui/views/CountryList';
-import CountryDetail from '../ui/views/CountryDetail';
 import Header from '../ui/components/custom/Header';
 import MobileNav from '../ui/components/custom/MobileNav';
+import React from "react";
 
 // routes
 export default(
   <Router basename="/">
     <div className="Router__container">
-      <Header />
-      <MobileNav />
-      <Route 
-        exact path={"/"}
-        component={ CountryList }/>
-      <Route 
-        path={"/country"}
-        component={ CountryDetail }/>
+      <div className="Router__inner-container">
+        <Header />
+        <MobileNav />
+        <Route 
+          exact path={"/"}
+          component={ CountryList }/>
+        <Route 
+          path={"/country"}
+          component={ CountryDetail }/>
+      </div>
     </div>
   </Router>
 )

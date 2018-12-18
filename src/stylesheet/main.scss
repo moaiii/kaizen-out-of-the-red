@@ -37,13 +37,6 @@ body {
   filter: saturate(1.15);
 }
 
-.Router__container {
-  @media(max-width: $mobilebreak) {
-    height: 100vh;
-    overflow: hidden;   
-  }
-}
-
 @font-face {
   font-family: 'maven-100';
   src: url("../assets/fonts/MavenProLight-100.otf") format("opentype");
@@ -94,8 +87,19 @@ body {
 }
 
 .Router__container {
-  max-height: 100vh;
+  height: 100vh;
+  // height: 100vh;
+  // overflow-y: hidden;
+
+  @media(max-width: $mobilebreak) {
+    // overflow: hidden;   
+  }
+}
+
+.Router__inner-container {
+  height: 100%;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 @import "../ui/components/custom/Bar/Bar.scss";

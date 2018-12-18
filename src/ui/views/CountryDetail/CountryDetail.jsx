@@ -427,6 +427,11 @@ export default class CountryDetail extends React.Component {
             </div>
           </div>
           <hr/>
+          <div className="footer --mobile">
+          <button onClick={() => this._goBack()}>
+            <h2>{`< Back`}</h2>  
+          </button>  
+        </div>
         </div>
 
         {/* 
