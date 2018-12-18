@@ -938,7 +938,6 @@ body {
   .CountryItem .lhs {
     height: 100%;
     align-items: center;
-    cursor: pointer;
     display: flex;
     width: 40%;
     justify-content: space-between; }
@@ -1028,7 +1027,8 @@ body {
         align-items: flex-end; } }
 
 .countryandflag {
-  display: flex; }
+  display: flex;
+  cursor: pointer; }
   @media (max-width: 768px) {
     .countryandflag {
       align-items: center; } }

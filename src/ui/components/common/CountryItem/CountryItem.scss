@@ -39,7 +39,7 @@
   .lhs {
     height: 100%;
     align-items: center;
-    cursor: pointer;
+    // cursor: pointer;
     display: flex;
     width: 40%;
     justify-content: space-between;
@@ -169,6 +169,7 @@
 
 .countryandflag {
   display: flex;
+  cursor: pointer;
 
   @media(max-width: $mobilebreak) {
     align-items: center;
