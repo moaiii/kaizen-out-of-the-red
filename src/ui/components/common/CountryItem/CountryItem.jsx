@@ -90,10 +90,10 @@ export default class CountryItem extends React.Component {
      */
 
     const nationalWealth = data["National Net Wealth"];
-    const business = data['Business (Top Bank and Company)'];
-    const resource = data["Resource (Gold and FX Reserves)"];
+    const business = data['BUSINESS AND FINANCE TOTAL'];
+    const resource = data["RESOURCE TOTAL"];
     const tourism = data["Tourism Receipts"];
-    const sportCulture = data["Sport & Culture (Top Footballer and Piece of Art)"];
+    const sportCulture = data["SPORTS VALUE"];
 
     const totalAssets =
       + business
@@ -179,7 +179,7 @@ export default class CountryItem extends React.Component {
               {_AngleToolTip}
               <Bar
                 style={{'opacity':_blueBarMod}} 
-                attr={'Business (Top Bank and Company)'} 
+                attr={'BUSINESS AND FINANCE TOTAL'} 
                 width={_widths.business * 100} 
                 classMod={'--business'} 
                 onMouseOver={() => this.onBarClick(this.props.index)}
@@ -187,7 +187,7 @@ export default class CountryItem extends React.Component {
                 onClick={() => this.onBarClick(this.props.index)}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
-                attr={'Resource (Gold and FX Reserves)'} 
+                attr={'RESOURCE TOTAL'} 
                 width={_widths.resource * 100} 
                 classMod={'--resource'} 
                 onMouseOver={() => this.onBarClick(this.props.index)}
@@ -203,7 +203,7 @@ export default class CountryItem extends React.Component {
                 onClick={() => this.onBarClick(this.props.index)}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
-                attr={'Sport & Culture (Top Footballer and Piece of Art)'} 
+                attr={'SPORTS VALUE'} 
                 width={_widths.sportCulture * 100} 
                 classMod={'--sport'} 
                 onMouseOver={() => this.onBarClick(this.props.index)}

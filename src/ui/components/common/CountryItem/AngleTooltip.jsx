@@ -22,13 +22,13 @@ const AngleTooltip = ({
                 <ReactSVG 
                     className={`angletooltip__icon`} 
                     src={BusinessLogo} />
-                <p>Business {currencySymbol} {getHumanValue(data["Business (Top Bank and Company)"])}</p>
+                <p>Business {currencySymbol} {getHumanValue(data["BUSINESS AND FINANCE TOTAL"])}</p>
             </div>
             <div className="holder">
                 <ReactSVG 
                     className={`angletooltip__icon`} 
                     src={ResourceLogo} />
-                <p>Resource {currencySymbol} {getHumanValue(data["Resource (Gold and FX Reserves)"])}</p>
+                <p>Resource {currencySymbol} {getHumanValue(data["RESOURCE TOTAL"])}</p>
             </div>
             <div className="holder">
                 <ReactSVG 
@@ -40,7 +40,7 @@ const AngleTooltip = ({
                 <ReactSVG 
                     className={`angletooltip__icon`} 
                     src={SportCultureLogo} />
-                <p>Sport & Culture {currencySymbol} {getHumanValue(data["Sport & Culture (Top Footballer and Piece of Art)"])}</p>
+                <p>Sport & Culture {currencySymbol} {getHumanValue(data["SPORTS VALUE"])}</p>
             </div>
         </div>
     )
