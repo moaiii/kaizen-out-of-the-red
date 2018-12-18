@@ -89,13 +89,13 @@ export default class CountryDetail extends React.Component {
     }
     else if( type === 'bank') {
       dataProps['LEADING BANK'] = countryData['LEADING BANK'];
-      dataProps['Total Assets'] = countryData['Total Assets'];
+      dataProps['LEADING BANK VALUE'] = countryData['LEADING BANK VALUE'];
       
     }
     else if( type === 'company') {
       dataProps['LEADING COMPANY'] = countryData['LEADING COMPANY'];
       dataProps['CATEGORY'] = countryData['CATEGORY'];
-      dataProps['VALUE'] = countryData['VALUE'];
+      dataProps['LEADING COMPANY VALUE'] = countryData['LEADING COMPANY VALUE'];
       
     }
     else if( type === 'gold') {
@@ -108,7 +108,7 @@ export default class CountryDetail extends React.Component {
     }
     else if( type === 'football') {
       dataProps['Sports People'] = countryData['Sports People'];
-      dataProps['Sport ($)'] = countryData['Sport ($)'];
+      dataProps['SPORTS VALUE'] = countryData['SPORTS VALUE'];
       
     }
     else if( type === 'art') {
@@ -134,13 +134,13 @@ export default class CountryDetail extends React.Component {
 
     const vals = [
       countryData["National Debt"],
-      countryData["Total Assets"],
-      countryData["VALUE"],
-      countryData["RESOURCE TOTAL"] - countryData["FX Reserves Value"],
+      countryData["LEADING BANK VALUE"],
+      countryData["LEADING COMPANY VALUE"],
+      countryData["GOLD VALUE"],
       countryData["FX Reserves Value"],
       countryData["Tourism Receipts"],
-      countryData["Sport ($)"],
-      countryData["SPORTS VALUE"] - countryData["Sport ($)"],
+      countryData["SPORTS VALUE"],
+      countryData["ARTWORK VALUE"],
     ];
 
     const _theBiggestNumber = Math.max(...vals);
@@ -150,13 +150,13 @@ export default class CountryDetail extends React.Component {
      */
 
     let nationalDebtWidth = Math.min(countryData["National Debt"] / _theBiggestNumber);
-    let bankWidth = Math.min(countryData["Total Assets"] / _theBiggestNumber);
-    let companyWidth = Math.min(countryData["VALUE"] / _theBiggestNumber);
-    let goldWidth = Math.min((countryData["RESOURCE TOTAL"] - countryData["FX Reserves Value"]) / _theBiggestNumber);
+    let bankWidth = Math.min(countryData["LEADING BANK VALUE"] / _theBiggestNumber);
+    let companyWidth = Math.min(countryData["LEADING COMPANY VALUE"] / _theBiggestNumber);
+    let goldWidth = Math.min((countryData["GOLD VALUE"]) / _theBiggestNumber);
     let foreignWidth = Math.min(countryData["FX Reserves Value"] / _theBiggestNumber);
     let tourismWidth = Math.min(countryData["Tourism Receipts"] / _theBiggestNumber);
-    let footballWidth = Math.min(countryData["Sport ($)"] / _theBiggestNumber);
-    let artWidth = Math.min((countryData["SPORTS VALUE"] - countryData["Sport ($)"]) / _theBiggestNumber);
+    let footballWidth = Math.min(countryData["SPORTS VALUE"] / _theBiggestNumber);
+    let artWidth = Math.min((countryData["ARTWORK VALUE"]) / _theBiggestNumber);
 
 
     /**
@@ -261,7 +261,7 @@ export default class CountryDetail extends React.Component {
                     leaving={() => null}
                     onClick={() => null} />
                     <p className={`figure ${bankWidth > 0.75 ? "--center" : null}`}>
-                      {currencySymbol} {this.getHumanValue(countryData["Total Assets"])}
+                      {currencySymbol} {this.getHumanValue(countryData["LEADING BANK VALUE"])}
                     </p>
                 </div>
               </div>
@@ -281,7 +281,7 @@ export default class CountryDetail extends React.Component {
                     leaving={() => null}
                     onClick={() => null} />
                   <p className={`figure ${companyWidth > 0.75 ? "--center" : null}`}>
-                    {currencySymbol} {this.getHumanValue(countryData["VALUE"])}
+                    {currencySymbol} {this.getHumanValue(countryData["LEADING COMPANY VALUE"])}
                   </p>
                 </div>
               </div>
@@ -316,7 +316,7 @@ export default class CountryDetail extends React.Component {
                     leaving={() => null}
                     onClick={() => null} />
                   <p className={`figure ${goldWidth > 0.75 ? "--center" : null}`}>
-                    {currencySymbol} {this.getHumanValue(countryData["RESOURCE TOTAL"] - countryData["FX Reserves Value"])}
+                    {currencySymbol} {this.getHumanValue(countryData["GOLD VALUE"])}
                   </p>
                 </div>
               </div>
@@ -371,7 +371,7 @@ export default class CountryDetail extends React.Component {
                     leaving={() => null}
                     onClick={() => null} />
                   <p className={`figure`}>
-                    {currencySymbol} {this.getHumanValue(countryData["Sport ($)"])}
+                    {currencySymbol} {this.getHumanValue(countryData["SPORTS VALUE"])}
                   </p>
                 </div>
               </div>
@@ -391,7 +391,7 @@ export default class CountryDetail extends React.Component {
                     leaving={() => null}
                     onClick={() => null} />
                   <p className={`figure`}>
-                    {currencySymbol} {this.getHumanValue(countryData["SPORTS VALUE"] - countryData["Sport ($)"])}
+                    {currencySymbol} {this.getHumanValue(countryData["ARTWORK VALUE"])}
                   </p>
                 </div>
               </div>

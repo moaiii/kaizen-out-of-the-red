@@ -108,11 +108,11 @@ export default class CountryItem extends React.Component {
     
     let _inProfit = data["Total assets (without national wealth)"] > data["National Debt"];
     
-    let _debtCleared = Math.min(data["debt cleared"], 100).toFixed(1);
+    let _debtCleared = Math.min(data["% of debt (without national wealth)"] * 100, 100).toFixed(1);
 
     let _percOfDebt = ((totalAssets / data["National Debt"]) * 100).toFixed(1);
 
-    let _profit = Math.ceil(data["debt cleared"] - 100);
+    let _profit = Math.ceil(data["% of debt (without national wealth)"] * 100 - 100);
 
     
     /**
