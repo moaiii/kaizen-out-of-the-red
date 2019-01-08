@@ -74,7 +74,7 @@ export default class CountryItem extends React.Component {
 
     let _remainingDebt = Math.abs((data["National Debt"] - data["Total assets (without national wealth)"]) * currencyRate);
     
-    let _nationalDebt = window.innerWidth > 425
+    let _nationalDebt = window.innerWidth > 762
       ? Humanize
           .compactInteger(data["National Debt"] * this.props.currencyRate, 1)
           .replace('T', ' Trillion')
