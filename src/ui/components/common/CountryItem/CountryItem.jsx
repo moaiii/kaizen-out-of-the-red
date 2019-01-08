@@ -59,6 +59,7 @@ export default class CountryItem extends React.Component {
      */
     let _AngleToolTip = 
       <AngleTooltip 
+        classMod={data['Country']}
         showTooltip={showToolTip}
         onBarClick={() => this.onBarClick(null)}
         data={data}

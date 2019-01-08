@@ -12,19 +12,21 @@ button:hover, a:hover {
   cursor: pointer; }
 
 body {
-  filter: saturate(1.15); }
+  filter: saturate(1.15);
+  height: 100vh;
+  overflow-y: hidden; }
 
 @font-face {
   font-family: 'maven-100';
-  src: url("../assets/Fonts/MavenProLight-100.otf") format("opentype"); }
+  src: url("../assets/fonts/MavenProLight-100.otf") format("opentype"); }
 
 @font-face {
   font-family: 'maven-200';
-  src: url("../assets/Fonts/MavenProLight-200.otf") format("opentype"); }
+  src: url("../assets/fonts/MavenProLight-200.otf") format("opentype"); }
 
 @font-face {
   font-family: 'maven-300';
-  src: url("../assets/Fonts/MavenProLight-300.otf") format("opentype"); }
+  src: url("../assets/fonts/MavenProLight-300.otf") format("opentype"); }
 
 * {
   font-family: 'maven-200', serif; }
@@ -188,7 +190,7 @@ body {
     height: 90%;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding-bottom: 4rem; }
+    padding-bottom: 15rem; }
     @media (max-width: 768px) {
       .CountryList .list {
         height: 100%; } }
@@ -1001,7 +1003,7 @@ body {
     flex-direction: column;
     padding: 0.3rem 0.5rem;
     justify-content: center;
-    align-items: center; }
+    align-items: flex-start; }
     .debt-card .top p {
       font-size: 1.3rem;
       color: #101754; }
@@ -1052,7 +1054,7 @@ body {
   left: 50%;
   min-width: 350px;
   top: 100%;
-  transform: translate3d(200%, 0, 0);
+  transform: translate3d(2000%, 0, 0);
   opacity: 0; }
   @media (max-width: 768px) {
     .Angle-Tooltip {
@@ -1073,6 +1075,11 @@ body {
     transform: translate3d(-50%, 0, 0);
     transition: 0.25s opacity ease;
     display: block; }
+  .Angle-Tooltip.--Russia.show, .Angle-Tooltip.--Poland.show, .Angle-Tooltip.--Japan.show, .Angle-Tooltip.--Brazil.show {
+    transform: translate3d(-50%, -110%, 0) !important; }
+  .Angle-Tooltip.--Russia .arrow, .Angle-Tooltip.--Poland .arrow, .Angle-Tooltip.--Japan .arrow, .Angle-Tooltip.--Brazil .arrow {
+    bottom: -5px;
+    top: auto; }
   .Angle-Tooltip .holder {
     display: flex; }
 

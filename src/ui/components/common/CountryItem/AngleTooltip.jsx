@@ -8,6 +8,7 @@ import TourismLogo from '../../../../assets/svg/tourism.svg';
 
 const AngleTooltip = ({
     data, 
+    classMod,
     currencySymbol, 
     currencyRate,
     getHumanValue, 
@@ -16,7 +17,7 @@ const AngleTooltip = ({
 }) => {
     return(
         <div 
-            className={`Angle-Tooltip ${showTooltip ? 'show' :''}`}
+            className={`Angle-Tooltip ${showTooltip ? 'show' :''} --${classMod}`}
             onClick={onBarClick}>
             <div className="arrow" />
             <div className="holder">

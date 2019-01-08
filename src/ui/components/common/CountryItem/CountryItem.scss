@@ -131,7 +131,8 @@
     flex-direction: column;
     padding: 0.3rem 0.5rem;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+
     p {
       font-size: 1.3rem;
       color: $blue1;
@@ -189,6 +190,8 @@
   }
 }
 
+
+
 .Angle-Tooltip {
   cursor: pointer;
   box-shadow: 0 9px 15px -1px rgba(0,0,0,0.4);
@@ -199,7 +202,7 @@
   left: 50%;
   min-width: 350px;
   top: 100%;
-  transform: translate3d(200%, 0, 0);
+  transform: translate3d(2000%, 0, 0);
   // transform: translateX(200%);
   opacity: 0;
   // transition: 1s opacity ease;
@@ -228,6 +231,21 @@
     transform: translate3d(-50%, 0, 0);
     transition: 0.25s opacity ease;
     display: block;
+
+  }
+
+  &.--Russia, 
+  &.--Poland,  
+  &.--Japan, 
+  &.--Brazil {
+    &.show {
+      transform: translate3d(-50%, -110%, 0) !important;
+    }
+
+    .arrow {
+      bottom: -5px;
+      top: auto;
+    }
   }
 
   .holder {
