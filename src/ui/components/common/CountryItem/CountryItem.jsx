@@ -29,8 +29,11 @@ export default class CountryItem extends React.Component {
   }
 
   getHumanValue = (val) => {
+
+    const _val = val * this.props.currencyRate;
+
     return Humanize
-      .compactInteger(val, 1)
+      .compactInteger(_val, 1)
       .replace('T', ' Trillion')
       .replace('B', ' Billion')
       .replace('M', ' Million')
@@ -60,6 +63,7 @@ export default class CountryItem extends React.Component {
         onBarClick={() => this.onBarClick(null)}
         data={data}
         currencySymbol={currencySymbol}
+        currencyRate={currencyRate}
         getHumanValue={this.getHumanValue} />
 
 
@@ -204,7 +208,7 @@ export default class CountryItem extends React.Component {
                 onClick={() => this.onBarClick(this.props.index)}/>  
               <Bar 
                 style={{'opacity':_blueBarMod}} 
-                attr={'SPORTS VALUE'} 
+                attr={'SPORT & CULTURE TOTAL'} 
                 width={_widths.sportCulture * 100} 
                 classMod={'--sport'} 
                 onMouseOver={() => this.onBarClick(this.props.index)}
