@@ -371,7 +371,7 @@ export default class CountryDetail extends React.Component {
                     leaving={() => null}
                     onClick={() => null} />
                   <p className={`figure`}>
-                    {currencySymbol} {this.getHumanValue(countryData["SPORTS VALUE"] * currencyRate)}
+                    {currencySymbol} {this.getHumanValue(countryData["SPORT & CULTURE TOTAL"] * currencyRate)}
                   </p>
                 </div>
               </div>

@@ -9,6 +9,7 @@ import TourismLogo from '../../../../assets/svg/tourism.svg';
 const AngleTooltip = ({
     data, 
     currencySymbol, 
+    currencyRate,
     getHumanValue, 
     showTooltip, 
     onBarClick
@@ -40,7 +41,7 @@ const AngleTooltip = ({
                 <ReactSVG 
                     className={`angletooltip__icon`} 
                     src={SportCultureLogo} />
-                <p>Sport & Culture {currencySymbol} {getHumanValue(data["SPORTS VALUE"])}</p>
+                <p>Sport & Culture {currencySymbol} {getHumanValue(data["SPORT & CULTURE TOTAL"])}</p>
             </div>
         </div>
     )
