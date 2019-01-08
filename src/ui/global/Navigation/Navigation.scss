@@ -105,6 +105,7 @@
         width: 25%;
         
         @media(max-width: $mobilebreak) {
+          padding-right: 0.25rem;
           width: 25%;
           justify-content: space-between;
 

@@ -651,6 +651,7 @@ body {
         width: 25%; }
         @media (max-width: 768px) {
           .Navigation .bottom .controls .control {
+            padding-right: 0.25rem;
             width: 25%;
             justify-content: space-between; }
             .Navigation .bottom .controls .control p {
