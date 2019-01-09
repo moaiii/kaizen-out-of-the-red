@@ -7,7 +7,6 @@ export const TooltipOther = ({
   currencyRate, 
   setModalIsActive
 }) => {
-  console.log(dataProps)
     return (
         <div className="details__tooltip">
           {
@@ -25,11 +24,9 @@ export const TooltipOther = ({
               )
             })
           }
-          <div className="footer">
             <button onClick={() => setModalIsActive(false)}>
               <h2>Close X</h2>  
             </button>        
           </div>
-        </div>
     )
 }

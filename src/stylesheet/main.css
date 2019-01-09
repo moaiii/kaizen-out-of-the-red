@@ -18,15 +18,15 @@ body {
 
 @font-face {
   font-family: 'maven-100';
-  src: url("../assets/fonts/MavenProLight-100.otf") format("opentype"); }
+  src: url("../assets/Fonts/MavenProLight-100.otf") format("opentype"); }
 
 @font-face {
   font-family: 'maven-200';
-  src: url("../assets/fonts/MavenProLight-200.otf") format("opentype"); }
+  src: url("../assets/Fonts/MavenProLight-200.otf") format("opentype"); }
 
 @font-face {
   font-family: 'maven-300';
-  src: url("../assets/fonts/MavenProLight-300.otf") format("opentype"); }
+  src: url("../assets/Fonts/MavenProLight-300.otf") format("opentype"); }
 
 * {
   font-family: 'maven-200', serif; }
@@ -228,7 +228,7 @@ body {
   @media (max-width: 768px) {
     .CountryDetail .data-vis {
       overflow-y: scroll;
-      height: 70%; }
+      height: 78%; }
       .CountryDetail .data-vis p {
         font-size: 14px; } }
   .CountryDetail .data-vis hr {
@@ -266,10 +266,8 @@ body {
     display: flex;
     justify-content: space-between; }
   @media (max-width: 768px) {
-    .CountryDetail .banner {
-      padding: 1rem; }
-      .CountryDetail .banner p {
-        font-size: 12px; } }
+    .CountryDetail .banner p {
+      font-size: 12px; } }
   .CountryDetail .banner h2 {
     text-align: center;
     color: white;
@@ -329,9 +327,18 @@ body {
   max-width: 600px;
   padding: 2rem;
   height: auto;
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 5px;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.1); }
+  .details__tooltip button {
+    background-color: #101754;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 200px; }
+    .details__tooltip button p, .details__tooltip button h4, .details__tooltip button h3, .details__tooltip button h2, .details__tooltip button h1 {
+      color: white; }
   @media (max-width: 768px) {
     .details__tooltip {
       width: 80%;
