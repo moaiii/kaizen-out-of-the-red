@@ -30,6 +30,9 @@ export default class CountryList extends React.Component {
     this._getMaxValue();
     this.props.setWalkthroughStep();
 
+    // set tab title
+    document.title = "Out of the Red | Compare the Market"
+
     const List = document.getElementsByClassName('CountryList')[0];
     
     List.addEventListener("click", () => {

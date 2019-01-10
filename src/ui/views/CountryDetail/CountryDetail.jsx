@@ -56,7 +56,10 @@ export default class CountryDetail extends React.Component {
       this._navigateBack();
 
     } else {
-      this.setState({ countryData: _country });
+      this.setState({ countryData: _country }, () => {
+        // set tab title
+        document.title = `${_country['Country']} | Out of the Red`;
+      });
     }
   }
 
