@@ -126,7 +126,7 @@
   
   @media(min-width: $mobilebreak) and (max-width: 990px) {
     font-size: 0.9rem;
-    transform: translateY(0px);
+    transform: translateY(10px) !important;
   }
   
   @media(min-width: $mobilebreak) and (max-width: 800px) {
