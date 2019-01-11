@@ -136,6 +136,10 @@
         }
 
         p {
+          @media(min-width: $mobilebreak) and (max-width: 990px) {
+            display: none;
+          }
+          
           width: 50%;
           color: $blue1;
           @include maven200;
@@ -177,6 +181,10 @@
   max-width: 150px;
   width: 100%;
   height: 40px;
+
+  @media (max-width: 990px) {
+    max-width: 100px;
+  }
   
   @media (max-width: 768px) {
     // max-width: 100px;
@@ -317,6 +325,11 @@
       min-width: 150px;
       display: flex;
       justify-content: center;
+      
+      @media(max-width: 990px) {
+        min-width: 100px;        
+      }
+
       @media(max-width: $mobilebreak) {
         min-width: 100px;
         padding: 0.25rem;

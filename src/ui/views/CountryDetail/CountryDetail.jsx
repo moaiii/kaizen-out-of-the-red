@@ -450,21 +450,3 @@ export default class CountryDetail extends React.Component {
     );
   }
 }
-
-
-// In the new design we have removed National wealth as this was the feature that often skewed the data, currently, national wealth is still in the key but sports has been removed, I'm not sure if this has been reflected in the data pulling through? 
-
-// --- OK
-// I'm not sure which part of the data you are getting the %s from? As we are now not using national debt, the column AE on the ALL DATA tab should show the percentages for 'Debt Cleared'
-
-// --- OK
-// The figures in 'remaining debt' should be also be total debt (C) on ALL DATA minus Total Assets (AD)
-
-// --- OK
-// On both sets of bars the data is not respective to the other countries - eg for those 'in the red' if it says 49% of the debt is cleared then 49% of the bar should be filled in with how it's cleared.
-
-// --- OK
-// Those that are 'In the Black' should just be filling in the entire bar with the % distribution of how each asset contributes to the 'Total assets' amount in column AD on ALL DATA, so they should all look more like South Korea. 
-
-// --- OK
-// Those 'in the black' the 'remaining debt' column should be renamed 'Profit' and should be the remainder of Total Assets (AD) when national debt (C) is removed.

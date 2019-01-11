@@ -75,7 +75,7 @@ export default class CountryItem extends React.Component {
 
     let _remainingDebt = Math.abs((data["National Debt"] - data["Total assets (without national wealth)"]) * currencyRate);
     
-    let _nationalDebt = window.innerWidth > 762
+    let _nationalDebt = window.innerWidth > 990
       ? Humanize
           .compactInteger(data["National Debt"] * this.props.currencyRate, 1)
           .replace('T', ' Trillion')
@@ -84,10 +84,12 @@ export default class CountryItem extends React.Component {
           .compactInteger(data["National Debt"] * this.props.currencyRate, 1)
 
 
-    let _remainingDebtString = Humanize
-      .compactInteger(_remainingDebt, 1)
-      .replace('T', ' Trillion')
-      .replace('B', ' Billion');
+    let _remainingDebtString = window.innerWidth > 990
+      ? Humanize
+          .compactInteger(_remainingDebt, 1)
+          .replace('T', ' Trillion')
+          .replace('B', ' Billion')
+      : Humanize.compactInteger(_remainingDebt, 1);
 
       
     /**
@@ -157,6 +159,9 @@ export default class CountryItem extends React.Component {
         ? 'none' : '1px solid #3566B2'
     };
 
+    let _c = window.innerWidth < 990 && data.Country.toLowerCase() === "united kingdom"
+      ? "UK"
+      : data.Country;
 
     // FINAL RENDERED JSX
     return (
@@ -167,7 +172,7 @@ export default class CountryItem extends React.Component {
               onClick={() => onSelect(data.Country)}
               style={_walkthroughStyle} >
               <ReactCountryFlag code={data.code} svg/>
-              <h3>{data.Country}</h3>
+              <h3>{_c}</h3>
             </div>
             <div className="debt-card-national" style={_x}>
               <div className="inner">

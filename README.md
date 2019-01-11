@@ -1,4 +1,4 @@
-# Out of the Red
+# Kaizen - Out of the Red
 
 ## Run
 `npm i`

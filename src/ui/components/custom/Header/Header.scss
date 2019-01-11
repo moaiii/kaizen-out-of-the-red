@@ -79,6 +79,10 @@
       transform: translateY(10px);
     }
 
+    @media(min-width: $mobilebreak) and (max-width: 800px) {
+      align-items: self-start !important;
+    }
+
     .logo-svg {
       svg {
         width: 700px;
@@ -119,6 +123,21 @@
   text-transform: capitalize;
   transform: translateY(-7px);
   letter-spacing: 0.5px;
+  
+  @media(min-width: $mobilebreak) and (max-width: 990px) {
+    font-size: 0.9rem;
+    transform: translateY(0px);
+  }
+  
+  @media(min-width: $mobilebreak) and (max-width: 800px) {
+    font-size: 0.9rem;
+    transform: translateY(10px) !important;
+  }
+  
+  @media(min-width: $mobilebreak) and (max-width: 990px) {
+    font-size: 0.9rem;
+    transform: translateY(0px);
+  }
 
   @media (max-width: 768px) {
     font-size: 12px;
@@ -137,6 +156,10 @@
   color: white;
   font-weight: 700;
   opacity: 0.85;
+  
+  @media(min-width: $mobilebreak) and (max-width: 990px) {
+    font-size: 3rem;
+  }
 
   @media (max-width: 768px) {
     display: none;
