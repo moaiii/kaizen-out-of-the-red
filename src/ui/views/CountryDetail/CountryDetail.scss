@@ -15,7 +15,9 @@
     max-width: 1500px;
     margin: 0 auto;
     width: 100%;
-    height: auto;
+    height: 67vh;
+    overflow: scroll;
+    padding-bottom: 2rem;
 
     @media(max-width: $mobilebreak) {
       overflow-y: scroll;
@@ -116,16 +118,16 @@
     display: flex;
     justify-content: center;
 
-    &.--mobile {
-      display: none;
-    }
+    // &.--mobile {
+    //   display: none;
+    // }
     
     @media(max-width: 768px) {
-      display: none;
+      // display: none;
 
-      &.--mobile {
+      // &.--mobile {
         display: flex;
-      }
+      // }
     }
 
     button {

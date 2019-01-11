@@ -430,7 +430,7 @@ export default class CountryDetail extends React.Component {
             </div>
           </div>
           <hr/>
-          <div className="footer --mobile">
+          <div className="footer">
           <button onClick={() => this._goBack()}>
             <h2>{`< Back`}</h2>  
           </button>  
@@ -441,11 +441,11 @@ export default class CountryDetail extends React.Component {
           BACK BUTTON  
         */}
 
-        <div className="footer">
+        {/* <div className="footer">
           <button onClick={() => this._goBack()}>
             <h2>{`< Back`}</h2>  
           </button>  
-        </div>
+        </div> */}
       </div>
     );
   }
